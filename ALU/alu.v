@@ -26,12 +26,5 @@ module alu(in1, in2, op_code, condition, carry, out, zero, pos, neg);
 	nand16 __nand(in1, in2, outNAND);
 
 	carry_generate carry_gen(in1,in2,carry,op_code);
-	// carrygen carry(in1,in2,outADD);
-
-	// not16 not1(in1, outNot);
-	// xor16 xor1(in1, in2, outXor);
-	// left_shift lshf1(in1, outLshf, shift);
-	// right_shift_logical rshfl1(in1, outRshfl, shift);
-	// right_shift_arithmetic rshfa1(in1, outRshfa, shift);
 	
 endmodule
