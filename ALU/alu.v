@@ -10,15 +10,16 @@ module alu(in1, in2, op_code, condition, carry, out, zero, pos, neg, write);
 	input  [15:0] in1, in2;
 	input  op_code;
 	input  [1:0] condition;
-	output pos, neg, write;
+	output pos, neg;
 	output reg write;
 	inout wire carry, zero;
 	reg tmp_carry, tmp_zero;
+	reg [15:0] tmp_add;
 
-	always @*
+	always @(op_code or condition or in1 or in2)
 		begin
-			write = (~condition[1]&~condition[0]) | (~condition[0]&condition[1]&zero) | (condition[0]&~condition[1]&carry); 
-			tmp_zero = ~(out[0] +out[1] +out[2] +out[3] +out[4] +out[5] +out[6] +out[7] +out[8] +out[9] +out[10] +out[11] +out[12] +out[13] +out[14] +out[15]);
+			write = (~condition[1]&~condition[0]) | (condition[0]&~condition[1]&zero) | (~condition[0]&condition[1]&carry); 
+			tmp_zero = ~(out[0] | out[1] | out[2] | out[3] | out[4] | out[5] | out[6] | out[7] | out[8] | out[9] | out[10] | out[11] | out[12] | out[13] | out[14] | out[15]);
 			if(op_code == 0)
 				begin
 					if(in1[15] & in2[15])
