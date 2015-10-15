@@ -1,22 +1,22 @@
-module memory(address,in,out,write,clk);
+module memory(address,in,out,write,read,clk);
 	
 	input [15:0] in;
-	input clk,write;
+	input clk,write,read;
 	input [5:0] address;
 	output  [15:0] out;
 	reg [15:0] mem [0:63];
-	reg [5:0] addreg;
 
 	always @(negedge clk)
 		begin
 		if(write ==1'b0)
 			begin
 				mem[address] <= in;
-				addreg <= address;
 			end
-		end
-
-	assign out = mem[addreg];	
+		if(read == 1'b0)
+			begin
+				out <= mem[address];
+			end 
+		end	
 
 endmodule
 
