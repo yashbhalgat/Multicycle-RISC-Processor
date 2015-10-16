@@ -1,3 +1,7 @@
+/*
+* Active Low write register
+*/
+
 module reg16(clk, out, in, write, reset);  
 
 	output reg [15:0] out;
