@@ -11,14 +11,6 @@ module controller(clk, StateID,);
 	output reg [1:0]  Mux7_RF_read2;
 	output reg        count_enable, ALU_op,CZ_en;
 	output reg        memwrite,memread,wIR,wRF; 
-	/*
-	* States 
-	* 0 - Fetches Instructions from T1
-	* 1 - Pass regA to A ,regB to B, (A,B) to ALU
-	* 2 - 
-	* 3 - 
-	*/
-
 
 	always(@negedge clk)
 		begin
@@ -26,16 +18,16 @@ module controller(clk, StateID,);
 				0:begin
 					wIR <= 0;
 					memread <=0;
-					memwrite <=1;
+					memwrite <=1'b1;
 					ALU_op = 0;
-					CZ_en = 1;
+					CZ_en = 1'b1;
 				end	
 
 				1:begin
 					Mux1_alu_B <= 2'b10;
 					Mux2_alu_A <= 3'b101;
 					Mux5_RF_read2 <= 2'b00;
-					CZ_en = 1;
+					CZ_en = 1'b1;
 					ALU_op = 0;
 					// Mux4_RF_wadd <= 2'b00;
 				end
@@ -56,7 +48,7 @@ module controller(clk, StateID,);
 					Mux1_alu_B <= 2'b10;
 					Mux2_alu_A <= 3'b001;
 					Mux5_RF_read2 <= 2'b10;	 
-					CZ_en = 1;
+					CZ_en = 1'b1;
 				end
 
 				4:begin
@@ -65,7 +57,7 @@ module controller(clk, StateID,);
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;					
 					ALU_op = 0;
-					CZ_en = 1;
+					CZ_en = 1'b1;
 				end
 
 				5:begin
@@ -74,7 +66,7 @@ module controller(clk, StateID,);
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;
 					ALU_op = 0;
-					CZ_en = 1;
+					CZ_en = 1'b1;
 				end
 
 				6:begin
@@ -86,7 +78,7 @@ module controller(clk, StateID,);
 					// // Mux5_RF_read2 <= 2'b10; 
 					// Mux6_RF_dataIn <= 1'b1;
 					// ALU_op = 0;
-					CZ_en = 1;
+					CZ_en = 1'b1;
 				end
 
 				7:begin
@@ -98,8 +90,8 @@ module controller(clk, StateID,);
 					Mux1_alu_B <= 2'b10;
 					Mux2_alu_A <= 3'b101;
 					Mux5_RF_read2 <= 2'b00;
-					CZ_en = 1;
-					ALU_op = 1;
+					CZ_en = 1'b1;
+					ALU_op = 1'b1;
 					// Mux4_RF_wadd <= 2'b00;
 				end
 
@@ -110,7 +102,7 @@ module controller(clk, StateID,);
 					Mux4_RF_wadd <= 2'b001;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;
-					ALU_op = 1;
+					ALU_op = 1'b1;
 					CZ_en = 0;
 				end
 
@@ -119,14 +111,14 @@ module controller(clk, StateID,);
 					Mux4_RF_wadd <= 2'b001;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;
-					ALU_op = 1;
-					CZ_en = 1;
+					ALU_op = 1'b1;
+					CZ_en = 1'b1;
 				end
 
 				11:begin
 					Mux1_alu_B <= 2'b11;
 					Mux2_alu_A <= 3'b101;
-					CZ_en = 1;
+					CZ_en = 1'b1;
 					ALU_op = 0;
 					// Mux4_RF_wadd <= 2'b00;
 				end
@@ -143,8 +135,51 @@ module controller(clk, StateID,);
 				end
 
 				13:begin
-					
+					Mux1_alu_B <= 2'b00;
+					Mux2_alu_A <= 3'b010;
+					CZ_en =1'b1;
+					ALU_op =0;
 				end
+
+				14:begin
+					Mux3_RF_wen <= 2'b00;
+					Mux4_RF_wadd <= 2'b000;
+					// Mux5_RF_read2 <= 2'b10; 
+					Mux6_RF_dataIn <= 1'b1;
+					ALU_op = 0;
+					CZ_en = 0;
+				end
+
+				15:begin
+					Mux1_alu_B <= 2'b10;
+					Mux2_alu_A <= 3'b011;
+					Mux5_RF_read2 <= 2'b00;
+					CZ_en = 1'b1;
+					ALU_op = 0;
+				end
+
+				16:begin
+					memwrite = 0;
+					CZ_en <= 1;
+				end
+
+				17:begin
+					memwrite = 0;
+					CZ_en <= 1;
+				end
+
+				18:begin
+					memread <= 0;
+					CZ_en <= 1;
+				end
+
+				19:begin
+					Mux6_RF_dataIn <= 1'b0;
+					Mux3_RF_wen <= 2'b00;
+					Mux4_RF_wadd <= 3'b000;
+				end
+
+				
 		end
 
 endmodule
