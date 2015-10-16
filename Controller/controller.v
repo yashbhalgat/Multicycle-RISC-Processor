@@ -114,6 +114,18 @@ module controller(clk, StateID, Mux1, Mux2, Mux3, Mux4, Mux5, Mux6, Mux7, Mux11,
 					CZ_en = 0;
 				end
 
+				10:begin
+					Mux3_RF_wen <= 2'b10;
+					Mux4_RF_wadd <= 2'b01;
+					// Mux5_RF_read2 <= 2'b10; 
+					Mux6_RF_dataIn <= 1'b1;
+					ALU_op = 1;
+					CZ_en = 1;
+				end
+
+				11:begin
+					
+				end
 		end
 
 endmodule
