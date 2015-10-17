@@ -9,18 +9,21 @@ module controller(clk, StateID,);
 	output reg [1:0]  Mux5_RF_read2;
 	output reg 		  Mux6_RF_dataIn;
 	output reg [1:0]  Mux7_RF_read2;
+	output reg [1:0]  Mux8_memwrite;
+	output reg 		  Mux9_memDataIn;
 	output reg        count_enable, ALU_op,CZ_en;
-	output reg        memwrite,memread,wIR,wRF; 
-
+	output reg        memread,wIR,wRF,wAtmp; 
+	reg 	   [2:0]  counter;
 	always(@negedge clk)
 		begin
 			case(StateID)
 				0:begin
 					wIR <= 0;
 					memread <=0;
-					memwrite <=1'b1;
+					Mux8_memwrite <=2'b01;
 					ALU_op = 0;
 					CZ_en = 1'b1;
+					counter <= 3'b000;
 				end	
 
 				1:begin
@@ -154,17 +157,20 @@ module controller(clk, StateID,);
 					Mux1_alu_B <= 2'b10;
 					Mux2_alu_A <= 3'b011;
 					Mux5_RF_read2 <= 2'b00;
+					Mux9_memDataIn <= 1'b0;
 					CZ_en = 1'b1;
 					ALU_op = 0;
 				end
 
 				16:begin
-					memwrite = 0;
+					Mux9_memDataIn <= 1'b0;
+					Mux8_memwrite = 2'b00;
 					CZ_en <= 1;
 				end
 
 				17:begin
-					memwrite = 0;
+					Mux8_memwrite = 2'b00;
+					Mux9_memDataIn <= 1'b0;
 					CZ_en <= 1;
 				end
 
@@ -241,10 +247,71 @@ module controller(clk, StateID,);
 					Mux6_RF_dataIn <= 1'b1;
 				end
 
-				28;begin
+				28:begin
+					ALU_op = 0;
+					CZ_en = 1'b1;
+					Mux1_alu_B <= 2'b10;
+					Mux2_alu_A <= 3'b000;
+					Mux5_RF_read2 <= 2'b00;
+				end
+
+				29:begin
+					ALU_op = 0;
+					CZ_en = 1'b1;
+					Mux1_alu_B <= 2'b10;
+					Mux2_alu_A <= 3'b000;
+					Mux5_RF_read2 <= 2'b00;
+					Mux3_RF_wen <= 2'b00;
+					Mux4_RF_wadd <= 2'b011;
+					// Mux5_RF_read2 <= 2'b10; 
+					Mux6_RF_dataIn <= 1'b1;						 
+				end
+
+				30:begin
+					Mux1_alu_B <= 2'b100;
+					Mux2_alu_A <= 3'b110;
+					wAtmp <= 0;
+					Mux6_RF_dataIn <= 0;
+					Mux3_RF_wen <= 2'b11;
+					Mux4_RF_wadd <= 3'b010;
+				end
+
+				31:begin
+					Mux3_RF_wen <= 2'b11;
+					Mux4_RF_wadd <= 3'b010;
+					Mux6_RF_dataIn <= 0;
+				end
+
+				32:begin
+					wAtmp <= 1;
+				end
+
+				33:begin
+					counter <= counter +3'b001;
+				end
+
+				34:begin
+					Mux1_alu_B <= 2'b100;
+					Mux2_alu_A <= 3'b110;
+					wAtmp <= 0;
+					Mux5_RF_read2 <= 2'b01;
+					Mux3_RF_wen <= 2'b01;
+					Mux8_memwrite <= 2'b01;
+					Mux9_memDataIn <= 1'b1;
+				end
+
+				35:begin
 					
 				end
-				
+
+				36:begin
+					Mux8_memwrite <= 2'b10;
+				end
+
+				37:begin
+					counter <= counter + 3'b001;
+				end
+
 		end
 
 	always(@negedge clk)
