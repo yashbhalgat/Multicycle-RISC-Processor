@@ -1,35 +1,54 @@
-module datapath(Mux1_alu_B, Mux2_alu_A, CZen )
+module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
+				Mux6_RF_dataIn, counter, Mux8_memwrite, Mux9_memDataIn, CZen, ALU_op, memRead, wIR, wtmpA, 
+				counter,  );
 
-	wire [15:0] ALU_in1, ALU_in2, ALU_out;
-	reg  [15:0] A,B;		
+	input 		 clk, memRead, wIR, wtmpA;
+	input [1:0]  Mux1_alu_B;
+	input [2:0]  Mux2_alu_A;
+	input [1:0]  Mux3_RF_wen;
+	input [2:0]  Mux4_RF_wadd;
+	input [1:0]  Mux5_RF_read2;
+	input 		 Mux6_RF_dataIn;
+	input [1:0]  Mux8_memwrite;
+	input 		 Mux9_memDataIn;
+	input        ALU_op,CZ_en;
+	input [2:0]  counter;
 
-	reg16_file 		__RF(clk, RFout1, RFout2, RFReadAdd1, RFReadAdd2, Mux3_RF_wen_out, RFwriteAdd, RFDataIn, RFreset);
-	alu 			__alu(ALU_in1, ALU_in2, ALU_op, compare, carry, ALU_out, zero, pos, neg);
-	memory 			__mem(memAdd, memDataIn, memDataOut, memWrite, memRead, clk);
+	output 		 compare;
+
+	wire [15:0] ALU_out, IRout, T1out, tmpAout;
+	wire CZout;
+
+	reg  [15:0] A,B;
+
+	reg16_file 		__RF(clk, RFout1, RFout2, IRout[11:9], Mux4_RF_wadd_out, Mux3_RF_wen_out, RFwriteAdd, RFDataIn, RFreset);
+	alu 			__alu(Mux1_alu_B_out, Mux2_alu_A_out, ALU_op, compare, carry, ALU_out, zero);
+	memory 			__mem(T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, memRead, clk);
+	
 	CZ_reg			__CZ(IRout[1:0],carry, zero, CZen, CZout);
-	reg16 			__IR(clk, IRout, IRin, wIR, resetIR);
-	reg16			__T1(clk, T1out, T1in, wT1, resetT1);
-	reg16			__tmpA(clk, tmpAout, tmpAin, wtmpA, resettmpA);
-	imm_6			__imm6(imm6In, imm6Out);
-	imm_9			__imm9(imm9In, imm9Out);
-	shift_7			__shift7(shift7In, shift7Out);
+	reg16 			__IR(clk, IRout, memDataOut, wIR, 1'b1);
+	reg16			__T1(clk, T1out, ALU_out, 1'b0, 1'b1);
+	reg16			__tmpA(clk, tmpAout, RFout1, wtmpA, 1'b1);
+	
+	imm_6			__imm6(IRout[5:0], imm6Out);
+	imm_9			__imm9(IRout[8:0], imm9Out);
+	shift_7			__shift7(IRout[8:0], shift7Out);
+	
 	mux_16_8 		__Mux1_alu_B(16'd0, 16'd1, B, imm6Out, {16{0},counter}, 16'd0, 16'd0, 16'd0, Mux1_alu_B, Mux1_alu_B_out);
 	mux_16_8 		__Mux2_alu_A(16'd0, 16'd1, shift7Out, imm6Out, imm9Out, A, tmpAout, 16'd0, Mux2_alu_A, Mux2_alu_A_out);
 	mux_1_4			__Mux3_RF_wen(1'b0,1'b1,CZout,Mux7_RF_write_out, Mux3_RF_wen, Mux3_RF_wen_out);
+	mux_3_8		    __Mux4_RF_wadd(IRout[11:9],IRout[5:3],counter,3'b111,IRout[8:6],3'b000,3'b000,3'b000,Mux4_RF_wadd,Mux4_RF_wadd_out);
+	mux_3_4			__Mux5_RF_read2(IRout[8:6],counter,3'b111,3'b000,Mux5_RF_read2,Mux5_RF_read2_out);
+	mux_16_2		__Mux6_RF_dataIn(memDataOut, T1out, Mux6_RF_dataIn, Mux6_RF_dataIn_out);
 	mux_1_8			__Mux7_RF_write(IRout[7],IRout[6],IRout[5],IRout[4],IRout[3],IRout[2],IRout[1],IRout[0],counter,Mux7_RF_write_out);
-	
+	mux_1_4			__Mux8_memwrite(1'b0,1'b1,Mux7_RF_write_out, Mux8_memwrite, Mux8_memwrite_out);
+	mux_16_2		__Mux9_memDataIn(A,B, Mux9_memDataIn, Mux9_memDataIn_out);		
 
-	assign wT1 = 1'b0;
-	assign resetIR = 1'b1;
-	assign resetT1 = 1'b1;
-	assign resettmpA = 1'b1;
-	assign RFReadAdd1 = IRout[11:9];
-	assign tmpAin = RFout1;
-	assign imm6In = IRout[5:0];
-	assign imm9In = IRout[8:0];
-	assign shift7In = IRout[8:0];
-	assign memAdd = T1out;
-
+	// assign wT1 = 1'b0;
+	// assign tmpAin = RFout1;
+	// assign imm6In = IRout[5:0];
+	// assign imm9In = IRout[8:0];
+	// assign shift7In = IRout[8:0];
 
 	always@*
 		begin
