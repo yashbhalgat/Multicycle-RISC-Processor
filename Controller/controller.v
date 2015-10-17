@@ -217,7 +217,7 @@ module controller(clk, StateID,);
 
 				25:begin
 					Mux3_RF_wen <= 2'b00;
-					Mux4_RF_wadd <= 2'b000;
+					Mux4_RF_wadd <= 3'b000;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;					
 					ALU_op = 0;
@@ -227,11 +227,23 @@ module controller(clk, StateID,);
 				26:begin
 					ALU_op = 0;
 					Mux1_alu_B <= 2'b10;
-					Mux2_alu_A <= 3'b001;
+					Mux2_alu_A <= 3'b011;
 					Mux5_RF_read2 <= 2'b10;	 
 					CZ_en = 1'b1;
 				end
 
+				27:begin
+					ALU_op = 0;
+					CZ_en = 1'b1;
+					Mux3_RF_wen <= 2'b00;
+					Mux4_RF_wadd <= 3'b011;
+					// Mux5_RF_read2 <= 2'b10; 
+					Mux6_RF_dataIn <= 1'b1;
+				end
+
+				28;begin
+					
+				end
 				
 		end
 
