@@ -8,12 +8,11 @@ module controller(clk, StateID,);
 	output reg [2:0]  Mux4_RF_wadd;
 	output reg [1:0]  Mux5_RF_read2;
 	output reg 		  Mux6_RF_dataIn;
-	output reg [1:0]  Mux7_RF_read2;
 	output reg [1:0]  Mux8_memwrite;
 	output reg 		  Mux9_memDataIn;
 	output reg        count_enable, ALU_op,CZ_en;
 	output reg        memread,wIR,wRF,wAtmp; 
-	reg 	   [2:0]  counter;
+	output reg [2:0]  counter;
 	always(@negedge clk)
 		begin
 			case(StateID)
