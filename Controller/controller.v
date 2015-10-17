@@ -1,6 +1,6 @@
 module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 				Mux6_RF_dataIn, counter, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, memread, wIR, wAtmp, 
-				resetT1, counter);
+				resetT1);
 
 	input             clk, compare;
 	input      [15:0] IR;
@@ -16,6 +16,12 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 	output reg        memread,wIR,wAtmp, resetT1; 
 	output reg [2:0]  counter;
 	reg 	   [5:0]  StateID;
+
+	initial 
+		begin
+			StateID <= 6'd0;
+			resetT1 <= 1'b0;  
+		end
 
 	always@(negedge clk)
 		begin
