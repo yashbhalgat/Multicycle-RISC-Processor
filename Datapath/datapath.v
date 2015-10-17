@@ -1,6 +1,6 @@
 module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 				Mux6_RF_dataIn, counter, Mux8_memwrite, Mux9_memDataIn, CZen, ALU_op, memRead, wIR, wtmpA, 
-				counter,  );
+				counter);
 
 	input 		 clk, memRead, wIR, wtmpA;
 	input [1:0]  Mux1_alu_B;

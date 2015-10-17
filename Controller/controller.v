@@ -1,4 +1,4 @@
-module controller(clk, StateID,);
+module controller(clk, compare, StateID,);
 
 	input             clk, compare;
 	input      [15:0] IR;
