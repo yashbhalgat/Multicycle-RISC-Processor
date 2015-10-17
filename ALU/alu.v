@@ -8,8 +8,7 @@ module alu(in1, in2, ALU_op, compare, carry, out, zero);
 	
 	input  [15:0] in1, in2;
 	input  ALU_op;
-	input  [1:0] condition;
-	
+		
 	output [15:0] out;
 	output compare;
 	output carry, zero;

@@ -1,4 +1,4 @@
-module mux_1_8(inp0, inp1, inp2, inp3, sel, out); 
+module mux_1_4(inp0, inp1, inp2, inp3, sel, out); 
 
 	output reg out;
 	input  inp0, inp1, inp2, inp3;

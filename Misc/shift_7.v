@@ -1,7 +1,7 @@
-module shift_7(input, output)
+module shift_7(in, out);
 	
-	input [8:0] input;
-	output [15:0] output;
-	assign ouput = input << 7;
+	input [8:0] in;
+	output [15:0] out;
+	assign out = in << 7;
 
 endmodule

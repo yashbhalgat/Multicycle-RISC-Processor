@@ -1,4 +1,6 @@
-module controller(clk, compare, StateID,);
+module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
+				Mux6_RF_dataIn, counter, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, memread, wIR, wAtmp, 
+				resetT1, counter);
 
 	input             clk, compare;
 	input      [15:0] IR;
@@ -11,9 +13,11 @@ module controller(clk, compare, StateID,);
 	output reg [1:0]  Mux8_memwrite;
 	output reg 		  Mux9_memDataIn;
 	output reg        ALU_op,CZ_en;
-	output reg        memread,wIR,wAtmp; 
+	output reg        memread,wIR,wAtmp, resetT1; 
 	output reg [2:0]  counter;
-	always(@negedge clk)
+	reg 	   [5:0]  StateID;
+
+	always@(negedge clk)
 		begin
 			case(StateID)
 				0:begin
@@ -23,6 +27,7 @@ module controller(clk, compare, StateID,);
 					ALU_op = 0;
 					CZ_en = 1'b1;
 					counter <= 3'b000;
+					resetT1 <= 1'b1;
 				end	
 
 				1:begin
@@ -310,10 +315,10 @@ module controller(clk, compare, StateID,);
 				37:begin
 					counter <= counter + 3'b001;
 				end
+		endcase
+	end
 
-		end
-
-	always(@negedge clk)
+	always@(negedge clk)
 		begin
 			case (StateID)
 				0:begin
@@ -356,7 +361,7 @@ module controller(clk, compare, StateID,);
 				   	0: StateID=9;
 				   	1: StateID=10;
 				   	2: StateID=10;
-				   	default: 0;
+				   	default: StateID = 0;
 				   	endcase
 				  end
 				9: StateID=3;
@@ -413,5 +418,4 @@ module controller(clk, compare, StateID,);
 				// if state 23 compare = 1 then goto 24 otherwise goto 3
 			
 		end
-
 endmodule

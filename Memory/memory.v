@@ -3,7 +3,7 @@ module memory(address,in,out,write,read,clk);
 	input [15:0] in;
 	input clk,write,read;
 	input [5:0] address;
-	output  [15:0] out;
+	output reg [15:0] out;
 	reg [15:0] mem [0:63];
 
 	always @(negedge clk)
