@@ -402,12 +402,12 @@ module controller(clk, StateID,);
 				31: StateID=32;
 				32: StateID=33;
 				33: if(counter==3'b111) StateID=3;
-                	else StateID=30;
+                	           else StateID=30;
 				34: StateID=35;
 				35: StateID=36;
 				36: StateID=37;
 				37: if(counter==3'b111) StateID=3;
-                	else StateID=34;
+                	           else StateID=34;
 				default: StateID=0;
 			endcase
 
