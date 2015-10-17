@@ -1,6 +1,6 @@
 module RISC15(clk);
 	
-	wire        clk;
+	input wire  clk;
 	wire [15:0] IR;
 	wire [1:0]  Mux1_alu_B;
 	wire [2:0]  Mux2_alu_A;
@@ -17,7 +17,7 @@ module RISC15(clk);
 
 	controller   __controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 							  Mux6_RF_dataIn, counter, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, memread, wIR, wAtmp, 
-				              resetT1, counter);
+				              resetT1);
 	datapath 	 __datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 				            Mux6_RF_dataIn, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, memRead, wIR, wAtmp, 
 				            resetT1, counter, compare);
