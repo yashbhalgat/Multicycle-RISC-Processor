@@ -1,6 +1,6 @@
 module controller(clk, StateID,);
 
-	input             clk;
+	input             clk, compare;
 	input      [15:0] IR;
 	output reg [1:0]  Mux1_alu_B;
 	output reg [2:0]  Mux2_alu_A;
@@ -179,8 +179,66 @@ module controller(clk, StateID,);
 					Mux4_RF_wadd <= 3'b000;
 				end
 
+				20:begin
+					Mux2_alu_A <= 3'b010;
+					Mux1_alu_B <= 2'b00;
+					CZ_en <= 1;
+					ALU_op <= 0;
+				end
+
+				21:begin
+					Mux3_RF_wen <= 2'b00;
+					Mux4_RF_wadd <= 2'b00;
+					Mux6_RF_dataIn <= 1'b1;
+				end
+
+				22:begin
+					Mux2_alu_A <= 3'b101;
+					Mux1_alu_B <= 2'b10;
+					CZ_en <= 1;
+					ALU_op <= 0;					
+				end
+
+				// Same as 22 
+				23:begin
+					Mux2_alu_A <= 3'b101;
+					Mux1_alu_B <= 2'b10;
+					CZ_en <= 1;
+					ALU_op <= 0;
+				end
+
+				24:begin
+					Mux1_alu_B <= 2'b10;
+					Mux2_alu_A <= 3'b011;
+					Mux5_RF_read2 <= 2'b10;
+					CZ_en = 1;
+					ALU_op = 0;
+				end
+
+				25:begin
+					Mux3_RF_wen <= 2'b00;
+					Mux4_RF_wadd <= 2'b000;
+					// Mux5_RF_read2 <= 2'b10; 
+					Mux6_RF_dataIn <= 1'b1;					
+					ALU_op = 0;
+					CZ_en = 1'b1;
+				end
+
+				26:begin
+					ALU_op = 0;
+					Mux1_alu_B <= 2'b10;
+					Mux2_alu_A <= 3'b001;
+					Mux5_RF_read2 <= 2'b10;	 
+					CZ_en = 1'b1;
+				end
+
 				
-				
+		end
+
+	always(@negedge clk)
+		begin
+				// if state 23 compare = 1 then goto 24 otherwise goto 3
+			end
 		end
 
 endmodule
