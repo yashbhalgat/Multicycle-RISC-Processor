@@ -316,8 +316,103 @@ module controller(clk, StateID,);
 
 	always(@negedge clk)
 		begin
+			case (StateID)
+				0:begin
+				   	case (IR[15:12])
+				   	0: StateID=1;
+				   	1: StateID=11;
+				   	2: StateID=8;
+				   	3: StateID=20;
+				   	4: StateID=15;
+				   	5: StateID=15;
+				   	6: StateID=30;
+				   	7: StateID=34;
+				   	8: StateID=3;
+				   	9: StateID=3;
+				   	12: StateID=22;
+				   	endcase
+				  end
+				1:begin
+				   	case (IR[1:0])
+				   	0: StateID=2;
+				   	1: StateID=5;
+				   	2: StateID=5;
+				   	default: StateID=0;
+				   	endcase
+				  end 
+				2: StateID=3;
+				3:begin
+				   	case (IR[15:12])
+				   	8: StateID=25;
+				   	9: StateID=25;
+				   	default: StateID=4;
+				   	endcase
+				  end
+				4: StateID=0;
+				5: StateID=6;
+				6: StateID=7;
+				7: StateID=3;
+				8:begin
+				   	case (IR[1:0])
+				   	0: StateID=9;
+				   	1: StateID=10;
+				   	2: StateID=10;
+				   	default: 0;
+				   	endcase
+				  end
+				9: StateID=3;
+				10: StateID=6;
+				11: StateID=12;
+				12: StateID=3;
+				13: StateID=14;
+				14: StateID=3;
+				15:begin
+				   	case (IR[15:12])
+				   	4: StateID=18;
+				   	5: StateID=16;
+				   	default: StateID=0;
+				   	endcase
+				  end
+				16: StateID=17;
+				17: StateID=3;
+				18: StateID=19;
+				19: StateID=3;
+				20: StateID=21;
+				21: StateID=3;
+				22: StateID=23;
+				23:begin
+				   	case (compare)
+				   	0: StateID=3;
+				   	1: StateID=24;
+				   	endcase
+				  end
+				24: StateID=4;
+				25:begin
+				   	case (IR[15:12])
+				   	8: StateID=26;
+				   	9: StateID=28;
+				   	default: StateID=0;
+				   	endcase
+				  end
+				26: StateID=27;
+				27: StateID=4;
+				28: StateID=29;
+				29: StateID=4;
+				30: StateID=31;
+				31: StateID=32;
+				32: StateID=33;
+				33: if(counter==3'b111) StateID=3;
+                    else StateID=30;
+				34: StateID=35;
+				35: StateID=36;
+				36: StateID=37;
+				37: if(counter==3'b111) StateID=3;
+                    else StateID=34;
+				default: StateID=0;
+			endcase
+
 				// if state 23 compare = 1 then goto 24 otherwise goto 3
-			end
+			
 		end
 
 endmodule
