@@ -4,7 +4,7 @@
 * Instructions : ADD, ADC, ADZ, ADI, NDU, NDC, NDZ 
 */
 
-module alu(in1, in2, ALU_op, condition, compare, carry, out, zero, pos, neg, write); 
+module alu(in1, in2, ALU_op, compare, carry, out, zero, pos, neg); 
 	
 	output [15:0] out;
 	input  [15:0] in1, in2;
