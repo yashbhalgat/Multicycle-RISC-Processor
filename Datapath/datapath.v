@@ -1,6 +1,6 @@
 module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 				Mux6_RF_dataIn, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, wIR, wAtmp, 
-				resetT1, counter, compare, T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out);
+				resetT1, counter, compare, T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, IRout);
 
 	input 		  clk, wIR, wAtmp, resetT1;
 	input [1:0]   Mux1_alu_B;
@@ -16,11 +16,11 @@ module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_
 	input [15:0]  memDataOut;	
 
 	output 		  compare;
-	output [15:0] T1out;
+	output [15:0] T1out, IRout;
 	output [15:0] Mux9_memDataIn_out;	
 	output 		  Mux8_memwrite_out;
 
-	wire [15:0] ALU_out, IRout, T1out, tmpAout;
+	wire [15:0] ALU_out, T1out, tmpAout;
 	wire CZout;
 
 	reg  [15:0] A,B;
