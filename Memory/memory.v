@@ -6,6 +6,12 @@ module memory(address,in,out,write,read,clk);
 	output reg [15:0] out;
 	reg [15:0] mem [0:63];
 
+	initial
+		begin
+			mem[0] <= 16'b0000001011110000;
+		end
+
+
 	always @(negedge clk)
 		begin
 		if(write ==1'b0)

@@ -34,4 +34,14 @@ module reg16_file(clk, out1, out2, readAdd1, readAdd2, write, write_select, in, 
 	reg16 r6(clk, reg_data6, in, write_reg_enable[6], reset);
 	reg16 r7(clk, reg_data7, in, write_reg_enable[7], reset);
 	
+	initial
+		begin
+			in = 16'd12;
+			write_reg_enable[1] = 1'b0;
+			#40 in = 16'd10;
+			write_reg_enable[3] = 1'b0;
+			#10 write_reg_enable[1] = 1'b1;
+			write_reg_enable[3] = 1'b1;
+		end
+
 endmodule
