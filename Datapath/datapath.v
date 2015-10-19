@@ -1,9 +1,9 @@
 module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 				Mux6_RF_dataIn, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, wIR, wAtmp, 
-				resetT1, counter, compare, T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, IRout);
+			   counter, compare, T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, IRout);
 
-	input 		  clk, wIR, wAtmp, resetT1;
-	input [1:0]   Mux1_alu_B;
+	input 		  clk, wIR, wAtmp;
+	input [2:0]   Mux1_alu_B;
 	input [2:0]   Mux2_alu_A;
 	input [1:0]   Mux3_RF_wen;
 	input [2:0]   Mux4_RF_wadd;
@@ -16,28 +16,30 @@ module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_
 	input [15:0]  memDataOut;	
 
 	output 		  compare;
-	output [15:0] T1out, IRout;
-	output [15:0] Mux9_memDataIn_out;	
+	output [15:0] T1out;
+	output [15:0] Mux9_memDataIn_out, IRout;	
 	output 		  Mux8_memwrite_out;
 
-	wire [15:0] ALU_out, T1out, tmpAout;
-	wire CZout;
+	wire [15:0] ALU_out, tmpAout;
+	wire [15:0] RFout1, RFout2, Mux6_RF_dataIn_out, Mux1_alu_B_out, Mux2_alu_A_out, imm6Out, imm9Out, shift7Out;
+	wire [2:0]  Mux4_RF_wadd_out, Mux5_RF_read2_out;
+	wire        Mux3_RF_wen_out, Mux7_RF_write_out, CZout, carry, zero;
 
 	reg  [15:0] A,B;
 
-	reg16_file 		__RF(clk, RFout1, RFout2, IRout[11:9], Mux4_RF_wadd_out, Mux3_RF_wen_out, RFwriteAdd, RFDataIn, RFreset);
+	reg16_file 		__RF(clk, RFout1, RFout2, IRout[11:9], Mux5_RF_read2_out, Mux3_RF_wen_out, Mux4_RF_wadd_out, Mux6_RF_dataIn_out, 1'b1);
 	alu 			__alu(Mux1_alu_B_out, Mux2_alu_A_out, ALU_op, compare, carry, ALU_out, zero);
 	// memory 			__mem(T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, memRead, clk);
 	
 	CZ_reg			__CZ(IRout[1:0],carry, zero, CZ_en, CZout);
 	reg16 			__IR(clk, IRout, memDataOut, wIR, 1'b1);
-	reg16			__T1(clk, T1out, ALU_out, 1'b0, resetT1);
+	T1reg16			__T1(clk, T1out, ALU_out, 1'b0, 1'b1);
 	reg16			__tmpA(clk, tmpAout, RFout1, wAtmp, 1'b1);
 	
 	imm_6			__imm6(IRout[5:0], imm6Out);
 	imm_9			__imm9(IRout[8:0], imm9Out);
 	shift_7			__shift7(IRout[8:0], shift7Out);
-	
+		
 	mux_16_8 		__Mux1_alu_B(16'd0, 16'd1, B, imm6Out, {{13{1'b0}},counter}, 16'd0, 16'd0, 16'd0, Mux1_alu_B, Mux1_alu_B_out);
 	mux_16_8 		__Mux2_alu_A(16'd0, 16'd1, shift7Out, imm6Out, imm9Out, A, tmpAout, 16'd0, Mux2_alu_A, Mux2_alu_A_out);
 	mux_1_4			__Mux3_RF_wen(1'b0,1'b1,CZout,Mux7_RF_write_out, Mux3_RF_wen, Mux3_RF_wen_out);
@@ -53,7 +55,7 @@ module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_
 	// assign imm6In = IRout[5:0];
 	// assign imm9In = IRout[8:0];
 	// assign shift7In = IRout[8:0];
-
+	
 	always@*
 		begin
 			A <= RFout1;

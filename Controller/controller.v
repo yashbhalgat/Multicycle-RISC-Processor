@@ -1,10 +1,10 @@
 module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 				Mux6_RF_dataIn, counter, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, memread, wIR, wAtmp, 
-				resetT1, StateID);
+				StateID);
 
 	input             clk, compare;
 	input      [15:0] IR;
-	output reg [1:0]  Mux1_alu_B;
+	output reg [2:0]  Mux1_alu_B;
 	output reg [2:0]  Mux2_alu_A;
 	output reg [1:0]  Mux3_RF_wen;
 	output reg [2:0]  Mux4_RF_wadd;
@@ -13,14 +13,13 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 	output reg [1:0]  Mux8_memwrite;
 	output reg 		  Mux9_memDataIn;
 	output reg        ALU_op,CZ_en;
-	output reg        memread,wIR,wAtmp, resetT1; 
+	output reg        memread,wIR,wAtmp; 
 	output reg [2:0]  counter;
 	output reg 	   [5:0]  StateID;
 
 	initial 
 		begin
 			StateID <= 6'd0;
-			resetT1 <= 1'b0;  
 		end
 
 	always@(negedge clk)
@@ -33,11 +32,10 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 					ALU_op = 0;
 					CZ_en = 1'b1;
 					counter <= 3'b000;
-					resetT1 <= 1'b1;
 				end	
 
 				1:begin
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					Mux2_alu_A <= 3'b101;
 					Mux5_RF_read2 <= 2'b00;
 					CZ_en = 1'b1;
@@ -46,10 +44,11 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				end
 
 				2:begin
-					// Mux1_alu_B <= 2'b10;
+					wIR <= 1'b1;
+					// Mux1_alu_B <= 3'b010;
 					// Mux2_alu_A <= 3'b001;
 					Mux3_RF_wen <= 2'b00;
-					Mux4_RF_wadd <= 2'b001;
+					Mux4_RF_wadd <= 3'b001;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;
 					ALU_op = 0;
@@ -58,7 +57,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 
 				3:begin
 					ALU_op = 0;
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					Mux2_alu_A <= 3'b001;
 					Mux5_RF_read2 <= 2'b10;	 
 					CZ_en = 1'b1;
@@ -66,7 +65,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 
 				4:begin
 					Mux3_RF_wen <= 2'b00;
-					Mux4_RF_wadd <= 2'b011;
+					Mux4_RF_wadd <= 3'b011;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;					
 					ALU_op = 0;
@@ -75,7 +74,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 
 				5:begin
 					Mux3_RF_wen <= 2'b10;
-					Mux4_RF_wadd <= 2'b001;
+					Mux4_RF_wadd <= 3'b001;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;
 					ALU_op = 0;
@@ -83,10 +82,10 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				end
 
 				6:begin
-					// Mux1_alu_B <= 2'b10;
+					// Mux1_alu_B <= 3'b010;
 					// Mux2_alu_A <= 3'b001;
 					Mux3_RF_wen <= 2'b10;
-					Mux4_RF_wadd <= 2'b001;
+					Mux4_RF_wadd <= 3'b001;
 					// Mux4_RF_wadd <= 2'b01;
 					// // Mux5_RF_read2 <= 2'b10; 
 					// Mux6_RF_dataIn <= 1'b1;
@@ -100,7 +99,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				end
 
 				8:begin
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					Mux2_alu_A <= 3'b101;
 					Mux5_RF_read2 <= 2'b00;
 					CZ_en = 1'b1;
@@ -109,10 +108,10 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				end
 
 				9:begin
-					// Mux1_alu_B <= 2'b10;
+					// Mux1_alu_B <= 3'b010;
 					// Mux2_alu_A <= 3'b001;
 					Mux3_RF_wen <= 2'b00;
-					Mux4_RF_wadd <= 2'b001;
+					Mux4_RF_wadd <= 3'b001;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;
 					ALU_op = 1'b1;
@@ -121,7 +120,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 
 				10:begin
 					Mux3_RF_wen <= 2'b10;
-					Mux4_RF_wadd <= 2'b001;
+					Mux4_RF_wadd <= 3'b001;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;
 					ALU_op = 1'b1;
@@ -129,7 +128,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				end
 
 				11:begin
-					Mux1_alu_B <= 2'b11;
+					Mux1_alu_B <= 3'b011;
 					Mux2_alu_A <= 3'b101;
 					CZ_en = 1'b1;
 					ALU_op = 0;
@@ -137,10 +136,10 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				end
 
 				12:begin
-					// Mux1_alu_B <= 2'b10;
+					// Mux1_alu_B <= 3'b010;
 					// Mux2_alu_A <= 3'b001;
 					Mux3_RF_wen <= 2'b00;
-					Mux4_RF_wadd <= 2'b100;
+					Mux4_RF_wadd <= 3'b100;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;
 					ALU_op = 0;
@@ -148,7 +147,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				end
 
 				13:begin
-					Mux1_alu_B <= 2'b00;
+					Mux1_alu_B <= 3'b000;
 					Mux2_alu_A <= 3'b010;
 					CZ_en =1'b1;
 					ALU_op =0;
@@ -156,7 +155,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 
 				14:begin
 					Mux3_RF_wen <= 2'b00;
-					Mux4_RF_wadd <= 2'b000;
+					Mux4_RF_wadd <= 3'b000;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;
 					ALU_op = 0;
@@ -164,7 +163,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				end
 
 				15:begin
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					Mux2_alu_A <= 3'b011;
 					Mux5_RF_read2 <= 2'b00;
 					Mux9_memDataIn <= 1'b0;
@@ -197,7 +196,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 
 				20:begin
 					Mux2_alu_A <= 3'b010;
-					Mux1_alu_B <= 2'b00;
+					Mux1_alu_B <= 3'b000;
 					CZ_en <= 1;
 					ALU_op <= 0;
 				end
@@ -210,7 +209,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 
 				22:begin
 					Mux2_alu_A <= 3'b101;
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					CZ_en <= 1;
 					ALU_op <= 0;					
 				end
@@ -218,13 +217,13 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				// Same as 22 
 				23:begin
 					Mux2_alu_A <= 3'b101;
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					CZ_en <= 1;
 					ALU_op <= 0;
 				end
 
 				24:begin
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					Mux2_alu_A <= 3'b011;
 					Mux5_RF_read2 <= 2'b10;
 					CZ_en = 1;
@@ -242,7 +241,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 
 				26:begin
 					ALU_op = 0;
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					Mux2_alu_A <= 3'b011;
 					Mux5_RF_read2 <= 2'b10;	 
 					CZ_en = 1'b1;
@@ -260,7 +259,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				28:begin
 					ALU_op = 0;
 					CZ_en = 1'b1;
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					Mux2_alu_A <= 3'b000;
 					Mux5_RF_read2 <= 2'b00;
 				end
@@ -268,17 +267,17 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				29:begin
 					ALU_op = 0;
 					CZ_en = 1'b1;
-					Mux1_alu_B <= 2'b10;
+					Mux1_alu_B <= 3'b010;
 					Mux2_alu_A <= 3'b000;
 					Mux5_RF_read2 <= 2'b00;
 					Mux3_RF_wen <= 2'b00;
-					Mux4_RF_wadd <= 2'b011;
+					Mux4_RF_wadd <= 3'b011;
 					// Mux5_RF_read2 <= 2'b10; 
 					Mux6_RF_dataIn <= 1'b1;						 
 				end
 
 				30:begin
-					Mux1_alu_B <= 2'b100;
+					Mux1_alu_B <= 3'b100;
 					Mux2_alu_A <= 3'b110;
 					wAtmp <= 0;
 					Mux6_RF_dataIn <= 0;
@@ -301,7 +300,7 @@ module controller(clk, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF
 				end
 
 				34:begin
-					Mux1_alu_B <= 2'b100;
+					Mux1_alu_B <= 3'b100;
 					Mux2_alu_A <= 3'b110;
 					wAtmp <= 0;
 					Mux5_RF_read2 <= 2'b01;
