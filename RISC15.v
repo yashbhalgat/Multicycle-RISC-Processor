@@ -1,6 +1,6 @@
-module RISC15(clk, StateID);
+module RISC15(clk, StateID, proc_rst);
 	
-	input wire  clk;
+	input wire  clk, proc_rst;
 	wire [15:0] memDataOut;
 	wire [15:0] IRout, T1out, Mux9_memDataIn_out;
 	wire [2:0]  Mux1_alu_B;
@@ -15,14 +15,14 @@ module RISC15(clk, StateID);
 	wire        memread,wIR,wAtmp; 
 	wire [2:0]  counter;
 	wire 		compare, Mux8_memwrite_out;
-	output [2:0]StateID;
+	output [5:0]StateID;
 
-	controller   __controller(clk, compare, IRout, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
+	controller   __controller(clk, proc_rst, compare, IRout, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 							  Mux6_RF_dataIn, counter, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, memread, wIR, wAtmp, 
-				              StateID);
-	datapath 	 __datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
-				            Mux6_RF_dataIn, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, wIR, wAtmp, 
+				              StateID, T1write);
+	datapath 	 __datapath(clk, proc_rst, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
+				            Mux6_RF_dataIn, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, wIR, wAtmp, T1write,
 				            counter, compare, T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, IRout);
-	memory 		 __mem(T1out[5:0], Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, memread, clk);
+	memory 		 __mem(T1out[4:0], Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, memread, clk);
 
 endmodule

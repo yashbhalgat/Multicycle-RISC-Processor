@@ -1,8 +1,8 @@
-module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
-				Mux6_RF_dataIn, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, wIR, wAtmp, 
+module datapath(clk, proc_rst, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
+				Mux6_RF_dataIn, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, wIR, wAtmp, T1write, 
 			   counter, compare, T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, IRout);
 
-	input 		  clk, wIR, wAtmp;
+	input 		  clk, proc_rst, wIR, wAtmp;
 	input [2:0]   Mux1_alu_B;
 	input [2:0]   Mux2_alu_A;
 	input [1:0]   Mux3_RF_wen;
@@ -11,7 +11,7 @@ module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_
 	input 		  Mux6_RF_dataIn;
 	input [1:0]   Mux8_memwrite;
 	input 		  Mux9_memDataIn;
-	input         ALU_op,CZ_en;
+	input         ALU_op,CZ_en, T1write;
 	input [2:0]   counter;
 	input [15:0]  memDataOut;	
 
@@ -33,7 +33,7 @@ module datapath(clk, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_
 	
 	CZ_reg			__CZ(IRout[1:0],carry, zero, CZ_en, CZout);
 	reg16 			__IR(clk, IRout, memDataOut, wIR, 1'b1);
-	T1reg16			__T1(clk, T1out, ALU_out, 1'b0, 1'b1);
+	T1reg16			__T1(clk, T1out, ALU_out, T1write, 1'b1, proc_rst);
 	reg16			__tmpA(clk, tmpAout, RFout1, wAtmp, 1'b1);
 	
 	imm_6			__imm6(IRout[5:0], imm6Out);
