@@ -23,6 +23,6 @@ module RISC15(clk, StateID, proc_rst);
 	datapath 	 __datapath(clk, proc_rst, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 				            Mux6_RF_dataIn, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, wIR, wAtmp, T1write,
 				            counter, compare, T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, IRout);
-	memory 		 __mem(T1out[4:0], Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, memread, clk);
+	memory 		 __mem(T1out[4:0], Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, memread, clk, proc_rst);
 
 endmodule

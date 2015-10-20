@@ -27,7 +27,7 @@ module datapath(clk, proc_rst, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd
 
 	reg  [15:0] A,B;
 
-	reg16_file 		__RF(clk, RFout1, RFout2, IRout[11:9], Mux5_RF_read2_out, Mux3_RF_wen_out, Mux4_RF_wadd_out, Mux6_RF_dataIn_out, 1'b1);
+	reg16_file 		__RF(clk, proc_rst, RFout1, RFout2, IRout[11:9], Mux5_RF_read2_out, Mux3_RF_wen_out, Mux4_RF_wadd_out, Mux6_RF_dataIn_out, 1'b1);
 	alu 			__alu(Mux1_alu_B_out, Mux2_alu_A_out, ALU_op, compare, carry, ALU_out, zero);
 	// memory 			__mem(T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, memRead, clk);
 	

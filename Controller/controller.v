@@ -16,62 +16,78 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 	output reg        memread,wIR,wAtmp; 
 	output reg [2:0]  counter;
 	output reg 	   [5:0]  StateID;
-
+	
+	parameter halt0 = 6'd63;
 	
 	always@(negedge clk)
 		begin
 			if(proc_rst==0) begin
-				T1write = 1'b1;
+				Mux3_RF_wen <= 2'b00;
+				Mux4_RF_wadd <= 3'b011; // to initialise PC to 0
+				Mux6_RF_dataIn <= 1'b1;
+				wIR <= 0;
+				memread <=0;
+				T1write <= 1'b1;
 			end
 			else begin
 				case(StateID)
 					0:begin
+						// instruction gets stored in IR in this state
 						wIR <= 0;
+						T1write <= 1'b1;
 						memread <=0;
+						//ALU_op = 0;
 						Mux8_memwrite <=2'b01;
-						ALU_op = 0;
-						CZ_en = 1'b1;
+						Mux3_RF_wen <= 2'b01;
+						CZ_en <= 1'b1;
 						counter <= 3'b000;
 					end	
-					//in any state after state 0, u have to make T1write<=0;
+					//in most of the states after state 0, u have to make T1write<=0;
 					
 					1:begin
-						T1write <= 1'b0;
+						wIR <= 1'b0; //needed
 						Mux1_alu_B <= 3'b010;
 						Mux2_alu_A <= 3'b101;
 						Mux5_RF_read2 <= 2'b00;
+						Mux3_RF_wen <= 2'b00;
+						Mux4_RF_wadd <= 3'b001;
+						Mux6_RF_dataIn <= 1'b1;
 						CZ_en = 1'b1;
 						ALU_op = 0;
 						// Mux4_RF_wadd <= 2'b00;
 					end
 
 					2:begin
+						// ADD answer will be written into Rc in this state
 						wIR <= 1'b1;
+						T1write <= 1'b0;
 						// Mux1_alu_B <= 3'b010;
 						// Mux2_alu_A <= 3'b001;
+						// Mux5_RF_read2 <= 2'b10; 
 						Mux3_RF_wen <= 2'b00;
 						Mux4_RF_wadd <= 3'b001;
-						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;
-						ALU_op = 0;
-						CZ_en = 0;
+						ALU_op <= 0;
+						CZ_en <= 0;
 					end
 
 					3:begin
-						ALU_op = 0;
 						Mux1_alu_B <= 3'b010;
 						Mux2_alu_A <= 3'b001;
 						Mux5_RF_read2 <= 2'b10;	 
-						CZ_en = 1'b1;
+						ALU_op <= 0;
+						CZ_en <= 1'b1;
 					end
 
 					4:begin
+						wIR <= 0;
+						memread <=0;
 						Mux3_RF_wen <= 2'b00;
 						Mux4_RF_wadd <= 3'b011;
 						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;					
-						ALU_op = 0;
-						CZ_en = 1'b1;
+						ALU_op <= 0;
+						CZ_en <= 1'b1;
 					end
 
 					5:begin
@@ -79,8 +95,8 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux4_RF_wadd <= 3'b001;
 						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;
-						ALU_op = 0;
-						CZ_en = 1'b1;
+						ALU_op <= 0;
+						CZ_en <= 1'b1;
 					end
 
 					6:begin
@@ -92,7 +108,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						// // Mux5_RF_read2 <= 2'b10; 
 						// Mux6_RF_dataIn <= 1'b1;
 						// ALU_op = 0;
-						CZ_en = 1'b1;
+						CZ_en <= 1'b1;
 					end
 
 					7:begin
@@ -101,23 +117,29 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					8:begin
+						wIR <= 1'b0; //needed
 						Mux1_alu_B <= 3'b010;
 						Mux2_alu_A <= 3'b101;
 						Mux5_RF_read2 <= 2'b00;
+						Mux3_RF_wen <= 2'b00;
+						Mux4_RF_wadd <= 3'b001;
+						Mux6_RF_dataIn <= 1'b1;
 						CZ_en = 1'b1;
-						ALU_op = 1'b1;
+						ALU_op = 1;
 						// Mux4_RF_wadd <= 2'b00;
 					end
 
 					9:begin
+						wIR <= 1'b1;
+						T1write <= 1'b0;
 						// Mux1_alu_B <= 3'b010;
 						// Mux2_alu_A <= 3'b001;
+						// Mux5_RF_read2 <= 2'b10; 
 						Mux3_RF_wen <= 2'b00;
 						Mux4_RF_wadd <= 3'b001;
-						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;
-						ALU_op = 1'b1;
-						CZ_en = 0;
+						ALU_op <= 1'b1;
+						CZ_en <= 0;
 					end
 
 					10:begin
@@ -125,15 +147,15 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux4_RF_wadd <= 3'b001;
 						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;
-						ALU_op = 1'b1;
-						CZ_en = 1'b1;
+						ALU_op <= 1'b1;
+						CZ_en <= 1'b1;
 					end
 
 					11:begin
 						Mux1_alu_B <= 3'b011;
 						Mux2_alu_A <= 3'b101;
-						CZ_en = 1'b1;
-						ALU_op = 0;
+						CZ_en <= 1'b1;
+						ALU_op <= 0;
 						// Mux4_RF_wadd <= 2'b00;
 					end
 
@@ -144,15 +166,15 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux4_RF_wadd <= 3'b100;
 						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;
-						ALU_op = 0;
-						CZ_en = 0;
+						ALU_op <= 0;
+						CZ_en <= 0;
 					end
 
 					13:begin
 						Mux1_alu_B <= 3'b000;
 						Mux2_alu_A <= 3'b010;
-						CZ_en =1'b1;
-						ALU_op =0;
+						CZ_en <=1'b1;
+						ALU_op <=0;
 					end
 
 					14:begin
@@ -160,8 +182,8 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux4_RF_wadd <= 3'b000;
 						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;
-						ALU_op = 0;
-						CZ_en = 0;
+						ALU_op <= 0;
+						CZ_en <= 0;
 					end
 
 					15:begin
@@ -169,18 +191,18 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux2_alu_A <= 3'b011;
 						Mux5_RF_read2 <= 2'b00;
 						Mux9_memDataIn <= 1'b0;
-						CZ_en = 1'b1;
-						ALU_op = 0;
+						CZ_en <= 1'b1;
+						ALU_op <= 0;
 					end
 
 					16:begin
 						Mux9_memDataIn <= 1'b0;
-						Mux8_memwrite = 2'b00;
+						Mux8_memwrite <= 2'b00;
 						CZ_en <= 1;
 					end
 
 					17:begin
-						Mux8_memwrite = 2'b00;
+						Mux8_memwrite <= 2'b00;
 						Mux9_memDataIn <= 1'b0;
 						CZ_en <= 1;
 					end
@@ -228,8 +250,8 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux1_alu_B <= 3'b010;
 						Mux2_alu_A <= 3'b011;
 						Mux5_RF_read2 <= 2'b10;
-						CZ_en = 1;
-						ALU_op = 0;
+						CZ_en <= 1;
+						ALU_op <= 0;
 					end
 
 					25:begin
@@ -237,21 +259,21 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux4_RF_wadd <= 3'b000;
 						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;					
-						ALU_op = 0;
-						CZ_en = 1'b1;
+						ALU_op <= 0;
+						CZ_en <= 1'b1;
 					end
 
 					26:begin
-						ALU_op = 0;
+						ALU_op <= 0;
 						Mux1_alu_B <= 3'b010;
 						Mux2_alu_A <= 3'b011;
 						Mux5_RF_read2 <= 2'b10;	 
-						CZ_en = 1'b1;
+						CZ_en <= 1'b1;
 					end
 
 					27:begin
-						ALU_op = 0;
-						CZ_en = 1'b1;
+						ALU_op <= 0;
+						CZ_en <= 1'b1;
 						Mux3_RF_wen <= 2'b00;
 						Mux4_RF_wadd <= 3'b011;
 						// Mux5_RF_read2 <= 2'b10; 
@@ -259,16 +281,16 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					28:begin
-						ALU_op = 0;
-						CZ_en = 1'b1;
+						ALU_op <= 0;
+						CZ_en <= 1'b1;
 						Mux1_alu_B <= 3'b010;
 						Mux2_alu_A <= 3'b000;
 						Mux5_RF_read2 <= 2'b00;
 					end
 
 					29:begin
-						ALU_op = 0;
-						CZ_en = 1'b1;
+						ALU_op <= 0;
+						CZ_en <= 1'b1;
 						Mux1_alu_B <= 3'b010;
 						Mux2_alu_A <= 3'b000;
 						Mux5_RF_read2 <= 2'b00;
@@ -322,6 +344,9 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					37:begin
 						counter <= counter + 3'b001;
 					end
+					
+					halt0:begin
+					end
 			endcase
 		end
 	end
@@ -333,7 +358,8 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 			end
 			else begin
 				case (StateID)
-					0:begin
+					0: StateID = halt0;
+					halt0:begin
 							case (IR[15:12])
 							0: StateID=1;
 							1: StateID=11;
