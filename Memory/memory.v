@@ -1,13 +1,23 @@
-module memory(address,in,out,write,read,clk);
+module memory(address,in,out,write,read,clk, proc_rst);
 	
 	input [15:0] in;
-	input clk,write,read;
-	input [5:0] address;
+	input clk,write,read, proc_rst;
+	input [4:0] address;
 	output reg [15:0] out;
-	reg [15:0] mem [0:63];
+	reg [15:0] mem [0:31];
 
+	/*initial
+		begin
+			mem[0] <= 16'b0000001011110000;
+			mem[1] <= 16'b0010001011101000;
+		end*/
+	
 	always @(negedge clk)
 		begin
+		if(proc_rst==0) begin
+				mem[0] <= 16'b0000001011110000;
+				mem[1] <= 16'b0010001011101000;
+			end
 		if(write ==1'b0)
 			begin
 				mem[address] <= in;

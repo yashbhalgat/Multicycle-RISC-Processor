@@ -2,12 +2,12 @@
 * Module : Active low Write Register Files.
 */
 
-module reg16_file(clk, out1, out2, readAdd1, readAdd2, write, write_select, in, reset);
+module reg16_file(clk, proc_rst, out1, out2, readAdd1, readAdd2, write, write_select, in, reset);
 
 	output [15:0] out1, out2;
 	input  [15:0] in;
 	input  [2:0]  readAdd1, readAdd2, write_select;
-	input         write, clk, reset;
+	input         write, clk, reset, proc_rst;
 	
 	wire [15:0] reg_data0,  reg_data1,  reg_data2,  reg_data3,  reg_data4,  reg_data5,  reg_data6,  reg_data7;
 	wire [7:0]  write_line_enable, write_reg_enable;
