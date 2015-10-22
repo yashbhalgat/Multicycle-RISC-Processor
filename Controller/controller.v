@@ -209,6 +209,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 
 					15:begin
 						wIR <= 1'b0; //needed
+						T1write <= 1'b0;
 						Mux1_alu_B <= 3'b010;
 						Mux2_alu_A <= 3'b011;
 						Mux5_RF_read2 <= 2'b00;
@@ -227,7 +228,6 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						// Mux2_alu_A <= 3'b001;
 						// Mux5_RF_read2 <= 2'b10; 
 						Mux9_memDataIn <= 1'b0;
-						Mux8_memwrite <= 2'b00;
 						ALU_op <= 0;
 						CZ_en <= 1;
 					end
@@ -236,6 +236,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux8_memwrite <= 2'b00;
 						Mux9_memDataIn <= 1'b0;
 						CZ_en <= 1;
+						ALU_op <= 0;
 					end
 
 					18:begin
@@ -464,7 +465,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 							default: StateID=0;
 							endcase
 					  end
-					16: StateID=3;
+					16: StateID=17;
 					17: StateID=3;
 					18: StateID=19;
 					19: StateID=3;

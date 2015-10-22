@@ -47,7 +47,7 @@ module datapath(clk, proc_rst, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd
 	mux_3_4			__Mux5_RF_read2(IRout[8:6],counter,3'b111,3'b000,Mux5_RF_read2,Mux5_RF_read2_out);
 	mux_16_2		__Mux6_RF_dataIn(memDataOut, T1out, Mux6_RF_dataIn, Mux6_RF_dataIn_out);
 	mux_1_8			__Mux7_RF_write(IRout[7],IRout[6],IRout[5],IRout[4],IRout[3],IRout[2],IRout[1],IRout[0],counter,Mux7_RF_write_out);
-	mux_1_4			__Mux8_memwrite(1'b0,1'b1,Mux7_RF_write_out, Mux8_memwrite, Mux8_memwrite_out);
+	mux_1_4			__Mux8_memwrite(1'b0,1'b1,Mux7_RF_write_out,1'b0, Mux8_memwrite, Mux8_memwrite_out);
 	mux_16_2		__Mux9_memDataIn(A,B, Mux9_memDataIn, Mux9_memDataIn_out);		
 
 	// assign wT1 = 1'b0;

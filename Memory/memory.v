@@ -24,6 +24,7 @@ module memory(address,in,out,write,read,clk, proc_rst);
 				
 				//Test 2
 				mem[0] <= 16'b0011001101101001;
+				mem[1] <= 16'b0101001011000011;
 			end
 		if(write ==1'b0)
 			begin
