@@ -17,13 +17,13 @@ module memory(address,in,out,write,read,clk, proc_rst);
 		if(proc_rst==0) begin
 
 				// Test 1
-				/*
+				/**/
 				mem[0] <= 16'b0000001011110000; // ADD
 				mem[1] <= 16'b0010001011101000;	// NDU
 				mem[2] <= 16'b0000001011100010;	// ADC
 				mem[3] <= 16'b0010001011010001;	// NDZ
 				mem[4] <= 16'b0001001011110000;	// ADI
-				*/
+				/**/
 				
 				//Test 2
 				/*
@@ -34,13 +34,13 @@ module memory(address,in,out,write,read,clk, proc_rst);
 				*/
 
 				//Test 3
-				/**/
+				/*
 				mem[0] <= 16'b1000000000000011; // JAL
 				mem[1] <= 16'b0000001011100010;	// ADC
 				mem[2] <= 16'b0010001011101000;	// NDU
 				mem[3] <= 16'b0010001011010001;	// NDZ
 				mem[4] <= 16'b0001001011110000;	// ADI        
-				/**/
+				*/
 			end
 		if(write ==1'b0)
 			begin
