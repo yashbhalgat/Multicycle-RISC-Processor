@@ -18,6 +18,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 	output reg 	   [5:0]  StateID;
 	
 	parameter halt0 = 6'd63;
+	parameter halt0 = 6'd62;
 	
 	always@(negedge clk)
 		begin
@@ -91,12 +92,16 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					5:begin
+						wIR <= 1'b1;
+						T1write <= 1'b0;
+						// Mux1_alu_B <= 3'b010;
+						// Mux2_alu_A <= 3'b001;
+						// Mux5_RF_read2 <= 2'b10; 
 						Mux3_RF_wen <= 2'b10;
 						Mux4_RF_wadd <= 3'b001;
-						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;
 						ALU_op <= 0;
-						CZ_en <= 1'b1;
+						CZ_en <= 0;
 					end
 
 					6:begin
@@ -347,6 +352,10 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					
 					halt0:begin
 					end
+
+					halt:begin
+					end
+
 			endcase
 		end
 	end
@@ -358,7 +367,8 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 			end
 			else begin
 				case (StateID)
-					0: StateID = halt0;
+					0: StateID = halt;
+					halt: StateID = halt0;
 					halt0:begin
 							case (IR[15:12])
 							0: StateID=1;
@@ -391,7 +401,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 							endcase
 					  end
 					4: StateID=0;
-					5: StateID=6;
+					5: StateID=7;
 					6: StateID=7;
 					7: StateID=3;
 					8:begin
