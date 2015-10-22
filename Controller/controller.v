@@ -166,19 +166,26 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					11:begin
+						wIR <= 1'b0; //needed
 						Mux1_alu_B <= 3'b011;
 						Mux2_alu_A <= 3'b101;
-						CZ_en <= 1'b1;
-						ALU_op <= 0;
-						// Mux4_RF_wadd <= 2'b00;
+						Mux5_RF_read2 <= 2'b00;
+						// Mux3_RF_wen <= 2'b00;
+						// Mux4_RF_wadd <= 3'b001;
+						Mux6_RF_dataIn <= 1'b1;
+						CZ_en = 1'b1;
+						ALU_op = 0;
 					end
 
 					12:begin
+						// ADD answer will be written into Rc in this state
+						wIR <= 1'b1;
+						T1write <= 1'b0;
 						// Mux1_alu_B <= 3'b010;
 						// Mux2_alu_A <= 3'b001;
+						// Mux5_RF_read2 <= 2'b10; 
 						Mux3_RF_wen <= 2'b00;
 						Mux4_RF_wadd <= 3'b100;
-						// Mux5_RF_read2 <= 2'b10; 
 						Mux6_RF_dataIn <= 1'b1;
 						ALU_op <= 0;
 						CZ_en <= 0;
