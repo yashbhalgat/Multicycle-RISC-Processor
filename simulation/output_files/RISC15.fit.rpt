@@ -1,0 +1,1754 @@
+Fitter report for RISC15
+Thu Oct 22 11:55:09 2015
+Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Fitter Summary
+  3. Fitter Settings
+  4. Parallel Compilation
+  5. Pin-Out File
+  6. Fitter Resource Usage Summary
+  7. Input Pins
+  8. Output Pins
+  9. I/O Bank Usage
+ 10. All Package Pins
+ 11. Output Pin Default Load For Reported TCO
+ 12. Fitter Resource Utilization by Entity
+ 13. Delay Chain Summary
+ 14. Control Signals
+ 15. Global & Other Fast Signals
+ 16. Non-Global High Fan-Out Signals
+ 17. Routing Usage Summary
+ 18. LAB Logic Elements
+ 19. LAB-wide Signals
+ 20. LAB Signals Sourced
+ 21. LAB Signals Sourced Out
+ 22. LAB Distinct Inputs
+ 23. Fitter Device Options
+ 24. Fitter Messages
+ 25. Fitter Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------+
+; Fitter Summary                                                         ;
++---------------------------+--------------------------------------------+
+; Fitter Status             ; Successful - Thu Oct 22 11:55:09 2015      ;
+; Quartus II 32-bit Version ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name             ; RISC15                                     ;
+; Top-level Entity Name     ; RISC15                                     ;
+; Family                    ; MAX V                                      ;
+; Device                    ; 5M1270ZT144I5                              ;
+; Timing Models             ; Final                                      ;
+; Total logic elements      ; 1,190 / 1,270 ( 94 % )                     ;
+; Total pins                ; 8 / 114 ( 7 % )                            ;
+; Total virtual pins        ; 0                                          ;
+; UFM blocks                ; 0 / 1 ( 0 % )                              ;
++---------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Settings                                                                                                                              ;
++----------------------------------------------------------------------------+--------------------------------+--------------------------------+
+; Option                                                                     ; Setting                        ; Default Value                  ;
++----------------------------------------------------------------------------+--------------------------------+--------------------------------+
+; Device                                                                     ; 5M1270ZT144I5                  ;                                ;
+; Minimum Core Junction Temperature                                          ; -40                            ;                                ;
+; Maximum Core Junction Temperature                                          ; 125                            ;                                ;
+; Fit Attempts to Skip                                                       ; 0                              ; 0.0                            ;
+; Use smart compilation                                                      ; Off                            ; Off                            ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                             ; On                             ;
+; Enable compact report table                                                ; Off                            ; Off                            ;
+; Router Timing Optimization Level                                           ; Normal                         ; Normal                         ;
+; Placement Effort Multiplier                                                ; 1.0                            ; 1.0                            ;
+; Router Effort Multiplier                                                   ; 1.0                            ; 1.0                            ;
+; Always Enable Input Buffers                                                ; Off                            ; Off                            ;
+; Optimize Hold Timing                                                       ; IO Paths and Minimum TPD Paths ; IO Paths and Minimum TPD Paths ;
+; Optimize Multi-Corner Timing                                               ; Off                            ; Off                            ;
+; Guarantee I/O Paths Have Zero Hold Time at Fast Corner                     ; On                             ; On                             ;
+; PowerPlay Power Optimization                                               ; Normal compilation             ; Normal compilation             ;
+; Optimize Timing                                                            ; Normal compilation             ; Normal compilation             ;
+; Optimize Timing for ECOs                                                   ; Off                            ; Off                            ;
+; Regenerate full fit report during ECO compiles                             ; Off                            ; Off                            ;
+; Optimize IOC Register Placement for Timing                                 ; Normal                         ; Normal                         ;
+; Limit to One Fitting Attempt                                               ; Off                            ; Off                            ;
+; Final Placement Optimizations                                              ; Automatically                  ; Automatically                  ;
+; Fitter Aggressive Routability Optimizations                                ; Automatically                  ; Automatically                  ;
+; Fitter Initial Placement Seed                                              ; 1                              ; 1                              ;
+; Slow Slew Rate                                                             ; Off                            ; Off                            ;
+; PCI I/O                                                                    ; Off                            ; Off                            ;
+; Weak Pull-Up Resistor                                                      ; Off                            ; Off                            ;
+; Enable Bus-Hold Circuitry                                                  ; Off                            ; Off                            ;
+; Auto Delay Chains                                                          ; On                             ; On                             ;
+; Auto Delay Chains for High Fanout Input Pins                               ; Off                            ; Off                            ;
+; Perform Physical Synthesis for Combinational Logic for Performance         ; Off                            ; Off                            ;
+; Perform Register Duplication for Performance                               ; Off                            ; Off                            ;
+; Perform Register Retiming for Performance                                  ; Off                            ; Off                            ;
+; Perform Asynchronous Signal Pipelining                                     ; Off                            ; Off                            ;
+; Fitter Effort                                                              ; Auto Fit                       ; Auto Fit                       ;
+; Physical Synthesis Effort Level                                            ; Normal                         ; Normal                         ;
+; Logic Cell Insertion - Logic Duplication                                   ; Auto                           ; Auto                           ;
+; Auto Register Duplication                                                  ; Auto                           ; Auto                           ;
+; Auto Global Clock                                                          ; On                             ; On                             ;
+; Auto Global Register Control Signals                                       ; On                             ; On                             ;
+; Force Fitter to Avoid Periphery Placement Warnings                         ; Off                            ; Off                            ;
++----------------------------------------------------------------------------+--------------------------------+--------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------+
+; Pin-Out File ;
++--------------+
+The pin-out file can be found in /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/simulation/output_files/RISC15.pin.
+
+
++----------------------------------------------------------------------+
+; Fitter Resource Usage Summary                                        ;
++---------------------------------------------+------------------------+
+; Resource                                    ; Usage                  ;
++---------------------------------------------+------------------------+
+; Total logic elements                        ; 1,190 / 1,270 ( 94 % ) ;
+;     -- Combinational with no register       ; 457                    ;
+;     -- Register only                        ; 209                    ;
+;     -- Combinational with a register        ; 524                    ;
+;                                             ;                        ;
+; Logic element usage by number of LUT inputs ;                        ;
+;     -- 4 input functions                    ; 680                    ;
+;     -- 3 input functions                    ; 229                    ;
+;     -- 2 input functions                    ; 69                     ;
+;     -- 1 input functions                    ; 2                      ;
+;     -- 0 input functions                    ; 1                      ;
+;                                             ;                        ;
+; Logic elements by mode                      ;                        ;
+;     -- normal mode                          ; 1160                   ;
+;     -- arithmetic mode                      ; 30                     ;
+;     -- qfbk mode                            ; 403                    ;
+;     -- register cascade mode                ; 0                      ;
+;     -- synchronous clear/load mode          ; 581                    ;
+;     -- asynchronous clear/load mode         ; 0                      ;
+;                                             ;                        ;
+; Total registers                             ; 733 / 1,270 ( 58 % )   ;
+; Total LABs                                  ; 127 / 127 ( 100 % )    ;
+; Logic elements in carry chains              ; 32                     ;
+; Virtual pins                                ; 0                      ;
+; I/O pins                                    ; 8 / 114 ( 7 % )        ;
+;     -- Clock pins                           ; 1 / 4 ( 25 % )         ;
+;                                             ;                        ;
+; Global signals                              ; 2                      ;
+; UFM blocks                                  ; 0 / 1 ( 0 % )          ;
+; Global clocks                               ; 2 / 4 ( 50 % )         ;
+; JTAGs                                       ; 0 / 1 ( 0 % )          ;
+; Average interconnect usage (total/H/V)      ; 59% / 63% / 55%        ;
+; Peak interconnect usage (total/H/V)         ; 63% / 72% / 56%        ;
+; Maximum fan-out                             ; 733                    ;
+; Highest non-global fan-out                  ; 137                    ;
+; Total fan-out                               ; 5223                   ;
+; Average fan-out                             ; 4.36                   ;
++---------------------------------------------+------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Input Pins                                                                                                                                                                                                      ;
++----------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+----------------------+
+; Name     ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Cell number ; Combinational Fan-Out ; Registered Fan-Out ; Global ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Location assigned by ;
++----------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+----------------------+
+; clk      ; 18    ; 1        ; 0            ; 7            ; 5           ; 733                   ; 0                  ; yes    ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Fitter               ;
+; proc_rst ; 24    ; 1        ; 0            ; 6            ; 3           ; 27                    ; 0                  ; no     ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Fitter               ;
++----------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+----------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Output Pins                                                                                                                                                                                                                                                                                                                  ;
++------------+-------+----------+--------------+--------------+-------------+-----------------+----------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+------------------------+----------------------+-------+----------------------+---------------------+
+; Name       ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Cell number ; Output Register ; Slow Slew Rate ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Fast Output Connection ; Location assigned by ; Load  ; Output Enable Source ; Output Enable Group ;
++------------+-------+----------+--------------+--------------+-------------+-----------------+----------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+------------------------+----------------------+-------+----------------------+---------------------+
+; StateID[0] ; 28    ; 1        ; 0            ; 5            ; 1           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; Fitter               ; 10 pF ; -                    ; -                   ;
+; StateID[1] ; 16    ; 1        ; 0            ; 7            ; 4           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; Fitter               ; 10 pF ; -                    ; -                   ;
+; StateID[2] ; 7     ; 1        ; 0            ; 8            ; 0           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; Fitter               ; 10 pF ; -                    ; -                   ;
+; StateID[3] ; 23    ; 1        ; 0            ; 6            ; 2           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; Fitter               ; 10 pF ; -                    ; -                   ;
+; StateID[4] ; 21    ; 1        ; 0            ; 6            ; 0           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; Fitter               ; 10 pF ; -                    ; -                   ;
+; StateID[5] ; 8     ; 1        ; 0            ; 8            ; 1           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; Fitter               ; 10 pF ; -                    ; -                   ;
++------------+-------+----------+--------------+--------------+-------------+-----------------+----------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+------------------------+----------------------+-------+----------------------+---------------------+
+
+
++-----------------------------------------------------------+
+; I/O Bank Usage                                            ;
++----------+-----------------+---------------+--------------+
+; I/O Bank ; Usage           ; VCCIO Voltage ; VREF Voltage ;
++----------+-----------------+---------------+--------------+
+; 1        ; 8 / 25 ( 32 % ) ; 3.3V          ; --           ;
+; 2        ; 0 / 30 ( 0 % )  ; 3.3V          ; --           ;
+; 3        ; 0 / 29 ( 0 % )  ; 3.3V          ; --           ;
+; 4        ; 0 / 30 ( 0 % )  ; 3.3V          ; --           ;
++----------+-----------------+---------------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; All Package Pins                                                                                                                             ;
++----------+------------+----------+----------------+--------+--------------+---------+------------+-----------------+----------+--------------+
+; Location ; Pad Number ; I/O Bank ; Pin Name/Usage ; Dir.   ; I/O Standard ; Voltage ; I/O Type   ; User Assignment ; Bus Hold ; Weak Pull Up ;
++----------+------------+----------+----------------+--------+--------------+---------+------------+-----------------+----------+--------------+
+; 1        ; 2          ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 2        ; 3          ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 3        ; 5          ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 4        ; 7          ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 5        ; 9          ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 6        ; 10         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 7        ; 14         ; 1        ; StateID[2]     ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 8        ; 15         ; 1        ; StateID[5]     ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 9        ;            ; 1        ; VCCIO1         ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
+; 10       ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 11       ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 12       ; 21         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 13       ; 22         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 14       ; 23         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 15       ; 24         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 16       ; 25         ; 1        ; StateID[1]     ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 17       ;            ;          ; GNDINT         ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 18       ; 26         ; 1        ; clk            ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 19       ;            ;          ; VCCINT         ; power  ;              ; 1.8V    ; --         ;                 ; --       ; --           ;
+; 20       ; 27         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 21       ; 28         ; 1        ; StateID[4]     ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 22       ; 29         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 23       ; 30         ; 1        ; StateID[3]     ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 24       ; 31         ; 1        ; proc_rst       ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 25       ;            ; 1        ; VCCIO1         ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
+; 26       ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 27       ; 33         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 28       ; 36         ; 1        ; StateID[0]     ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 29       ; 37         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 30       ; 41         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 31       ; 44         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 32       ; 47         ; 1        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 33       ; 50         ; 1        ; #TMS           ; input  ;              ;         ; --         ;                 ; --       ; --           ;
+; 34       ; 51         ; 1        ; #TDI           ; input  ;              ;         ; --         ;                 ; --       ; --           ;
+; 35       ; 52         ; 1        ; #TCK           ; input  ;              ;         ; --         ;                 ; --       ; --           ;
+; 36       ; 53         ; 1        ; #TDO           ; output ;              ;         ; --         ;                 ; --       ; --           ;
+; 37       ; 56         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 38       ; 57         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 39       ; 60         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 40       ; 62         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 41       ; 63         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 42       ; 67         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 43       ; 68         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 44       ; 69         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 45       ; 74         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 46       ;            ; 4        ; VCCIO4         ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
+; 47       ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 48       ; 75         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 49       ; 76         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 50       ; 77         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 51       ; 78         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 52       ; 79         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 53       ; 80         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 54       ;            ;          ; GNDINT         ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 55       ; 81         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 56       ;            ;          ; VCCINT         ; power  ;              ; 1.8V    ; --         ;                 ; --       ; --           ;
+; 57       ; 82         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 58       ; 83         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 59       ; 84         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 60       ; 85         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 61       ; 86         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 62       ; 87         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 63       ; 88         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 64       ;            ; 4        ; VCCIO4         ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
+; 65       ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 66       ; 91         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 67       ; 92         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 68       ; 95         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 69       ; 98         ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 70       ; 101        ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 71       ; 104        ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 72       ; 107        ; 4        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 73       ; 111        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 74       ; 112        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 75       ; 113        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 76       ; 115        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 77       ; 118        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 78       ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 79       ; 123        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 80       ; 124        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 81       ; 127        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 82       ;            ; 3        ; VCCIO3         ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
+; 83       ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 84       ; 129        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 85       ; 130        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 86       ; 131        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 87       ; 132        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 88       ; 133        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 89       ; 134        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 90       ;            ;          ; VCCINT         ; power  ;              ; 1.8V    ; --         ;                 ; --       ; --           ;
+; 91       ; 135        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 92       ;            ;          ; GNDINT         ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 93       ; 136        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 94       ; 137        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 95       ; 138        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 96       ; 139        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 97       ; 140        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 98       ; 141        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 99       ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 100      ;            ; 3        ; VCCIO3         ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
+; 101      ; 142        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 102      ; 146        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 103      ; 147        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 104      ; 151        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 105      ; 152        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 106      ; 154        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 107      ; 156        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 108      ; 158        ; 3        ; GND*           ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; 109      ; 164        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 110      ; 165        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 111      ; 166        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 112      ; 171        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 113      ; 174        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 114      ; 177        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 115      ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 116      ;            ; 2        ; VCCIO2         ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
+; 117      ; 180        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 118      ; 181        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 119      ; 182        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 120      ; 183        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 121      ; 184        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 122      ; 185        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 123      ; 186        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 124      ; 187        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 125      ; 188        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 126      ;            ;          ; VCCINT         ; power  ;              ; 1.8V    ; --         ;                 ; --       ; --           ;
+; 127      ; 189        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 128      ;            ;          ; GNDINT         ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 129      ; 190        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 130      ; 191        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 131      ; 192        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 132      ; 193        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 133      ; 194        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 134      ; 195        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 135      ;            ;          ; GNDIO          ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 136      ;            ; 2        ; VCCIO2         ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
+; 137      ; 199        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 138      ; 200        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 139      ; 201        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 140      ; 204        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 141      ; 205        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 142      ; 208        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 143      ; 212        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; 144      ; 215        ; 2        ; GND*           ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
++----------+------------+----------+----------------+--------+--------------+---------+------------+-----------------+----------+--------------+
+Note: Pin directions (input, output or bidir) are based on device operating in user mode.
+
+
++-------------------------------------------------------------+
+; Output Pin Default Load For Reported TCO                    ;
++----------------------------+-------+------------------------+
+; I/O Standard               ; Load  ; Termination Resistance ;
++----------------------------+-------+------------------------+
+; 3.3-V LVTTL                ; 10 pF ; Not Available          ;
+; 3.3-V LVCMOS               ; 10 pF ; Not Available          ;
+; 2.5 V                      ; 10 pF ; Not Available          ;
+; 1.8 V                      ; 10 pF ; Not Available          ;
+; 1.5 V                      ; 10 pF ; Not Available          ;
+; 3.3V Schmitt Trigger Input ; 10 pF ; Not Available          ;
+; 2.5V Schmitt Trigger Input ; 10 pF ; Not Available          ;
+; 1.2 V                      ; 10 pF ; Not Available          ;
+; LVDS_E_3R                  ; 10 pF ; Not Available          ;
+; RSDS_E_3R                  ; 10 pF ; Not Available          ;
+; 3.3-V PCI                  ; 10 pF ; 25 Ohm (Parallel)      ;
++----------------------------+-------+------------------------+
+Note: User assignments will override these defaults. The user specified values are listed in the Output Pins and Bidir Pins tables.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                        ;
++---------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node            ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                              ; Library Name ;
++---------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------+--------------+
+; |RISC15                               ; 1190 (1)    ; 733          ; 0          ; 8    ; 0            ; 457 (1)      ; 209 (0)           ; 524 (0)          ; 32 (0)          ; 398 (0)    ; |RISC15                                                          ; work         ;
+;    |controller:__controller|          ; 161 (161)   ; 29           ; 0          ; 0    ; 0            ; 132 (132)    ; 0 (0)             ; 29 (29)          ; 0 (0)           ; 4 (4)      ; |RISC15|controller:__controller                                  ; work         ;
+;    |datapath:__datapath|              ; 372 (0)     ; 176          ; 0          ; 0    ; 0            ; 196 (0)      ; 1 (0)             ; 175 (0)          ; 32 (0)          ; 154 (0)    ; |RISC15|datapath:__datapath                                      ; work         ;
+;       |CZ_reg:__CZ|                   ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|CZ_reg:__CZ                          ; work         ;
+;       |T1reg16:__T1|                  ; 17 (17)     ; 16           ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|T1reg16:__T1                         ; work         ;
+;       |alu:__alu|                     ; 67 (17)     ; 0            ; 0          ; 0    ; 0            ; 67 (17)      ; 0 (0)             ; 0 (0)            ; 32 (0)          ; 0 (0)      ; |RISC15|datapath:__datapath|alu:__alu                            ; work         ;
+;          |add16:__add|                ; 31 (31)     ; 0            ; 0          ; 0    ; 0            ; 31 (31)      ; 0 (0)             ; 0 (0)            ; 16 (16)         ; 0 (0)      ; |RISC15|datapath:__datapath|alu:__alu|add16:__add                ; work         ;
+;          |carry_generate:__carry_gen| ; 18 (18)     ; 0            ; 0          ; 0    ; 0            ; 18 (18)      ; 0 (0)             ; 0 (0)            ; 16 (16)         ; 0 (0)      ; |RISC15|datapath:__datapath|alu:__alu|carry_generate:__carry_gen ; work         ;
+;          |nand16:__nand|              ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|alu:__alu|nand16:__nand              ; work         ;
+;       |mux_16_2:__Mux6_RF_dataIn|     ; 15 (15)     ; 0            ; 0          ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|mux_16_2:__Mux6_RF_dataIn            ; work         ;
+;       |mux_16_2:__Mux9_memDataIn|     ; 15 (15)     ; 0            ; 0          ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|mux_16_2:__Mux9_memDataIn            ; work         ;
+;       |mux_16_8:__Mux1_alu_B|         ; 29 (29)     ; 0            ; 0          ; 0    ; 0            ; 29 (29)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|mux_16_8:__Mux1_alu_B                ; work         ;
+;       |mux_16_8:__Mux2_alu_A|         ; 25 (25)     ; 0            ; 0          ; 0    ; 0            ; 25 (25)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 22 (22)    ; |RISC15|datapath:__datapath|mux_16_8:__Mux2_alu_A                ; work         ;
+;       |mux_1_4:__Mux3_RF_wen|         ; 3 (3)       ; 0            ; 0          ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|mux_1_4:__Mux3_RF_wen                ; work         ;
+;       |mux_1_8:__Mux7_RF_write|       ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|mux_1_8:__Mux7_RF_write              ; work         ;
+;       |mux_3_4:__Mux5_RF_read2|       ; 0 (0)       ; 0            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 3 (3)      ; |RISC15|datapath:__datapath|mux_3_4:__Mux5_RF_read2              ; work         ;
+;       |mux_3_8:__Mux4_RF_wadd|        ; 12 (12)     ; 0            ; 0          ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|mux_3_8:__Mux4_RF_wadd               ; work         ;
+;       |reg16:__IR|                    ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16:__IR                           ; work         ;
+;       |reg16:__tmpA|                  ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16:__tmpA                         ; work         ;
+;       |reg16_file:__RF|               ; 151 (8)     ; 128          ; 0          ; 0    ; 0            ; 23 (8)       ; 1 (0)             ; 127 (0)          ; 0 (0)           ; 129 (0)    ; |RISC15|datapath:__datapath|reg16_file:__RF                      ; work         ;
+;          |mux_16_8:__mux1|            ; 15 (15)     ; 0            ; 0          ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 65 (65)    ; |RISC15|datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1      ; work         ;
+;          |mux_16_8:__mux2|            ; 0 (0)       ; 0            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 64 (64)    ; |RISC15|datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2      ; work         ;
+;          |reg16:r0|                   ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 15 (15)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16_file:__RF|reg16:r0             ; work         ;
+;          |reg16:r1|                   ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16_file:__RF|reg16:r1             ; work         ;
+;          |reg16:r2|                   ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16_file:__RF|reg16:r2             ; work         ;
+;          |reg16:r3|                   ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16_file:__RF|reg16:r3             ; work         ;
+;          |reg16:r4|                   ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16_file:__RF|reg16:r4             ; work         ;
+;          |reg16:r5|                   ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16_file:__RF|reg16:r5             ; work         ;
+;          |reg16:r6|                   ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16_file:__RF|reg16:r6             ; work         ;
+;          |reg16:r7|                   ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC15|datapath:__datapath|reg16_file:__RF|reg16:r7             ; work         ;
+;    |memory:__mem|                     ; 656 (656)   ; 528          ; 0          ; 0    ; 0            ; 128 (128)    ; 208 (208)         ; 320 (320)        ; 0 (0)           ; 240 (240)  ; |RISC15|memory:__mem                                             ; work         ;
++---------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------+
+; Delay Chain Summary                   ;
++------------+----------+---------------+
+; Name       ; Pin Type ; Pad to Core 0 ;
++------------+----------+---------------+
+; StateID[0] ; Output   ; --            ;
+; StateID[1] ; Output   ; --            ;
+; StateID[2] ; Output   ; --            ;
+; StateID[3] ; Output   ; --            ;
+; StateID[4] ; Output   ; --            ;
+; StateID[5] ; Output   ; --            ;
+; clk        ; Input    ; (0)           ;
+; proc_rst   ; Input    ; (1)           ;
++------------+----------+---------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                                 ;
++--------------------------------------------+---------------+---------+---------------------------------------+--------+----------------------+------------------+
+; Name                                       ; Location      ; Fan-Out ; Usage                                 ; Global ; Global Resource Used ; Global Line Name ;
++--------------------------------------------+---------------+---------+---------------------------------------+--------+----------------------+------------------+
+; clk                                        ; PIN_18        ; 733     ; Clock                                 ; yes    ; Global Clock         ; GCLK0            ;
+; controller:__controller|ALU_op             ; LC_X6_Y5_N6   ; 20      ; Latch enable                          ; no     ; --                   ; --               ;
+; controller:__controller|CZ_en              ; LC_X6_Y4_N1   ; 3       ; Latch enable                          ; yes    ; Global Clock         ; GCLK3            ;
+; controller:__controller|Mux1_alu_B[0]~5    ; LC_X2_Y9_N7   ; 6       ; Clock enable                          ; no     ; --                   ; --               ;
+; controller:__controller|Mux3_RF_wen[0]~5   ; LC_X2_Y9_N1   ; 2       ; Clock enable                          ; no     ; --                   ; --               ;
+; controller:__controller|Mux4_RF_wadd[0]~5  ; LC_X9_Y10_N3  ; 2       ; Clock enable                          ; no     ; --                   ; --               ;
+; controller:__controller|Mux5_RF_read2[0]~4 ; LC_X8_Y8_N9   ; 1       ; Clock enable                          ; no     ; --                   ; --               ;
+; controller:__controller|StateID[1]         ; LC_X1_Y5_N0   ; 53      ; Sync. load                            ; no     ; --                   ; --               ;
+; controller:__controller|StateID[2]         ; LC_X1_Y5_N1   ; 49      ; Sync. load                            ; no     ; --                   ; --               ;
+; controller:__controller|StateID[5]         ; LC_X1_Y7_N7   ; 65      ; Sync. clear, Sync. load               ; no     ; --                   ; --               ;
+; controller:__controller|counter[0]~2       ; LC_X4_Y8_N2   ; 2       ; Clock enable                          ; no     ; --                   ; --               ;
+; controller:__controller|wAtmp              ; LC_X8_Y8_N4   ; 17      ; Clock enable                          ; no     ; --                   ; --               ;
+; controller:__controller|wIR                ; LC_X2_Y10_N2  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; datapath:__datapath|T1reg16:__T1|out[15]~1 ; LC_X2_Y5_N1   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; datapath:__datapath|reg16_file:__RF|a0     ; LC_X7_Y8_N6   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; datapath:__datapath|reg16_file:__RF|a1     ; LC_X8_Y5_N8   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; datapath:__datapath|reg16_file:__RF|a2     ; LC_X8_Y5_N9   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; datapath:__datapath|reg16_file:__RF|a3     ; LC_X7_Y7_N7   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; datapath:__datapath|reg16_file:__RF|a4     ; LC_X9_Y5_N3   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; datapath:__datapath|reg16_file:__RF|a5     ; LC_X8_Y5_N5   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; datapath:__datapath|reg16_file:__RF|a6     ; LC_X9_Y5_N8   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; datapath:__datapath|reg16_file:__RF|a7     ; LC_X9_Y5_N2   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~1                    ; LC_X11_Y7_N0  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~11                   ; LC_X12_Y4_N5  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~13                   ; LC_X13_Y6_N0  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~15                   ; LC_X12_Y4_N7  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~17                   ; LC_X13_Y2_N7  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~19                   ; LC_X14_Y3_N9  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~21                   ; LC_X13_Y7_N7  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~23                   ; LC_X13_Y2_N6  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~25                   ; LC_X14_Y10_N2 ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~27                   ; LC_X13_Y6_N4  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~29                   ; LC_X14_Y10_N3 ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~3                    ; LC_X11_Y7_N2  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~31                   ; LC_X13_Y4_N3  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~32                   ; LC_X11_Y7_N6  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~33                   ; LC_X14_Y4_N4  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~34                   ; LC_X14_Y4_N5  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~35                   ; LC_X14_Y10_N8 ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~36                   ; LC_X13_Y6_N3  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~37                   ; LC_X13_Y7_N5  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~38                   ; LC_X13_Y4_N6  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~39                   ; LC_X13_Y6_N9  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~40                   ; LC_X15_Y10_N9 ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~41                   ; LC_X13_Y2_N4  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~42                   ; LC_X15_Y3_N0  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~43                   ; LC_X13_Y2_N5  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~44                   ; LC_X13_Y4_N9  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~5                    ; LC_X12_Y9_N9  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~7                    ; LC_X14_Y3_N0  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|Decoder0~9                    ; LC_X9_Y4_N5   ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|mem[0][2]~5                   ; LC_X12_Y9_N4  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|mem[1][4]~3                   ; LC_X13_Y8_N6  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; memory:__mem|mem[2][1]~1                   ; LC_X12_Y9_N0  ; 16      ; Clock enable                          ; no     ; --                   ; --               ;
+; proc_rst                                   ; PIN_24        ; 27      ; Clock enable, Sync. clear, Sync. load ; no     ; --                   ; --               ;
++--------------------------------------------+---------------+---------+---------------------------------------+--------+----------------------+------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                     ;
++-------------------------------+-------------+---------+----------------------+------------------+
+; Name                          ; Location    ; Fan-Out ; Global Resource Used ; Global Line Name ;
++-------------------------------+-------------+---------+----------------------+------------------+
+; clk                           ; PIN_18      ; 733     ; Global Clock         ; GCLK0            ;
+; controller:__controller|CZ_en ; LC_X6_Y4_N1 ; 3       ; Global Clock         ; GCLK3            ;
++-------------------------------+-------------+---------+----------------------+------------------+
+
+
++-------------------------------------------------------------------------------------+
+; Non-Global High Fan-Out Signals                                                     ;
++---------------------------------------------------------------------------+---------+
+; Name                                                                      ; Fan-Out ;
++---------------------------------------------------------------------------+---------+
+; datapath:__datapath|T1reg16:__T1|out[2]                                   ; 137     ;
+; datapath:__datapath|T1reg16:__T1|out[1]                                   ; 137     ;
+; datapath:__datapath|T1reg16:__T1|out[3]                                   ; 137     ;
+; datapath:__datapath|T1reg16:__T1|out[0]                                   ; 137     ;
+; datapath:__datapath|T1reg16:__T1|out[4]                                   ; 97      ;
+; controller:__controller|StateID[3]                                        ; 73      ;
+; controller:__controller|StateID[4]                                        ; 68      ;
+; controller:__controller|StateID[5]                                        ; 65      ;
+; controller:__controller|StateID[1]                                        ; 53      ;
+; controller:__controller|StateID[2]                                        ; 49      ;
+; datapath:__datapath|reg16:__IR|out[10]                                    ; 48      ;
+; datapath:__datapath|reg16:__IR|out[9]                                     ; 48      ;
+; datapath:__datapath|mux_3_4:__Mux5_RF_read2|Mux1~0                        ; 48      ;
+; datapath:__datapath|mux_3_4:__Mux5_RF_read2|Mux2~0                        ; 48      ;
+; controller:__controller|StateID[0]                                        ; 45      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[2]~30                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[5]~29                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[4]~27                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[1]~25                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[11]~23                  ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[10]~21                  ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[9]~19                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[3]~17                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[8]~15                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[7]~13                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[6]~11                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[0]~9                    ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[15]~7                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[14]~5                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[13]~3                   ; 31      ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[12]~1                   ; 31      ;
+; datapath:__datapath|mux_3_4:__Mux5_RF_read2|Mux0~0                        ; 31      ;
+; proc_rst                                                                  ; 27      ;
+; controller:__controller|ALU_op                                            ; 20      ;
+; controller:__controller|T1write                                           ; 18      ;
+; memory:__mem|Decoder0~20                                                  ; 18      ;
+; memory:__mem|Decoder0~12                                                  ; 18      ;
+; memory:__mem|Decoder0~4                                                   ; 18      ;
+; controller:__controller|Mux6_RF_dataIn                                    ; 18      ;
+; controller:__controller|Mux9_memDataIn                                    ; 17      ;
+; controller:__controller|wAtmp                                             ; 17      ;
+; datapath:__datapath|reg16:__IR|out[11]                                    ; 17      ;
+; controller:__controller|Mux2_alu_A[2]                                     ; 17      ;
+; memory:__mem|Decoder0~44                                                  ; 16      ;
+; memory:__mem|Decoder0~43                                                  ; 16      ;
+; memory:__mem|Decoder0~42                                                  ; 16      ;
+; memory:__mem|Decoder0~41                                                  ; 16      ;
+; memory:__mem|Decoder0~40                                                  ; 16      ;
+; memory:__mem|mem[0][2]~5                                                  ; 16      ;
+; memory:__mem|mem[1][4]~3                                                  ; 16      ;
+; memory:__mem|mem[2][1]~1                                                  ; 16      ;
+; memory:__mem|Decoder0~39                                                  ; 16      ;
+; memory:__mem|Decoder0~38                                                  ; 16      ;
+; memory:__mem|Decoder0~37                                                  ; 16      ;
+; memory:__mem|Decoder0~36                                                  ; 16      ;
+; memory:__mem|Decoder0~35                                                  ; 16      ;
+; memory:__mem|Decoder0~34                                                  ; 16      ;
+; memory:__mem|Decoder0~33                                                  ; 16      ;
+; memory:__mem|Decoder0~32                                                  ; 16      ;
+; memory:__mem|Decoder0~31                                                  ; 16      ;
+; memory:__mem|Decoder0~29                                                  ; 16      ;
+; memory:__mem|Decoder0~27                                                  ; 16      ;
+; memory:__mem|Decoder0~25                                                  ; 16      ;
+; memory:__mem|Decoder0~23                                                  ; 16      ;
+; memory:__mem|Decoder0~21                                                  ; 16      ;
+; memory:__mem|Decoder0~19                                                  ; 16      ;
+; memory:__mem|Decoder0~17                                                  ; 16      ;
+; memory:__mem|Decoder0~15                                                  ; 16      ;
+; memory:__mem|Decoder0~13                                                  ; 16      ;
+; memory:__mem|Decoder0~11                                                  ; 16      ;
+; memory:__mem|Decoder0~9                                                   ; 16      ;
+; memory:__mem|Decoder0~7                                                   ; 16      ;
+; memory:__mem|Decoder0~5                                                   ; 16      ;
+; memory:__mem|Decoder0~3                                                   ; 16      ;
+; memory:__mem|Decoder0~1                                                   ; 16      ;
+; datapath:__datapath|T1reg16:__T1|out[15]~1                                ; 16      ;
+; controller:__controller|wIR                                               ; 16      ;
+; datapath:__datapath|reg16_file:__RF|a3                                    ; 16      ;
+; datapath:__datapath|reg16_file:__RF|a0                                    ; 16      ;
+; datapath:__datapath|reg16_file:__RF|a1                                    ; 16      ;
+; datapath:__datapath|reg16_file:__RF|a2                                    ; 16      ;
+; datapath:__datapath|reg16_file:__RF|a7                                    ; 16      ;
+; datapath:__datapath|reg16_file:__RF|a4                                    ; 16      ;
+; datapath:__datapath|reg16_file:__RF|a6                                    ; 16      ;
+; datapath:__datapath|reg16_file:__RF|a5                                    ; 16      ;
+; controller:__controller|Mux2_alu_A[1]                                     ; 16      ;
+; controller:__controller|Mux2_alu_A[0]                                     ; 16      ;
+; controller:__controller|Mux1_alu_B[0]                                     ; 14      ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux0~0                          ; 11      ;
+; controller:__controller|counter[0]                                        ; 11      ;
+; datapath:__datapath|reg16:__IR|out[1]                                     ; 10      ;
+; datapath:__datapath|reg16:__IR|out[0]                                     ; 10      ;
+; controller:__controller|counter[1]                                        ; 10      ;
+; datapath:__datapath|reg16:__IR|out[13]                                    ; 9       ;
+; datapath:__datapath|reg16:__IR|out[15]                                    ; 9       ;
+; datapath:__datapath|reg16:__IR|out[14]                                    ; 9       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[2]~15                   ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[8]~14                   ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[7]~13                   ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[13]~12                  ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[12]~11                  ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[15]~10                  ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[14]~9                   ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[11]~8                   ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[10]~7                   ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[9]~6                    ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[6]~5                    ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[5]~4                    ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[4]~3                    ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[1]~2                    ; 8       ;
+; datapath:__datapath|mux_3_8:__Mux4_RF_wadd|Mux2                           ; 8       ;
+; datapath:__datapath|mux_3_8:__Mux4_RF_wadd|Mux0                           ; 8       ;
+; datapath:__datapath|mux_1_4:__Mux3_RF_wen|Mux0~2                          ; 8       ;
+; datapath:__datapath|mux_3_8:__Mux4_RF_wadd|Mux1                           ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[0]~0                    ; 8       ;
+; datapath:__datapath|reg16:__IR|out[12]                                    ; 8       ;
+; datapath:__datapath|mux_16_2:__Mux6_RF_dataIn|out[3]~1                    ; 7       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux2~0                          ; 7       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux9~0                          ; 7       ;
+; controller:__controller|counter[2]                                        ; 7       ;
+; controller:__controller|Mux4_RF_wadd[1]                                   ; 6       ;
+; controller:__controller|Mux1_alu_B[0]~5                                   ; 6       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux6~1                          ; 6       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux12~0                         ; 6       ;
+; controller:__controller|Mux1_alu_B[1]                                     ; 6       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~68          ; 5       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~43          ; 5       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[7]~17                       ; 5       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[2]~12                       ; 5       ;
+; controller:__controller|Mux4_RF_wadd[0]                                   ; 5       ;
+; datapath:__datapath|reg16:__IR|out[5]                                     ; 5       ;
+; datapath:__datapath|reg16:__IR|out[4]                                     ; 5       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux14~1                         ; 5       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux14~0                         ; 5       ;
+; datapath:__datapath|reg16:__IR|out[3]                                     ; 5       ;
+; controller:__controller|Mux1_alu_B[2]                                     ; 5       ;
+; controller:__controller|Mux4_RF_wadd[2]                                   ; 4       ;
+; controller:__controller|Equal2~0                                          ; 4       ;
+; datapath:__datapath|alu:__alu|Equal0~10                                   ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux13~3                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux13~2                         ; 4       ;
+; datapath:__datapath|reg16:__IR|out[2]                                     ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux8~3                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux7~2                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux7~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux8~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux3~1                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux2~2                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux2~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux3~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux1~1                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux0~1                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux0~1                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux1~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux5~1                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux4~1                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux4~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux5~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux9~2                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux8~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux6~2                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux6~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux9~0                          ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux11~1                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux10~1                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux10~2                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux11~2                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux14~3                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux14~4                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux15~3                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux12~2                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux2_alu_A|Mux12~2                         ; 4       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux15~2                         ; 4       ;
+; datapath:__datapath|reg16:__IR|out[7]                                     ; 4       ;
+; datapath:__datapath|reg16:__IR|out[6]                                     ; 4       ;
+; controller:__controller|Mux5_RF_read2[0]                                  ; 4       ;
+; ~GND                                                                      ; 3       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~18          ; 3       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[12]~62                      ; 3       ;
+; datapath:__datapath|mux_3_8:__Mux4_RF_wadd|Mux1~3                         ; 3       ;
+; datapath:__datapath|mux_3_8:__Mux4_RF_wadd|Mux1~2                         ; 3       ;
+; datapath:__datapath|mux_3_8:__Mux4_RF_wadd|Mux1~0                         ; 3       ;
+; controller:__controller|Mux3_RF_wen[0]~0                                  ; 3       ;
+; controller:__controller|Mux1_alu_B[0]~0                                   ; 3       ;
+; controller:__controller|Selector5~0                                       ; 3       ;
+; controller:__controller|Mux7~1                                            ; 3       ;
+; controller:__controller|Mux7~0                                            ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux13~4               ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux8~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux7~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux3~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux2~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux1~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux0~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux5~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux4~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux9~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux6~4                ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux10~4               ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux11~4               ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux14~4               ; 3       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux12~4               ; 3       ;
+; datapath:__datapath|reg16:__IR|out[8]                                     ; 3       ;
+; controller:__controller|Mux5_RF_read2[1]                                  ; 3       ;
+; controller:__controller|Mux11~9                                           ; 3       ;
+; controller:__controller|Equal4~0                                          ; 3       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|tmp_carry        ; 2       ;
+; datapath:__datapath|CZ_reg:__CZ|Z                                         ; 2       ;
+; datapath:__datapath|CZ_reg:__CZ|C                                         ; 2       ;
+; controller:__controller|Mux5_RF_read2[0]~7                                ; 2       ;
+; controller:__controller|Selector16~1                                      ; 2       ;
+; controller:__controller|ALU_op~4                                          ; 2       ;
+; memory:__mem|Decoder0~30                                                  ; 2       ;
+; memory:__mem|Decoder0~28                                                  ; 2       ;
+; memory:__mem|Decoder0~26                                                  ; 2       ;
+; memory:__mem|Decoder0~24                                                  ; 2       ;
+; memory:__mem|Decoder0~22                                                  ; 2       ;
+; memory:__mem|Decoder0~18                                                  ; 2       ;
+; memory:__mem|Decoder0~16                                                  ; 2       ;
+; memory:__mem|Decoder0~14                                                  ; 2       ;
+; memory:__mem|Decoder0~10                                                  ; 2       ;
+; memory:__mem|Decoder0~8                                                   ; 2       ;
+; memory:__mem|Decoder0~6                                                   ; 2       ;
+; memory:__mem|Decoder0~2                                                   ; 2       ;
+; memory:__mem|Decoder0~0                                                   ; 2       ;
+; datapath:__datapath|alu:__alu|nand16:__nand|out~0                         ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[15]~75                      ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~14                         ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~13                         ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~12                         ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~11                         ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~10                         ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~9                          ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~8                          ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~7                          ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~6                          ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~5                          ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~4                          ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~3                          ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~2                          ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~1                          ; 2       ;
+; controller:__controller|Mux3_RF_wen[0]~5                                  ; 2       ;
+; controller:__controller|Mux3_RF_wen~2                                     ; 2       ;
+; controller:__controller|Mux4_RF_wadd[0]~5                                 ; 2       ;
+; controller:__controller|Mux4_RF_wadd[0]~2                                 ; 2       ;
+; datapath:__datapath|alu:__alu|add16:__add|Add0~0                          ; 2       ;
+; memory:__mem|out[2]                                                       ; 2       ;
+; memory:__mem|out[5]                                                       ; 2       ;
+; memory:__mem|out[4]                                                       ; 2       ;
+; memory:__mem|out[1]                                                       ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux15~4               ; 2       ;
+; memory:__mem|out[11]                                                      ; 2       ;
+; memory:__mem|out[10]                                                      ; 2       ;
+; memory:__mem|out[9]                                                       ; 2       ;
+; datapath:__datapath|reg16_file:__RF|reg16:r4|out[3]                       ; 2       ;
+; controller:__controller|Selector16~0                                      ; 2       ;
+; memory:__mem|out[3]                                                       ; 2       ;
+; memory:__mem|out[8]                                                       ; 2       ;
+; memory:__mem|out[7]                                                       ; 2       ;
+; memory:__mem|out[6]                                                       ; 2       ;
+; controller:__controller|Mux3_RF_wen[1]                                    ; 2       ;
+; controller:__controller|Mux2_alu_A[2]~0                                   ; 2       ;
+; memory:__mem|out[0]                                                       ; 2       ;
+; memory:__mem|out[15]                                                      ; 2       ;
+; memory:__mem|out[14]                                                      ; 2       ;
+; memory:__mem|out[13]                                                      ; 2       ;
+; memory:__mem|out[12]                                                      ; 2       ;
+; controller:__controller|counter[0]~2                                      ; 2       ;
+; controller:__controller|counter[0]~0                                      ; 2       ;
+; controller:__controller|wAtmp~2                                           ; 2       ;
+; controller:__controller|Mux11~38                                          ; 2       ;
+; controller:__controller|Mux11~33                                          ; 2       ;
+; controller:__controller|Mux11~31                                          ; 2       ;
+; controller:__controller|Mux11~30                                          ; 2       ;
+; controller:__controller|Mux10~2                                           ; 2       ;
+; controller:__controller|Selector23~0                                      ; 2       ;
+; controller:__controller|Mux11~22                                          ; 2       ;
+; controller:__controller|Mux11~15                                          ; 2       ;
+; datapath:__datapath|mux_16_8:__Mux1_alu_B|Mux13~2                         ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux7~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux7~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux8~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux8~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux2~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux2~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux3~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux3~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux0~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux0~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux1~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux1~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux4~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux4~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux5~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux5~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux6~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux6~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux9~3                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux9~1                ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux11~3               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux11~1               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux10~3               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux10~1               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux14~3               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux14~1               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux15~3               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux1|Mux15~1               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux12~3               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux12~1               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|reg16:r0|out[3]                       ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux15~3               ; 2       ;
+; datapath:__datapath|reg16_file:__RF|mux_16_8:__mux2|Mux15~1               ; 2       ;
+; controller:__controller|Mux11~8                                           ; 2       ;
+; controller:__controller|StateID[2]~_wirecell                              ; 1       ;
+; controller:__controller|Mux10~5                                           ; 1       ;
+; controller:__controller|Mux10~4                                           ; 1       ;
+; controller:__controller|Mux5_RF_read2[0]~6                                ; 1       ;
+; controller:__controller|Selector20~8                                      ; 1       ;
+; controller:__controller|Selector20~7                                      ; 1       ;
+; controller:__controller|ALU_op~8                                          ; 1       ;
+; controller:__controller|wAtmp~6                                           ; 1       ;
+; controller:__controller|Mux11~42                                          ; 1       ;
+; controller:__controller|Mux11~41                                          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~78COUT1_95  ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~78          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~73COUT1_97  ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~73          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~63COUT1_99  ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~63          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~58COUT1_101 ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~58          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~53COUT1_103 ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~53          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~48COUT1_105 ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~48          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~38COUT1_107 ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~38          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~33COUT1_109 ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~33          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~28COUT1_111 ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~28          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~23COUT1_113 ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~23          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~13COUT1_115 ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~13          ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~8COUT1_117  ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~8           ; 1       ;
+; controller:__controller|Selector16~3                                      ; 1       ;
+; controller:__controller|Selector16~2                                      ; 1       ;
+; memory:__mem|mem[17][2]                                                   ; 1       ;
+; memory:__mem|mem[18][5]                                                   ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[5]~28                   ; 1       ;
+; memory:__mem|mem[17][4]                                                   ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[4]~26                   ; 1       ;
+; memory:__mem|mem[18][1]                                                   ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[1]~24                   ; 1       ;
+; memory:__mem|mem[17][11]                                                  ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[11]~22                  ; 1       ;
+; memory:__mem|mem[18][10]                                                  ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[10]~20                  ; 1       ;
+; memory:__mem|mem[17][9]                                                   ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[9]~18                   ; 1       ;
+; memory:__mem|mem[18][3]                                                   ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[3]~16                   ; 1       ;
+; memory:__mem|mem[18][8]                                                   ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[8]~14                   ; 1       ;
+; memory:__mem|mem[17][7]                                                   ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[7]~12                   ; 1       ;
+; memory:__mem|mem[18][6]                                                   ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[6]~10                   ; 1       ;
+; controller:__controller|CZ_en~0                                           ; 1       ;
+; controller:__controller|Selector22~1                                      ; 1       ;
+; controller:__controller|Selector22~0                                      ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~5           ; 1       ;
+; datapath:__datapath|alu:__alu|carry_generate:__carry_gen|Add0~0           ; 1       ;
+; controller:__controller|Selector24~0                                      ; 1       ;
+; controller:__controller|ALU_op~6                                          ; 1       ;
+; controller:__controller|Selector8~1                                       ; 1       ;
+; controller:__controller|ALU_op~5                                          ; 1       ;
+; controller:__controller|Selector21~0                                      ; 1       ;
+; memory:__mem|mem[17][0]                                                   ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[0]~8                    ; 1       ;
+; memory:__mem|mem[17][15]                                                  ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[15]~6                   ; 1       ;
+; memory:__mem|mem[18][14]                                                  ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[14]~4                   ; 1       ;
+; memory:__mem|mem[17][13]                                                  ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[13]~2                   ; 1       ;
+; memory:__mem|mem[18][12]                                                  ; 1       ;
+; datapath:__datapath|mux_16_2:__Mux9_memDataIn|out[12]~0                   ; 1       ;
+; memory:__mem|Mux13~19                                                     ; 1       ;
+; memory:__mem|Mux13~18                                                     ; 1       ;
+; memory:__mem|mem[15][2]                                                   ; 1       ;
+; memory:__mem|Mux13~17                                                     ; 1       ;
+; memory:__mem|mem[12][2]                                                   ; 1       ;
+; memory:__mem|Mux13~16                                                     ; 1       ;
+; memory:__mem|Mux13~15                                                     ; 1       ;
+; memory:__mem|Mux13~14                                                     ; 1       ;
+; memory:__mem|mem[0][2]                                                    ; 1       ;
+; memory:__mem|mem[2][2]                                                    ; 1       ;
+; memory:__mem|mem[1][2]                                                    ; 1       ;
+; memory:__mem|Mux13~13                                                     ; 1       ;
+; memory:__mem|mem[11][2]                                                   ; 1       ;
+; memory:__mem|Mux13~12                                                     ; 1       ;
+; memory:__mem|mem[8][2]                                                    ; 1       ;
+; memory:__mem|Mux13~11                                                     ; 1       ;
+; memory:__mem|mem[7][2]                                                    ; 1       ;
+; memory:__mem|Mux13~10                                                     ; 1       ;
+; memory:__mem|mem[4][2]                                                    ; 1       ;
+; memory:__mem|Mux13~9                                                      ; 1       ;
+; memory:__mem|Mux13~8                                                      ; 1       ;
+; memory:__mem|mem[31][2]                                                   ; 1       ;
+; memory:__mem|Mux13~7                                                      ; 1       ;
+; memory:__mem|mem[19][2]                                                   ; 1       ;
+; memory:__mem|Mux13~6                                                      ; 1       ;
+; memory:__mem|Mux13~5                                                      ; 1       ;
+; memory:__mem|mem[28][2]                                                   ; 1       ;
+; memory:__mem|Mux13~4                                                      ; 1       ;
+; memory:__mem|mem[16][2]                                                   ; 1       ;
+; memory:__mem|Mux13~3                                                      ; 1       ;
+; memory:__mem|mem[30][2]                                                   ; 1       ;
+; memory:__mem|Mux13~2                                                      ; 1       ;
+; memory:__mem|mem[18][2]                                                   ; 1       ;
+; memory:__mem|Mux13~1                                                      ; 1       ;
+; memory:__mem|mem[29][2]                                                   ; 1       ;
+; memory:__mem|Mux13~0                                                      ; 1       ;
+; memory:__mem|Mux10~19                                                     ; 1       ;
+; memory:__mem|Mux10~18                                                     ; 1       ;
+; memory:__mem|mem[15][5]                                                   ; 1       ;
+; memory:__mem|Mux10~17                                                     ; 1       ;
+; memory:__mem|mem[12][5]                                                   ; 1       ;
+; memory:__mem|Mux10~16                                                     ; 1       ;
+; memory:__mem|Mux10~15                                                     ; 1       ;
+; memory:__mem|Mux10~14                                                     ; 1       ;
+; memory:__mem|mem[0][5]                                                    ; 1       ;
+; memory:__mem|mem[1][5]                                                    ; 1       ;
+; memory:__mem|mem[2][5]                                                    ; 1       ;
+; memory:__mem|Mux10~13                                                     ; 1       ;
+; memory:__mem|mem[7][5]                                                    ; 1       ;
+; memory:__mem|Mux10~12                                                     ; 1       ;
+; memory:__mem|mem[4][5]                                                    ; 1       ;
+; memory:__mem|Mux10~11                                                     ; 1       ;
+; memory:__mem|mem[11][5]                                                   ; 1       ;
+; memory:__mem|Mux10~10                                                     ; 1       ;
+; memory:__mem|mem[8][5]                                                    ; 1       ;
+; memory:__mem|Mux10~9                                                      ; 1       ;
+; memory:__mem|Mux10~8                                                      ; 1       ;
+; memory:__mem|mem[31][5]                                                   ; 1       ;
+; memory:__mem|Mux10~7                                                      ; 1       ;
+; memory:__mem|mem[19][5]                                                   ; 1       ;
+; memory:__mem|Mux10~6                                                      ; 1       ;
+; memory:__mem|Mux10~5                                                      ; 1       ;
+; memory:__mem|mem[28][5]                                                   ; 1       ;
+; memory:__mem|Mux10~4                                                      ; 1       ;
+; memory:__mem|mem[16][5]                                                   ; 1       ;
+; memory:__mem|Mux10~3                                                      ; 1       ;
+; memory:__mem|mem[29][5]                                                   ; 1       ;
+; memory:__mem|Mux10~2                                                      ; 1       ;
+; memory:__mem|mem[17][5]                                                   ; 1       ;
+; memory:__mem|Mux10~1                                                      ; 1       ;
+; memory:__mem|mem[30][5]                                                   ; 1       ;
+; memory:__mem|Mux10~0                                                      ; 1       ;
+; memory:__mem|Mux11~19                                                     ; 1       ;
+; memory:__mem|Mux11~18                                                     ; 1       ;
+; memory:__mem|mem[15][4]                                                   ; 1       ;
+; memory:__mem|Mux11~17                                                     ; 1       ;
+; memory:__mem|mem[12][4]                                                   ; 1       ;
+; memory:__mem|Mux11~16                                                     ; 1       ;
+; memory:__mem|Mux11~15                                                     ; 1       ;
+; memory:__mem|Mux11~14                                                     ; 1       ;
+; memory:__mem|mem[0][4]                                                    ; 1       ;
+; memory:__mem|mem[2][4]                                                    ; 1       ;
+; memory:__mem|mem[1][4]                                                    ; 1       ;
+; memory:__mem|Mux11~13                                                     ; 1       ;
+; memory:__mem|mem[11][4]                                                   ; 1       ;
+; memory:__mem|Mux11~12                                                     ; 1       ;
+; memory:__mem|mem[8][4]                                                    ; 1       ;
+; memory:__mem|Mux11~11                                                     ; 1       ;
+; memory:__mem|mem[7][4]                                                    ; 1       ;
+; memory:__mem|Mux11~10                                                     ; 1       ;
+; memory:__mem|mem[4][4]                                                    ; 1       ;
+; memory:__mem|Mux11~9                                                      ; 1       ;
+; memory:__mem|Mux11~8                                                      ; 1       ;
+; memory:__mem|mem[31][4]                                                   ; 1       ;
+; memory:__mem|Mux11~7                                                      ; 1       ;
+; memory:__mem|mem[19][4]                                                   ; 1       ;
+; memory:__mem|Mux11~6                                                      ; 1       ;
+; memory:__mem|Mux11~5                                                      ; 1       ;
+; memory:__mem|mem[28][4]                                                   ; 1       ;
+; memory:__mem|Mux11~4                                                      ; 1       ;
+; memory:__mem|mem[16][4]                                                   ; 1       ;
+; memory:__mem|Mux11~3                                                      ; 1       ;
+; memory:__mem|mem[30][4]                                                   ; 1       ;
+; memory:__mem|Mux11~2                                                      ; 1       ;
+; memory:__mem|mem[18][4]                                                   ; 1       ;
+; memory:__mem|Mux11~1                                                      ; 1       ;
+; memory:__mem|mem[29][4]                                                   ; 1       ;
+; memory:__mem|Mux11~0                                                      ; 1       ;
+; memory:__mem|Mux14~19                                                     ; 1       ;
+; memory:__mem|Mux14~18                                                     ; 1       ;
+; memory:__mem|mem[15][1]                                                   ; 1       ;
+; memory:__mem|Mux14~17                                                     ; 1       ;
+; memory:__mem|mem[12][1]                                                   ; 1       ;
+; memory:__mem|Mux14~16                                                     ; 1       ;
+; memory:__mem|Mux14~15                                                     ; 1       ;
+; memory:__mem|Mux14~14                                                     ; 1       ;
+; memory:__mem|mem[0][1]                                                    ; 1       ;
+; memory:__mem|mem[1][1]                                                    ; 1       ;
+; memory:__mem|mem[2][1]                                                    ; 1       ;
+; memory:__mem|Mux14~13                                                     ; 1       ;
+; memory:__mem|mem[7][1]                                                    ; 1       ;
+; memory:__mem|Mux14~12                                                     ; 1       ;
+; memory:__mem|mem[4][1]                                                    ; 1       ;
+; memory:__mem|Mux14~11                                                     ; 1       ;
+; memory:__mem|mem[11][1]                                                   ; 1       ;
+; memory:__mem|Mux14~10                                                     ; 1       ;
+; memory:__mem|mem[8][1]                                                    ; 1       ;
+; memory:__mem|Mux14~9                                                      ; 1       ;
+; memory:__mem|Mux14~8                                                      ; 1       ;
+; memory:__mem|mem[31][1]                                                   ; 1       ;
+; memory:__mem|Mux14~7                                                      ; 1       ;
+; memory:__mem|mem[19][1]                                                   ; 1       ;
+; memory:__mem|Mux14~6                                                      ; 1       ;
+; memory:__mem|Mux14~5                                                      ; 1       ;
+; memory:__mem|mem[28][1]                                                   ; 1       ;
+; memory:__mem|Mux14~4                                                      ; 1       ;
+; memory:__mem|mem[16][1]                                                   ; 1       ;
+; memory:__mem|Mux14~3                                                      ; 1       ;
+; memory:__mem|mem[29][1]                                                   ; 1       ;
+; memory:__mem|Mux14~2                                                      ; 1       ;
+; memory:__mem|mem[17][1]                                                   ; 1       ;
+; memory:__mem|Mux14~1                                                      ; 1       ;
+; memory:__mem|mem[30][1]                                                   ; 1       ;
+; memory:__mem|Mux14~0                                                      ; 1       ;
+; memory:__mem|Mux4~19                                                      ; 1       ;
+; memory:__mem|Mux4~18                                                      ; 1       ;
+; memory:__mem|mem[15][11]                                                  ; 1       ;
+; memory:__mem|Mux4~17                                                      ; 1       ;
+; memory:__mem|mem[12][11]                                                  ; 1       ;
+; memory:__mem|Mux4~16                                                      ; 1       ;
+; memory:__mem|Mux4~15                                                      ; 1       ;
+; memory:__mem|Mux4~14                                                      ; 1       ;
+; memory:__mem|mem[0][11]                                                   ; 1       ;
+; memory:__mem|mem[2][11]                                                   ; 1       ;
+; memory:__mem|mem[1][11]                                                   ; 1       ;
+; memory:__mem|Mux4~13                                                      ; 1       ;
+; memory:__mem|mem[11][11]                                                  ; 1       ;
+; memory:__mem|Mux4~12                                                      ; 1       ;
+; memory:__mem|mem[8][11]                                                   ; 1       ;
+; memory:__mem|Mux4~11                                                      ; 1       ;
+; memory:__mem|mem[7][11]                                                   ; 1       ;
+; memory:__mem|Mux4~10                                                      ; 1       ;
+; memory:__mem|mem[4][11]                                                   ; 1       ;
+; memory:__mem|Mux4~9                                                       ; 1       ;
+; memory:__mem|Mux4~8                                                       ; 1       ;
+; memory:__mem|mem[31][11]                                                  ; 1       ;
+; memory:__mem|Mux4~7                                                       ; 1       ;
+; memory:__mem|mem[19][11]                                                  ; 1       ;
+; memory:__mem|Mux4~6                                                       ; 1       ;
+; memory:__mem|Mux4~5                                                       ; 1       ;
+; memory:__mem|mem[28][11]                                                  ; 1       ;
+; memory:__mem|Mux4~4                                                       ; 1       ;
+; memory:__mem|mem[16][11]                                                  ; 1       ;
+; memory:__mem|Mux4~3                                                       ; 1       ;
+; memory:__mem|mem[30][11]                                                  ; 1       ;
+; memory:__mem|Mux4~2                                                       ; 1       ;
+; memory:__mem|mem[18][11]                                                  ; 1       ;
+; memory:__mem|Mux4~1                                                       ; 1       ;
+; memory:__mem|mem[29][11]                                                  ; 1       ;
+; memory:__mem|Mux4~0                                                       ; 1       ;
+; memory:__mem|Mux5~19                                                      ; 1       ;
+; memory:__mem|Mux5~18                                                      ; 1       ;
+; memory:__mem|mem[15][10]                                                  ; 1       ;
+; memory:__mem|Mux5~17                                                      ; 1       ;
+; memory:__mem|mem[12][10]                                                  ; 1       ;
+; memory:__mem|Mux5~16                                                      ; 1       ;
+; memory:__mem|Mux5~15                                                      ; 1       ;
+; memory:__mem|Mux5~14                                                      ; 1       ;
+; memory:__mem|mem[0][10]                                                   ; 1       ;
+; memory:__mem|mem[1][10]                                                   ; 1       ;
+; memory:__mem|mem[2][10]                                                   ; 1       ;
+; memory:__mem|Mux5~13                                                      ; 1       ;
+; memory:__mem|mem[7][10]                                                   ; 1       ;
+; memory:__mem|Mux5~12                                                      ; 1       ;
+; memory:__mem|mem[4][10]                                                   ; 1       ;
+; memory:__mem|Mux5~11                                                      ; 1       ;
+; memory:__mem|mem[11][10]                                                  ; 1       ;
+; memory:__mem|Mux5~10                                                      ; 1       ;
+; memory:__mem|mem[8][10]                                                   ; 1       ;
+; memory:__mem|Mux5~9                                                       ; 1       ;
+; memory:__mem|Mux5~8                                                       ; 1       ;
+; memory:__mem|mem[31][10]                                                  ; 1       ;
+; memory:__mem|Mux5~7                                                       ; 1       ;
+; memory:__mem|mem[19][10]                                                  ; 1       ;
+; memory:__mem|Mux5~6                                                       ; 1       ;
+; memory:__mem|Mux5~5                                                       ; 1       ;
+; memory:__mem|mem[28][10]                                                  ; 1       ;
+; memory:__mem|Mux5~4                                                       ; 1       ;
+; memory:__mem|mem[16][10]                                                  ; 1       ;
+; memory:__mem|Mux5~3                                                       ; 1       ;
+; memory:__mem|mem[29][10]                                                  ; 1       ;
+; memory:__mem|Mux5~2                                                       ; 1       ;
+; memory:__mem|mem[17][10]                                                  ; 1       ;
+; memory:__mem|Mux5~1                                                       ; 1       ;
+; memory:__mem|mem[30][10]                                                  ; 1       ;
+; memory:__mem|Mux5~0                                                       ; 1       ;
+; memory:__mem|Mux6~19                                                      ; 1       ;
+; memory:__mem|Mux6~18                                                      ; 1       ;
+; memory:__mem|mem[15][9]                                                   ; 1       ;
+; memory:__mem|Mux6~17                                                      ; 1       ;
+; memory:__mem|mem[12][9]                                                   ; 1       ;
+; memory:__mem|Mux6~16                                                      ; 1       ;
+; memory:__mem|Mux6~15                                                      ; 1       ;
+; memory:__mem|Mux6~14                                                      ; 1       ;
+; memory:__mem|mem[0][9]                                                    ; 1       ;
+; memory:__mem|mem[2][9]                                                    ; 1       ;
+; memory:__mem|mem[1][9]                                                    ; 1       ;
+; memory:__mem|Mux6~13                                                      ; 1       ;
+; memory:__mem|mem[11][9]                                                   ; 1       ;
+; memory:__mem|Mux6~12                                                      ; 1       ;
+; memory:__mem|mem[8][9]                                                    ; 1       ;
+; memory:__mem|Mux6~11                                                      ; 1       ;
+; memory:__mem|mem[7][9]                                                    ; 1       ;
+; memory:__mem|Mux6~10                                                      ; 1       ;
+; memory:__mem|mem[4][9]                                                    ; 1       ;
+; memory:__mem|Mux6~9                                                       ; 1       ;
+; memory:__mem|Mux6~8                                                       ; 1       ;
+; memory:__mem|mem[31][9]                                                   ; 1       ;
+; memory:__mem|Mux6~7                                                       ; 1       ;
+; memory:__mem|mem[19][9]                                                   ; 1       ;
+; memory:__mem|Mux6~6                                                       ; 1       ;
+; memory:__mem|Mux6~5                                                       ; 1       ;
+; memory:__mem|mem[28][9]                                                   ; 1       ;
+; memory:__mem|Mux6~4                                                       ; 1       ;
+; memory:__mem|mem[16][9]                                                   ; 1       ;
+; memory:__mem|Mux6~3                                                       ; 1       ;
+; memory:__mem|mem[30][9]                                                   ; 1       ;
+; memory:__mem|Mux6~2                                                       ; 1       ;
+; memory:__mem|mem[18][9]                                                   ; 1       ;
+; memory:__mem|Mux6~1                                                       ; 1       ;
+; memory:__mem|mem[29][9]                                                   ; 1       ;
+; memory:__mem|Mux6~0                                                       ; 1       ;
+; memory:__mem|Mux12~19                                                     ; 1       ;
+; memory:__mem|Mux12~18                                                     ; 1       ;
+; memory:__mem|mem[15][3]                                                   ; 1       ;
+; memory:__mem|Mux12~17                                                     ; 1       ;
+; memory:__mem|mem[12][3]                                                   ; 1       ;
+; memory:__mem|Mux12~16                                                     ; 1       ;
+; memory:__mem|Mux12~15                                                     ; 1       ;
+; memory:__mem|Mux12~14                                                     ; 1       ;
+; memory:__mem|mem[0][3]                                                    ; 1       ;
+; memory:__mem|mem[1][3]                                                    ; 1       ;
+; memory:__mem|mem[2][3]                                                    ; 1       ;
+; memory:__mem|Mux12~13                                                     ; 1       ;
+; memory:__mem|mem[7][3]                                                    ; 1       ;
+; memory:__mem|Mux12~12                                                     ; 1       ;
+; memory:__mem|mem[4][3]                                                    ; 1       ;
+; memory:__mem|Mux12~11                                                     ; 1       ;
+; memory:__mem|mem[11][3]                                                   ; 1       ;
+; memory:__mem|Mux12~10                                                     ; 1       ;
+; memory:__mem|mem[8][3]                                                    ; 1       ;
+; memory:__mem|Mux12~9                                                      ; 1       ;
+; memory:__mem|Mux12~8                                                      ; 1       ;
+; memory:__mem|mem[31][3]                                                   ; 1       ;
+; memory:__mem|Mux12~7                                                      ; 1       ;
+; memory:__mem|mem[19][3]                                                   ; 1       ;
+; memory:__mem|Mux12~6                                                      ; 1       ;
+; memory:__mem|Mux12~5                                                      ; 1       ;
+; memory:__mem|mem[28][3]                                                   ; 1       ;
+; memory:__mem|Mux12~4                                                      ; 1       ;
+; memory:__mem|mem[16][3]                                                   ; 1       ;
+; memory:__mem|Mux12~3                                                      ; 1       ;
+; memory:__mem|mem[29][3]                                                   ; 1       ;
+; memory:__mem|Mux12~2                                                      ; 1       ;
+; memory:__mem|mem[17][3]                                                   ; 1       ;
+; memory:__mem|Mux12~1                                                      ; 1       ;
+; memory:__mem|mem[30][3]                                                   ; 1       ;
+; memory:__mem|Mux12~0                                                      ; 1       ;
+; controller:__controller|wAtmp~4                                           ; 1       ;
+; controller:__controller|wAtmp~3                                           ; 1       ;
+; memory:__mem|Mux7~19                                                      ; 1       ;
+; memory:__mem|Mux7~18                                                      ; 1       ;
+; memory:__mem|mem[15][8]                                                   ; 1       ;
+; memory:__mem|Mux7~17                                                      ; 1       ;
+; memory:__mem|mem[12][8]                                                   ; 1       ;
+; memory:__mem|Mux7~16                                                      ; 1       ;
+; memory:__mem|Mux7~15                                                      ; 1       ;
+; memory:__mem|Mux7~14                                                      ; 1       ;
+; memory:__mem|mem[0][8]                                                    ; 1       ;
+; memory:__mem|mem[1][8]                                                    ; 1       ;
+; memory:__mem|mem[2][8]                                                    ; 1       ;
+; memory:__mem|Mux7~13                                                      ; 1       ;
+; memory:__mem|mem[7][8]                                                    ; 1       ;
+; memory:__mem|Mux7~12                                                      ; 1       ;
+; memory:__mem|mem[4][8]                                                    ; 1       ;
+; memory:__mem|Mux7~11                                                      ; 1       ;
+; memory:__mem|mem[11][8]                                                   ; 1       ;
+; memory:__mem|Mux7~10                                                      ; 1       ;
+; memory:__mem|mem[8][8]                                                    ; 1       ;
+; memory:__mem|Mux7~9                                                       ; 1       ;
+; memory:__mem|Mux7~8                                                       ; 1       ;
+; memory:__mem|mem[31][8]                                                   ; 1       ;
+; memory:__mem|Mux7~7                                                       ; 1       ;
+; memory:__mem|mem[19][8]                                                   ; 1       ;
+; memory:__mem|Mux7~6                                                       ; 1       ;
+; memory:__mem|Mux7~5                                                       ; 1       ;
+; memory:__mem|mem[28][8]                                                   ; 1       ;
+; memory:__mem|Mux7~4                                                       ; 1       ;
+; memory:__mem|mem[16][8]                                                   ; 1       ;
+; memory:__mem|Mux7~3                                                       ; 1       ;
+; memory:__mem|mem[29][8]                                                   ; 1       ;
+; memory:__mem|Mux7~2                                                       ; 1       ;
+; memory:__mem|mem[17][8]                                                   ; 1       ;
+; memory:__mem|Mux7~1                                                       ; 1       ;
+; memory:__mem|mem[30][8]                                                   ; 1       ;
+; memory:__mem|Mux7~0                                                       ; 1       ;
+; memory:__mem|Mux8~19                                                      ; 1       ;
+; memory:__mem|Mux8~18                                                      ; 1       ;
+; memory:__mem|mem[15][7]                                                   ; 1       ;
+; memory:__mem|Mux8~17                                                      ; 1       ;
+; memory:__mem|mem[12][7]                                                   ; 1       ;
+; memory:__mem|Mux8~16                                                      ; 1       ;
+; memory:__mem|Mux8~15                                                      ; 1       ;
+; memory:__mem|Mux8~14                                                      ; 1       ;
+; memory:__mem|mem[0][7]                                                    ; 1       ;
+; memory:__mem|mem[2][7]                                                    ; 1       ;
+; memory:__mem|mem[1][7]                                                    ; 1       ;
+; memory:__mem|Mux8~13                                                      ; 1       ;
+; memory:__mem|mem[11][7]                                                   ; 1       ;
+; memory:__mem|Mux8~12                                                      ; 1       ;
+; memory:__mem|mem[8][7]                                                    ; 1       ;
+; memory:__mem|Mux8~11                                                      ; 1       ;
+; memory:__mem|mem[7][7]                                                    ; 1       ;
+; memory:__mem|Mux8~10                                                      ; 1       ;
+; memory:__mem|mem[4][7]                                                    ; 1       ;
+; memory:__mem|Mux8~9                                                       ; 1       ;
+; memory:__mem|Mux8~8                                                       ; 1       ;
+; memory:__mem|mem[31][7]                                                   ; 1       ;
+; memory:__mem|Mux8~7                                                       ; 1       ;
+; memory:__mem|mem[19][7]                                                   ; 1       ;
+; memory:__mem|Mux8~6                                                       ; 1       ;
+; memory:__mem|Mux8~5                                                       ; 1       ;
+; memory:__mem|mem[28][7]                                                   ; 1       ;
+; memory:__mem|Mux8~4                                                       ; 1       ;
+; memory:__mem|mem[16][7]                                                   ; 1       ;
+; memory:__mem|Mux8~3                                                       ; 1       ;
+; memory:__mem|mem[30][7]                                                   ; 1       ;
+; memory:__mem|Mux8~2                                                       ; 1       ;
+; memory:__mem|mem[18][7]                                                   ; 1       ;
+; memory:__mem|Mux8~1                                                       ; 1       ;
+; memory:__mem|mem[29][7]                                                   ; 1       ;
+; memory:__mem|Mux8~0                                                       ; 1       ;
+; memory:__mem|Mux9~19                                                      ; 1       ;
+; memory:__mem|Mux9~18                                                      ; 1       ;
+; memory:__mem|mem[15][6]                                                   ; 1       ;
+; memory:__mem|Mux9~17                                                      ; 1       ;
+; memory:__mem|mem[12][6]                                                   ; 1       ;
+; memory:__mem|Mux9~16                                                      ; 1       ;
+; memory:__mem|Mux9~15                                                      ; 1       ;
+; memory:__mem|Mux9~14                                                      ; 1       ;
+; memory:__mem|mem[0][6]                                                    ; 1       ;
+; memory:__mem|mem[1][6]                                                    ; 1       ;
+; memory:__mem|mem[2][6]                                                    ; 1       ;
+; memory:__mem|Mux9~13                                                      ; 1       ;
+; memory:__mem|mem[7][6]                                                    ; 1       ;
+; memory:__mem|Mux9~12                                                      ; 1       ;
+; memory:__mem|mem[4][6]                                                    ; 1       ;
+; memory:__mem|Mux9~11                                                      ; 1       ;
+; memory:__mem|mem[11][6]                                                   ; 1       ;
+; memory:__mem|Mux9~10                                                      ; 1       ;
+; memory:__mem|mem[8][6]                                                    ; 1       ;
+; memory:__mem|Mux9~9                                                       ; 1       ;
+; memory:__mem|Mux9~8                                                       ; 1       ;
+; memory:__mem|mem[31][6]                                                   ; 1       ;
+; memory:__mem|Mux9~7                                                       ; 1       ;
+; memory:__mem|mem[19][6]                                                   ; 1       ;
+; memory:__mem|Mux9~6                                                       ; 1       ;
+; memory:__mem|Mux9~5                                                       ; 1       ;
+; memory:__mem|mem[28][6]                                                   ; 1       ;
+; memory:__mem|Mux9~4                                                       ; 1       ;
+; memory:__mem|mem[16][6]                                                   ; 1       ;
+; memory:__mem|Mux9~3                                                       ; 1       ;
+; memory:__mem|mem[29][6]                                                   ; 1       ;
+; memory:__mem|Mux9~2                                                       ; 1       ;
+; memory:__mem|mem[17][6]                                                   ; 1       ;
+; memory:__mem|Mux9~1                                                       ; 1       ;
+; memory:__mem|mem[30][6]                                                   ; 1       ;
+; memory:__mem|Mux9~0                                                       ; 1       ;
+; controller:__controller|Mux3_RF_wen~6                                     ; 1       ;
+; datapath:__datapath|alu:__alu|zero~5                                      ; 1       ;
+; datapath:__datapath|alu:__alu|zero~4                                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[14]~72COUT1_116             ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[14]~72                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[14]~70                      ; 1       ;
+; datapath:__datapath|alu:__alu|zero~3                                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[13]~67COUT1_114             ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[13]~67                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[13]~65                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[12]~60                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[8]~57COUT1_106              ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[8]~57                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[8]~55                       ; 1       ;
+; datapath:__datapath|alu:__alu|zero~2                                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[11]~52COUT1_112             ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[11]~52                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[11]~50                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[5]~47COUT1_102              ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[5]~47                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[5]~45                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[10]~42COUT1_110             ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[10]~42                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[10]~40                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[4]~37COUT1_100              ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[4]~37                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[4]~35                       ; 1       ;
+; datapath:__datapath|alu:__alu|zero~1                                      ; 1       ;
+; datapath:__datapath|alu:__alu|zero~0                                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[9]~32COUT1_108              ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[9]~32                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[9]~30                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[3]~27COUT1_98               ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[3]~27                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[3]~25                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[6]~22COUT1_104              ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[6]~22                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[6]~20                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[7]~15                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[2]~10                       ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[1]~7COUT1_96                ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[1]~7                        ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[1]~5                        ; 1       ;
+; controller:__controller|Mux3_RF_wen[0]~4                                  ; 1       ;
+; controller:__controller|Mux3_RF_wen[0]~3                                  ; 1       ;
+; controller:__controller|Mux3_RF_wen~1                                     ; 1       ;
+; controller:__controller|Mux4_RF_wadd~7                                    ; 1       ;
+; controller:__controller|Mux4_RF_wadd~6                                    ; 1       ;
+; controller:__controller|Mux4_RF_wadd[0]~4                                 ; 1       ;
+; controller:__controller|Mux4_RF_wadd[0]~3                                 ; 1       ;
+; controller:__controller|Mux4_RF_wadd~1                                    ; 1       ;
+; controller:__controller|Mux4_RF_wadd~0                                    ; 1       ;
+; controller:__controller|Selector17~4                                      ; 1       ;
+; controller:__controller|Selector17~3                                      ; 1       ;
+; controller:__controller|Selector17~2                                      ; 1       ;
+; controller:__controller|Selector17~1                                      ; 1       ;
+; controller:__controller|Selector17~0                                      ; 1       ;
+; controller:__controller|Selector20~5                                      ; 1       ;
+; controller:__controller|Selector20~4                                      ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[0]~2COUT1_94                ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[0]~2                        ; 1       ;
+; datapath:__datapath|alu:__alu|add16:__add|out[0]~0                        ; 1       ;
+; memory:__mem|Mux15~19                                                     ; 1       ;
+; memory:__mem|Mux15~18                                                     ; 1       ;
+; memory:__mem|mem[15][0]                                                   ; 1       ;
+; memory:__mem|Mux15~17                                                     ; 1       ;
+; memory:__mem|mem[12][0]                                                   ; 1       ;
+; memory:__mem|Mux15~16                                                     ; 1       ;
+; memory:__mem|Mux15~15                                                     ; 1       ;
+; memory:__mem|Mux15~14                                                     ; 1       ;
+; memory:__mem|mem[0][0]                                                    ; 1       ;
+; memory:__mem|mem[2][0]                                                    ; 1       ;
+; memory:__mem|mem[1][0]                                                    ; 1       ;
+; memory:__mem|Mux15~13                                                     ; 1       ;
+; memory:__mem|mem[11][0]                                                   ; 1       ;
+; memory:__mem|Mux15~12                                                     ; 1       ;
+; memory:__mem|mem[8][0]                                                    ; 1       ;
+; memory:__mem|Mux15~11                                                     ; 1       ;
+; memory:__mem|mem[7][0]                                                    ; 1       ;
+; memory:__mem|Mux15~10                                                     ; 1       ;
+; memory:__mem|mem[4][0]                                                    ; 1       ;
+; memory:__mem|Mux15~9                                                      ; 1       ;
+; memory:__mem|Mux15~8                                                      ; 1       ;
+; memory:__mem|mem[31][0]                                                   ; 1       ;
+; memory:__mem|Mux15~7                                                      ; 1       ;
+; memory:__mem|mem[19][0]                                                   ; 1       ;
+; memory:__mem|Mux15~6                                                      ; 1       ;
+; memory:__mem|Mux15~5                                                      ; 1       ;
+; memory:__mem|mem[28][0]                                                   ; 1       ;
+; memory:__mem|Mux15~4                                                      ; 1       ;
+; memory:__mem|mem[16][0]                                                   ; 1       ;
+; memory:__mem|Mux15~3                                                      ; 1       ;
+; memory:__mem|mem[30][0]                                                   ; 1       ;
+; memory:__mem|Mux15~2                                                      ; 1       ;
+; memory:__mem|mem[18][0]                                                   ; 1       ;
+; memory:__mem|Mux15~1                                                      ; 1       ;
+; memory:__mem|mem[29][0]                                                   ; 1       ;
+; memory:__mem|Mux15~0                                                      ; 1       ;
+; memory:__mem|Mux0~19                                                      ; 1       ;
+; memory:__mem|Mux0~18                                                      ; 1       ;
+; memory:__mem|mem[15][15]                                                  ; 1       ;
+; memory:__mem|Mux0~17                                                      ; 1       ;
+; memory:__mem|mem[12][15]                                                  ; 1       ;
+; memory:__mem|Mux0~16                                                      ; 1       ;
+; memory:__mem|Mux0~15                                                      ; 1       ;
+; memory:__mem|Mux0~14                                                      ; 1       ;
+; memory:__mem|mem[0][15]                                                   ; 1       ;
+; memory:__mem|mem[2][15]                                                   ; 1       ;
+; memory:__mem|mem[1][15]                                                   ; 1       ;
+; memory:__mem|Mux0~13                                                      ; 1       ;
+; memory:__mem|mem[11][15]                                                  ; 1       ;
+; memory:__mem|Mux0~12                                                      ; 1       ;
+; memory:__mem|mem[8][15]                                                   ; 1       ;
+; memory:__mem|Mux0~11                                                      ; 1       ;
+; memory:__mem|mem[7][15]                                                   ; 1       ;
+; memory:__mem|Mux0~10                                                      ; 1       ;
+; memory:__mem|mem[4][15]                                                   ; 1       ;
+; memory:__mem|Mux0~9                                                       ; 1       ;
+; memory:__mem|Mux0~8                                                       ; 1       ;
+; memory:__mem|mem[31][15]                                                  ; 1       ;
+; memory:__mem|Mux0~7                                                       ; 1       ;
+; memory:__mem|mem[19][15]                                                  ; 1       ;
+; memory:__mem|Mux0~6                                                       ; 1       ;
+; memory:__mem|Mux0~5                                                       ; 1       ;
+; memory:__mem|mem[28][15]                                                  ; 1       ;
+; memory:__mem|Mux0~4                                                       ; 1       ;
+; memory:__mem|mem[16][15]                                                  ; 1       ;
+; memory:__mem|Mux0~3                                                       ; 1       ;
+; memory:__mem|mem[30][15]                                                  ; 1       ;
+; memory:__mem|Mux0~2                                                       ; 1       ;
+; memory:__mem|mem[18][15]                                                  ; 1       ;
+; memory:__mem|Mux0~1                                                       ; 1       ;
+; memory:__mem|mem[29][15]                                                  ; 1       ;
+; memory:__mem|Mux0~0                                                       ; 1       ;
+; memory:__mem|Mux1~19                                                      ; 1       ;
+; memory:__mem|Mux1~18                                                      ; 1       ;
+; memory:__mem|mem[15][14]                                                  ; 1       ;
+; memory:__mem|Mux1~17                                                      ; 1       ;
+; memory:__mem|mem[12][14]                                                  ; 1       ;
+; memory:__mem|Mux1~16                                                      ; 1       ;
+; memory:__mem|Mux1~15                                                      ; 1       ;
+; memory:__mem|Mux1~14                                                      ; 1       ;
+; memory:__mem|mem[0][14]                                                   ; 1       ;
+; memory:__mem|mem[1][14]                                                   ; 1       ;
+; memory:__mem|mem[2][14]                                                   ; 1       ;
+; memory:__mem|Mux1~13                                                      ; 1       ;
+; memory:__mem|mem[7][14]                                                   ; 1       ;
+; memory:__mem|Mux1~12                                                      ; 1       ;
+; memory:__mem|mem[4][14]                                                   ; 1       ;
+; memory:__mem|Mux1~11                                                      ; 1       ;
+; memory:__mem|mem[11][14]                                                  ; 1       ;
+; memory:__mem|Mux1~10                                                      ; 1       ;
+; memory:__mem|mem[8][14]                                                   ; 1       ;
+; memory:__mem|Mux1~9                                                       ; 1       ;
+; memory:__mem|Mux1~8                                                       ; 1       ;
+; memory:__mem|mem[31][14]                                                  ; 1       ;
+; memory:__mem|Mux1~7                                                       ; 1       ;
+; memory:__mem|mem[19][14]                                                  ; 1       ;
+; memory:__mem|Mux1~6                                                       ; 1       ;
+; memory:__mem|Mux1~5                                                       ; 1       ;
+; memory:__mem|mem[28][14]                                                  ; 1       ;
+; memory:__mem|Mux1~4                                                       ; 1       ;
+; memory:__mem|mem[16][14]                                                  ; 1       ;
+; memory:__mem|Mux1~3                                                       ; 1       ;
+; memory:__mem|mem[29][14]                                                  ; 1       ;
+; memory:__mem|Mux1~2                                                       ; 1       ;
+; memory:__mem|mem[17][14]                                                  ; 1       ;
+; memory:__mem|Mux1~1                                                       ; 1       ;
+; memory:__mem|mem[30][14]                                                  ; 1       ;
+; memory:__mem|Mux1~0                                                       ; 1       ;
+; memory:__mem|Mux2~19                                                      ; 1       ;
+; memory:__mem|Mux2~18                                                      ; 1       ;
+; memory:__mem|mem[15][13]                                                  ; 1       ;
+; memory:__mem|Mux2~17                                                      ; 1       ;
+; memory:__mem|mem[12][13]                                                  ; 1       ;
+; memory:__mem|Mux2~16                                                      ; 1       ;
+; memory:__mem|Mux2~15                                                      ; 1       ;
+; memory:__mem|Mux2~14                                                      ; 1       ;
+; memory:__mem|mem[0][13]                                                   ; 1       ;
+; memory:__mem|mem[2][13]                                                   ; 1       ;
+; memory:__mem|mem[1][13]                                                   ; 1       ;
+; memory:__mem|Mux2~13                                                      ; 1       ;
+; memory:__mem|mem[11][13]                                                  ; 1       ;
+; memory:__mem|Mux2~12                                                      ; 1       ;
+; memory:__mem|mem[8][13]                                                   ; 1       ;
+; memory:__mem|Mux2~11                                                      ; 1       ;
+; memory:__mem|mem[7][13]                                                   ; 1       ;
+; memory:__mem|Mux2~10                                                      ; 1       ;
+; memory:__mem|mem[4][13]                                                   ; 1       ;
+; memory:__mem|Mux2~9                                                       ; 1       ;
+; memory:__mem|Mux2~8                                                       ; 1       ;
+; memory:__mem|mem[31][13]                                                  ; 1       ;
+; memory:__mem|Mux2~7                                                       ; 1       ;
+; memory:__mem|mem[19][13]                                                  ; 1       ;
+; memory:__mem|Mux2~6                                                       ; 1       ;
+; memory:__mem|Mux2~5                                                       ; 1       ;
+; memory:__mem|mem[28][13]                                                  ; 1       ;
+; memory:__mem|Mux2~4                                                       ; 1       ;
+; memory:__mem|mem[16][13]                                                  ; 1       ;
+; memory:__mem|Mux2~3                                                       ; 1       ;
+; memory:__mem|mem[30][13]                                                  ; 1       ;
+; memory:__mem|Mux2~2                                                       ; 1       ;
+; memory:__mem|mem[18][13]                                                  ; 1       ;
+; memory:__mem|Mux2~1                                                       ; 1       ;
+; memory:__mem|mem[29][13]                                                  ; 1       ;
+; memory:__mem|Mux2~0                                                       ; 1       ;
+; controller:__controller|Selector23~2                                      ; 1       ;
+; controller:__controller|Selector23~1                                      ; 1       ;
+; memory:__mem|Mux3~19                                                      ; 1       ;
+; memory:__mem|Mux3~18                                                      ; 1       ;
+; memory:__mem|mem[15][12]                                                  ; 1       ;
+; memory:__mem|Mux3~17                                                      ; 1       ;
++---------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------+
+; Routing Usage Summary                          ;
++-----------------------+------------------------+
+; Routing Resource Type ; Usage                  ;
++-----------------------+------------------------+
+; C4s                   ; 1,287 / 2,870 ( 45 % ) ;
+; Direct links          ; 186 / 3,938 ( 5 % )    ;
+; Global clocks         ; 2 / 4 ( 50 % )         ;
+; LAB clocks            ; 17 / 72 ( 24 % )       ;
+; LUT chains            ; 79 / 1,143 ( 7 % )     ;
+; Local interconnects   ; 2,143 / 3,938 ( 54 % ) ;
+; R4s                   ; 1,560 / 2,832 ( 55 % ) ;
++-----------------------+------------------------+
+
+
++----------------------------------------------------------------------------+
+; LAB Logic Elements                                                         ;
++--------------------------------------------+-------------------------------+
+; Number of Logic Elements  (Average = 9.37) ; Number of LABs  (Total = 127) ;
++--------------------------------------------+-------------------------------+
+; 1                                          ; 0                             ;
+; 2                                          ; 1                             ;
+; 3                                          ; 0                             ;
+; 4                                          ; 1                             ;
+; 5                                          ; 2                             ;
+; 6                                          ; 5                             ;
+; 7                                          ; 2                             ;
+; 8                                          ; 9                             ;
+; 9                                          ; 12                            ;
+; 10                                         ; 95                            ;
++--------------------------------------------+-------------------------------+
+
+
++--------------------------------------------------------------------+
+; LAB-wide Signals                                                   ;
++------------------------------------+-------------------------------+
+; LAB-wide Signals  (Average = 1.89) ; Number of LABs  (Total = 127) ;
++------------------------------------+-------------------------------+
+; 1 Clock                            ; 119                           ;
+; 1 Clock enable                     ; 26                            ;
+; 1 Sync. clear                      ; 9                             ;
+; 1 Sync. load                       ; 8                             ;
+; 2 Clock enables                    ; 78                            ;
++------------------------------------+-------------------------------+
+
+
++------------------------------------------------------------------------------+
+; LAB Signals Sourced                                                          ;
++----------------------------------------------+-------------------------------+
+; Number of Signals Sourced  (Average = 10.50) ; Number of LABs  (Total = 127) ;
++----------------------------------------------+-------------------------------+
+; 0                                            ; 0                             ;
+; 1                                            ; 0                             ;
+; 2                                            ; 2                             ;
+; 3                                            ; 1                             ;
+; 4                                            ; 0                             ;
+; 5                                            ; 0                             ;
+; 6                                            ; 3                             ;
+; 7                                            ; 2                             ;
+; 8                                            ; 3                             ;
+; 9                                            ; 10                            ;
+; 10                                           ; 77                            ;
+; 11                                           ; 3                             ;
+; 12                                           ; 8                             ;
+; 13                                           ; 3                             ;
+; 14                                           ; 6                             ;
+; 15                                           ; 3                             ;
+; 16                                           ; 0                             ;
+; 17                                           ; 1                             ;
+; 18                                           ; 1                             ;
+; 19                                           ; 1                             ;
+; 20                                           ; 3                             ;
++----------------------------------------------+-------------------------------+
+
+
++---------------------------------------------------------------------------------+
+; LAB Signals Sourced Out                                                         ;
++-------------------------------------------------+-------------------------------+
+; Number of Signals Sourced Out  (Average = 6.60) ; Number of LABs  (Total = 127) ;
++-------------------------------------------------+-------------------------------+
+; 0                                               ; 0                             ;
+; 1                                               ; 2                             ;
+; 2                                               ; 2                             ;
+; 3                                               ; 4                             ;
+; 4                                               ; 7                             ;
+; 5                                               ; 33                            ;
+; 6                                               ; 27                            ;
+; 7                                               ; 16                            ;
+; 8                                               ; 14                            ;
+; 9                                               ; 5                             ;
+; 10                                              ; 5                             ;
+; 11                                              ; 5                             ;
+; 12                                              ; 4                             ;
+; 13                                              ; 1                             ;
+; 14                                              ; 1                             ;
+; 15                                              ; 0                             ;
+; 16                                              ; 1                             ;
++-------------------------------------------------+-------------------------------+
+
+
++------------------------------------------------------------------------------+
+; LAB Distinct Inputs                                                          ;
++----------------------------------------------+-------------------------------+
+; Number of Distinct Inputs  (Average = 15.81) ; Number of LABs  (Total = 127) ;
++----------------------------------------------+-------------------------------+
+; 0                                            ; 0                             ;
+; 1                                            ; 0                             ;
+; 2                                            ; 0                             ;
+; 3                                            ; 0                             ;
+; 4                                            ; 0                             ;
+; 5                                            ; 0                             ;
+; 6                                            ; 0                             ;
+; 7                                            ; 1                             ;
+; 8                                            ; 4                             ;
+; 9                                            ; 2                             ;
+; 10                                           ; 12                            ;
+; 11                                           ; 5                             ;
+; 12                                           ; 5                             ;
+; 13                                           ; 5                             ;
+; 14                                           ; 14                            ;
+; 15                                           ; 6                             ;
+; 16                                           ; 8                             ;
+; 17                                           ; 12                            ;
+; 18                                           ; 14                            ;
+; 19                                           ; 14                            ;
+; 20                                           ; 10                            ;
+; 21                                           ; 15                            ;
++----------------------------------------------+-------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Fitter Device Options                                                   ;
++----------------------------------------------+--------------------------+
+; Option                                       ; Setting                  ;
++----------------------------------------------+--------------------------+
+; Enable user-supplied start-up clock (CLKUSR) ; Off                      ;
+; Enable device-wide reset (DEV_CLRn)          ; Off                      ;
+; Enable device-wide output enable (DEV_OE)    ; Off                      ;
+; Enable INIT_DONE output                      ; Off                      ;
+; Configuration scheme                         ; Passive Serial           ;
+; Reserve all unused pins                      ; As output driving ground ;
+; Base pin-out file on sameframe device        ; Off                      ;
++----------------------------------------------+--------------------------+
+
+
++-----------------+
+; Fitter Messages ;
++-----------------+
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (119006): Selected device 5M1270ZT144I5 for design "RISC15"
+Info (21077): Low junction temperature is -40 degrees C
+Info (21077): High junction temperature is 125 degrees C
+Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
+Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
+Info (176444): Device migration not selected. If you intend to use device migration later, you may need to change the pin assignments as they may be incompatible with other devices
+    Info (176445): Device 5M240ZT144C5 is compatible
+    Info (176445): Device 5M240ZT144I5 is compatible
+    Info (176445): Device 5M570ZT144C5 is compatible
+    Info (176445): Device 5M570ZT144I5 is compatible
+    Info (176445): Device 5M1270ZT144C5 is compatible
+Critical Warning (169085): No exact pin location assignment(s) for 8 pins of 8 total pins
+    Info (169086): Pin StateID[0] not assigned to an exact location on the device
+    Info (169086): Pin StateID[1] not assigned to an exact location on the device
+    Info (169086): Pin StateID[2] not assigned to an exact location on the device
+    Info (169086): Pin StateID[3] not assigned to an exact location on the device
+    Info (169086): Pin StateID[4] not assigned to an exact location on the device
+    Info (169086): Pin StateID[5] not assigned to an exact location on the device
+    Info (169086): Pin clk not assigned to an exact location on the device
+    Info (169086): Pin proc_rst not assigned to an exact location on the device
+Warning (335093): TimeQuest Timing Analyzer is analyzing 3 combinational loops as latches.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'RISC15.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332144): No user constrained base clocks found in the design
+Info (332128): Timing requirements not specified -- optimizing circuit to achieve the following default global requirements
+    Info (332127): Assuming a default timing requirement
+Info (332111): Found 3 clocks
+    Info (332111):   Period   Clock Name
+    Info (332111): ======== ============
+    Info (332111):    1.000          clk
+    Info (332111):    1.000 controller:__controller|ALU_op
+    Info (332111):    1.000 controller:__controller|CZ_en
+Info (186079): Completed User Assigned Global Signals Promotion Operation
+Info (186215): Automatically promoted signal "clk" to use Global clock in PIN 18
+Info (186216): Automatically promoted some destinations of signal "controller:__controller|CZ_en" to use Global clock
+    Info (186217): Destination "controller:__controller|CZ_en" may be non-global or may not use global clock
+Info (186079): Completed Auto Global Promotion Operation
+Info (176234): Starting register packing
+Info (186468): Started processing fast register assignments
+Info (186469): Finished processing fast register assignments
+Info (176235): Finished register packing
+Info (176214): Statistics of I/O pins that need to be placed that use the same VCCIO and VREF, before I/O pin placement
+    Info (176211): Number of I/O pins in group: 7 (unused VREF, 3.3V VCCIO, 1 input, 6 output, 0 bidirectional)
+        Info (176212): I/O standards used: 3.3-V LVTTL.
+Info (176215): I/O bank details before I/O pin placement
+    Info (176214): Statistics of I/O banks
+        Info (176213): I/O bank number 1 does not use VREF pins and has undetermined VCCIO pins. 1 total pin(s) used --  24 pins available
+        Info (176213): I/O bank number 2 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  30 pins available
+        Info (176213): I/O bank number 3 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  29 pins available
+        Info (176213): I/O bank number 4 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  30 pins available
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
+Info (170189): Fitter placement preparation operations beginning
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:02
+Info (170191): Fitter placement operations beginning
+Info (170137): Fitter placement was successful
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:06
+Info (170193): Fitter routing operations beginning
+Info (170195): Router estimated average interconnect usage is 38% of the available device resources
+    Info (170196): Router estimated peak interconnect usage is 44% of the available device resources in the region that extends from location X0_Y0 to location X8_Y11
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:06
+Info (170202): The Fitter performed an Auto Fit compilation.  No optimizations were skipped because the design's timing and routability requirements required full optimization.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.48 seconds.
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
+Warning (169174): The Reserve All Unused Pins setting has not been specified, and will default to 'As output driving ground'.
+Info (144001): Generated suppressed messages file /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/simulation/output_files/RISC15.fit.smsg
+Info: Quartus II 32-bit Fitter was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 452 megabytes
+    Info: Processing ended: Thu Oct 22 11:55:09 2015
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:16
+
+
++----------------------------+
+; Fitter Suppressed Messages ;
++----------------------------+
+The suppressed messages can be found in /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/simulation/output_files/RISC15.fit.smsg.
+
+

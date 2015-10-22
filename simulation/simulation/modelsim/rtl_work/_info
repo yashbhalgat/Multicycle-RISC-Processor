@@ -1,0 +1,448 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/simulation/simulation/modelsim
+vadd16
+!i10b 1
+!s100 RX6K6k3HfML8;4_o`<4;@1
+Ik3zJT[ZWNL2T=9G[]8ANX2
+VIU9FQCIV01Wg3BO5z8TR@0
+Z1 d/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/simulation/simulation/modelsim
+w1444681134
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/add16.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/add16.v
+L0 6
+Z2 OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1445495153.661381
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/add16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/add16.v|
+!s101 -O0
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU -O0
+valu
+IQ8OeZaNf:fN>J<Ek;i4<e2
+VeYIZaG@0gWZB<H@STODmD2
+R1
+w1445120275
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/alu.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/alu.v
+L0 7
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 U^9:OAd]H3hgaR=;g]Uz01
+!s85 0
+!s108 1445495153.639236
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/alu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/alu.v|
+!s101 -O0
+vcarry_generate
+IWheFlHe2bfCW_1>X:?hki2
+VjWaGeV>0:46YhWD1cOa2b3
+R1
+w1444686549
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/carry_generate.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/carry_generate.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 HhBNRkn94M2]:PeK<BnU_2
+!s85 0
+!s108 1445495153.615864
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/carry_generate.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/carry_generate.v|
+!s101 -O0
+vcontroller
+ID0=KHeIT:;?V^d:fPl^c01
+V5RHV>fNhG4P92EHjMET?U1
+R1
+Z5 w1445492677
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Controller/controller.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Controller/controller.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 f2G@QT^>TA<@]05Gh4f^O3
+!s85 0
+!s108 1445495153.560841
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Controller/controller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Controller|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Controller/controller.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Controller -O0
+vCZ_reg
+Im7J[HALeHdT3:ZkagTcJ^3
+Voj4eEK9d8@2n@Xf2`>g9X3
+R1
+w1444999884
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/CZ_reg.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/CZ_reg.v
+L0 1
+R2
+r1
+31
+R3
+Z6 !s92 -vlog01compat -work work +incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers -O0
+n@c@z_reg
+!i10b 1
+!s100 WS^27@nJfT]]1bVYNBW340
+!s85 0
+!s108 1445495153.240971
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/CZ_reg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/CZ_reg.v|
+!s101 -O0
+vdatapath
+IZzQ=HK1LimJL4A9l=7Qo:3
+V:;h2DGYhXma^NbP7aQlY;2
+R1
+R5
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Datapath/datapath.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Datapath/datapath.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 V19a[gZoP4^`U>@h7:A>Q3
+!s85 0
+!s108 1445495153.537216
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Datapath/datapath.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Datapath|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Datapath/datapath.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Datapath -O0
+vdemux_8
+IQ;femh9cIP?c>lYgI6@ja1
+VkAFU>fIF9];?lTdWPKZJF3
+R1
+w1444730496
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/DEMUX/demux_8.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/DEMUX/demux_8.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 N27UiFW107GJhC]0m=CCD3
+!s85 0
+!s108 1445495153.515115
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/DEMUX/demux_8.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/DEMUX|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/DEMUX/demux_8.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/DEMUX -O0
+vimm_6
+I7mJL=>oe]oe6iJk9]8[=82
+VVZNZ=kejB:56g_:3m5GX11
+R1
+w1445120436
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/imm_6.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/imm_6.v
+L0 1
+R2
+r1
+31
+R3
+Z7 !s92 -vlog01compat -work work +incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc -O0
+!i10b 1
+!s100 >A:92^KUaOe289WN<YHMX1
+!s85 0
+!s108 1445495153.463057
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/imm_6.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/imm_6.v|
+!s101 -O0
+vimm_9
+ICHEganKT0_BmeC=jBHY:F3
+Vde`hogzje3ANaKJWKf8[L2
+R1
+w1445120424
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/imm_9.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/imm_9.v
+L0 1
+R2
+r1
+31
+R3
+R7
+!i10b 1
+!s100 z4HljjgnY7;gM;MJoY9kI0
+!s85 0
+!s108 1445495153.440777
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/imm_9.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/imm_9.v|
+!s101 -O0
+vmemory
+IK_oIGOHLLKXgEHAKg2I5J3
+VLgV@e[PO7Wmf?Vkkc[EZ?1
+R1
+w1445495076
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Memory/memory.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Memory/memory.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 YIh]i;o2<P;olV@WV38WN2
+!s85 0
+!s108 1445495153.484514
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Memory/memory.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Memory|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Memory/memory.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Memory -O0
+vmux_16_2
+In2O=jdA@JY`6SBh:z4_AQ0
+V=hT;f;TiKz0>7fVhKS62P0
+R1
+w1445111856
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_16_2.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_16_2.v
+L0 1
+R2
+r1
+31
+R3
+Z8 !s92 -vlog01compat -work work +incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX -O0
+!i10b 1
+!s100 7R9zn?U^jVjP`G`Bn>P8i0
+!s85 0
+!s108 1445495153.292634
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_16_2.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_16_2.v|
+!s101 -O0
+vmux_16_8
+I]^P8:F[2]1BOKT:QRbQm01
+V^znO[o_FjWSa2>FZ]G`ZQ1
+R1
+w1444730448
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_16_8.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_16_8.v
+L0 1
+R2
+r1
+31
+R3
+R8
+!i10b 1
+!s100 VnQf8`?A@iEOb?i^VPAUk0
+!s85 0
+!s108 1445495153.266329
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_16_8.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_16_8.v|
+!s101 -O0
+vmux_1_4
+IL:^kdZ>7GZ>MQ;8W^IQfh0
+VcJIH=N;ibORUkckRzdd<22
+R1
+w1445120038
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_1_4.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_1_4.v
+L0 1
+R2
+r1
+31
+R3
+R8
+!i10b 1
+!s100 =beecz`m==oX0[7S8lJ:L0
+!s85 0
+!s108 1445495153.395625
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_1_4.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_1_4.v|
+!s101 -O0
+vmux_1_8
+IaidmM_5YjDPWdWgZjjK1l3
+VnTLeF]5M5[AJL0:ckNQ]R3
+R1
+w1445110574
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_1_8.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_1_8.v
+L0 1
+R2
+r1
+31
+R3
+R8
+!i10b 1
+!s100 [[o9m38UejT671C9ABHIP2
+!s85 0
+!s108 1445495153.369587
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_1_8.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_1_8.v|
+!s101 -O0
+vmux_3_4
+IG[KbOfc0He2eiL6bU:b>22
+VO]D0OgSZ`<RQ@7RJM?QlT0
+R1
+w1445111595
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_3_4.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_3_4.v
+L0 1
+R2
+r1
+31
+R3
+R8
+!i10b 1
+!s100 G4ZgS^l=mb3?K3<g<2l630
+!s85 0
+!s108 1445495153.343332
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_3_4.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_3_4.v|
+!s101 -O0
+vmux_3_8
+IdBahci7G62FTRVn0BC<[43
+V0:LiVRP]]9RV<9_WnWi8Y1
+R1
+w1445110815
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_3_8.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_3_8.v
+L0 1
+R2
+r1
+31
+R3
+R8
+!i10b 1
+!s100 VIz85=OzN3D;_`KYJC4g>0
+!s85 0
+!s108 1445495153.320064
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_3_8.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/MUX/mux_3_8.v|
+!s101 -O0
+vnand16
+IG66>m>]1QT]A^GU:A^1Te3
+VNTQDmID9n3nmi6QM;PQ1k2
+R1
+w1444681286
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/nand16.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/nand16.v
+L0 6
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 c`aRWB;ZaMTV94EO0[RaN0
+!s85 0
+!s108 1445495153.592790
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/nand16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/ALU/nand16.v|
+!s101 -O0
+vreg16
+I_K]To2Xhl<?C;ff:7Si5N3
+VKWddU?[:GzELaGbi07JCh2
+R1
+w1444917995
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/reg16.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/reg16.v
+L0 5
+R2
+r1
+31
+R3
+R6
+!i10b 1
+!s100 >=OJaid7P]gcPO0Ee<j>m1
+!s85 0
+!s108 1445495153.219497
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/reg16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/reg16.v|
+!s101 -O0
+vreg16_file
+IPWRH_zgncThVeFUnSo@bH2
+V=PonK:Sjbog7XkJSNhh511
+R1
+R5
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/reg16_file.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/reg16_file.v
+L0 5
+R2
+r1
+31
+R3
+R6
+!i10b 1
+!s100 cJzaQoB4SK??9kVS]P74W3
+!s85 0
+!s108 1445495153.195037
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/reg16_file.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/reg16_file.v|
+!s101 -O0
+vRISC15
+I3ii=DYnB>nS3Y]47ec>S00
+VV58CdGI4f[IK4Zfl3Mm2g1
+R1
+w1445494979
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/RISC15.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/RISC15.v
+L0 1
+R2
+r1
+31
+R3
+n@r@i@s@c15
+!i10b 1
+!s100 okhgHYgY:^8N9z6QLP=0K3
+!s85 0
+!s108 1445495153.175080
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/RISC15.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/RISC15.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design -O0
+vshift_7
+IN0F9JmdU30Nm5iQMzJ7oF0
+VF?WzQjWjF]Z3RImA8E:Wn1
+R1
+w1445120164
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/shift_7.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/shift_7.v
+L0 1
+R2
+r1
+31
+R3
+R7
+!i10b 1
+!s100 3koTHGP2:M7829dJDmAdf0
+!s85 0
+!s108 1445495153.418814
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/shift_7.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Misc/shift_7.v|
+!s101 -O0
+vT1reg16
+IlfGXe@oenn^T]XekKzNLR0
+VgYCb;[OLlLdLVelRO56GZ0
+R1
+R5
+8/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/T1reg16.v
+F/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/T1reg16.v
+L0 5
+R2
+r1
+31
+R3
+n@t1reg16
+R6
+!i10b 1
+!s100 V80hjmC<EWRjAZIPa8KG_3
+!s85 0
+!s108 1445495153.153876
+!s107 /home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/T1reg16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers|/home/meetshah1995/Desktop/Dropbox/Third_Year/EE337/Multicycle-RISC15-Design/Registers/T1reg16.v|
+!s101 -O0
