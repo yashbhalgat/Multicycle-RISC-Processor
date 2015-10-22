@@ -17,6 +17,7 @@ module memory(address,in,out,write,read,clk, proc_rst);
 		if(proc_rst==0) begin
 				mem[0] <= 16'b0000001011110000;
 				mem[1] <= 16'b0010001011101000;
+				mem[2] <= 16'b0000001011110010;
 			end
 		if(write ==1'b0)
 			begin

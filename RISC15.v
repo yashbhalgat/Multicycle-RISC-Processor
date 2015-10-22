@@ -26,21 +26,3 @@ module RISC15(clk, StateID, proc_rst);
 	memory 		 __mem(T1out[4:0], Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, memread, clk, proc_rst);
 
 endmodule
-
-module RISC15_test();
-
-	reg [5:0]  T1out;
-	reg        clk;
-	reg [15:0] memIn;
-	initial 
-		begin
-			clk <= 1'b1;
-			T1out <= 6'd0;
-			Mux4_RF_wadd <= 3'b000;
-			IR <= 16'b0000001010100000;
-			Mux3_RF_wen <= 2'b00;
-		end
-
-	always #5 clk = ~clk;
-
-endmodule
