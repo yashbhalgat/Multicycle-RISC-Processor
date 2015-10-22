@@ -86,6 +86,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux3_RF_wen <= 2'b00;
 						Mux4_RF_wadd <= 3'b011;
 						// Mux5_RF_read2 <= 2'b10; 
+						Mux8_memwrite <= 2'b01;
 						Mux6_RF_dataIn <= 1'b1;					
 						ALU_op <= 0;
 						CZ_en <= 1'b1;
