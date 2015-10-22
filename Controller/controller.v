@@ -18,7 +18,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 	output reg 	   [5:0]  StateID;
 	
 	parameter halt0 = 6'd63;
-	parameter halt0 = 6'd62;
+	parameter halt = 6'd62;
 	
 	always@(negedge clk)
 		begin
