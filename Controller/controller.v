@@ -422,7 +422,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 							endcase
 					  end
 					9: StateID=3;
-					10: StateID=6;
+					10: StateID=7;
 					11: StateID=12;
 					12: StateID=3;
 					13: StateID=14;
