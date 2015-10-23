@@ -351,9 +351,11 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					30:begin
+						ALU_op <= 1'b0;
 						Mux1_alu_B <= 3'b100;
 						Mux2_alu_A <= 3'b110;
 						wAtmp <= 0;
+						T1write <= 1'b0;
 						Mux6_RF_dataIn <= 0;
 						Mux3_RF_wen <= 2'b11;
 						Mux4_RF_wadd <= 3'b010;
@@ -370,6 +372,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					33:begin
+					T1write <= 1'b1;
 						counter <= counter +3'b001;
 					end
 
