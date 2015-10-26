@@ -1,0 +1,685 @@
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn,oneside]{book} % Default font size and left-justified equations
+
+\usepackage[top=3cm,bottom=3cm,left=3.2cm,right=3.2cm,headsep=10pt,letterpaper]{geometry} % Page margins
+
+\usepackage{array}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{xcolor} % Required for specifying colors by name
+\usepackage{forest}
+\definecolor{folderbg}{RGB}{124,166,198}
+\definecolor{folderborder}{RGB}{110,144,169}
+
+\def\Size{4pt}
+\tikzset{
+  folder/.pic={
+    \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+      (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);  
+    \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+      (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+  }
+}
+\definecolor{ocre}{RGB}{52,177,201} % Define the orange color used for highlighting throughout the book
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+% Font Settings
+\usepackage{avant} % Use the Avantgarde font for headings
+%\usepackage{times} % Use the Times font for headings
+\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Computer Modern fonts
+
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage[utf8]{inputenc} % Required for including letters with accents
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+% Bibliography
+\usepackage[style=alphabetic,sorting=nyt,sortcites=true,autopunct=true,babel=hyphen,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex}
+\addbibresource{references.bib} % BibTeX bibliography file
+\defbibheading{bibempty}{}
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+\let\cleardoublepage\clearpage
+\lstset { %
+    language=C++,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstset{escapechar=@,style=customc}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty}
+\AddToShipoutPicture*{\put(0,0){\includegraphics[scale=1.5]{Micro_image.jpg}}} % Image background
+\centering
+\vspace*{5cm}
+\par\normalfont\fontsize{35}{35}\sffamily\selectfont
+\textbf{Multicycle RISC'15 Processor Design}\\
+{\LARGE \textbf{IITB-RISC15 ISA} }\par % Book title
+\vspace*{1cm}
+{\Huge Meet Pragnesh Shah \\ Navjot Singh \\ Yash Bhalgat}\par % Author name
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.80\textwidth]{IIT_Bombay_Logo.png}
+    \end{figure}
+    
+~\vfill
+\thispagestyle{empty}
+
+%\noindent Copyright \copyright\ 2014 Andrea Hidalgo\\ % Copyright notice
+
+
+\noindent \textsc{EE309 (Microprocessors) / EE337 (Microprocessors Laboratory)}\\
+
+\noindent \textsc{Indian Institute of Technology, Bombay}\\
+
+\noindent \textit{https://github.com/meetshah1995/Multicycle-RISC15-Design}\\
+
+\noindent This project was done under the supervision of Prof. Virendra Singh, instructor for the course along with the lab course instructors Prof. Shankar Balachandran and Prof. Rajbabu Velmurugan and our TA Mrs. Shoba Gopalakrishnan \\ % License information
+
+% Printing/edition date
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\chapterimage {ch_image.jpg} % Table of contents heading image
+
+
+\pagestyle{empty} % No headers
+
+\tableofcontents % Print the table of contents itself
+
+%\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
+\pagestyle{fancy} % Print headers again
+%----------------------------------------------------------------------------------------
+%	CHAPTER 1
+%----------------------------------------------------------------------------------------
+
+\chapterimage{ch_image.jpg} % Chapter heading image
+
+\chapter{Introduction}
+
+\section{Prologue}\index{Prologue}
+The IITB-RISC'15 processor is based on Little Computer Architecture. It has a 16 bit architecture, having 8 registers (R0 to R7) and uses point to point connections along with a condition code register with flags CY (Carry) and Z (Zero). The IITB-RISC'15 is very simple but, it is general enough to solve complex problems. The architecture allows predicated instruction execution and multiple load and store execution. There are 3 types of instruction formats (namely R, I and J) and a total of 15 instructions. They would be presented in a later chapter.   
+
+
+\section{Abstract}\index{Abstract}
+The Processor can be divided into 3 componenets : (i) Datapath , (ii) Contoller , (iii) Memory .The design is based on multicycle RISC architecture. This is done because the different instructions take different execution times, and with a multicycle implementation, each instruction gets over in lesser time and hence, the performance is optimized. This also reduces the resources which would be required during simulation on FPGA. It is restricted to have the value of PC (program counter) to always be stored in R7.
+
+\section{Software \& Packages Used}\index{Software \& Packages Used}
+
+\begin{itemize}
+\item Altera Quartus v.14.1
+\item ModelSim
+\item Sublime Text Editor [Special Thanks]
+\item Coffee ;) 
+\end{itemize}
+%----------------------------------------------------------------------------------------
+%	CHAPTER 2
+%----------------------------------------------------------------------------------------
+\chapterimage{ch_image.jpg}
+
+\chapter{The Instruction Set Architecture}
+
+\section{IITB-RISC'15 ISA}\index{IITB-RISC'15 ISA}
+The architecture allows predicated instruction execution and multiple load and store execution. There are 3 types of instruction formats (namely R, I and J) and a total of 15 instructions. The datapath evolves accordingly as these instruction execution flow is designed, using different MUX control signals and read/write enable signals.
+  
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{instr_type.JPG}
+    \caption{The instruction set }
+    \label{fig:awesome_image}
+\end{figure}
+
+
+\vspace{3cm}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{instr_enc.JPG}
+    \caption{16-bit instruction encoding }
+    \label{fig:awesome_image}
+\end{figure}
+
+\hspace*{-2cm}\begin{figure}[h]
+        \includegraphics[width=0.3\textwidth]{reg_desrcp.JPG}
+    \label{fig:awesome_image}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 3
+%----------------------------------------------------------------------------------------
+
+\chapterimage{ch_image.jpg} % Chapter heading image
+
+\chapter{Datapath}
+
+\section{Elements}
+The datapath consists of the described units: \\ \\
+\textbf{(1) Register File :} The module consists of eight 16-bit clocked registers (R0 to R7). This module has 4 inputs : 3 input addresses (add1, add2, add3) 8bit each and 1 data input (16bit). There are 2 output data sequences, corresponding to the first two input addresses, add1 and add2. Control signal Rf\_wen is involved to enable the writing to the registers.  \\ \\ \textbf{(2) ALU :} The logic unit supports two operations : ADD and NAND, to implements different instructions and for incrementing desired variables. The module is combinational in nature, meaning the desired data output would be obtained in the same cycle when the two operands are fed. Two flags CY (carry) and Z (zero) are associated with the ALU, which would be written to the CZ module defined in the datapath. A clocked register, T1, stores the computed ALU result. \\ \\ \textbf{(3) Multiplexers :} For proper instructor execution, different modules need to be enabled or disabled, along with proper routing of data to these modules. This is achieved using MUXes, having variable no. of control signals bits. These would be described later. \\ \\ \textbf{(4) CZ module :} This module is used to generate a conditional write\_enable signal to the Register File module based on previous CY and Z bits. Thus, this conditional signal would be required to implement ADZ, ADC, NDZ and NDC instruction. \\ \\ \textbf{(5) Registers :} Temporary registers A and B are used to store output results of the register file. Register T1 is similarly used to store the ALU result. \\ \\ \textbf{(6) Memory* :} This module is connected to different modules in the datapath. It has a size of 64bytes, controlled by write\_enable signal, with multiplexed input data.\\ \textbf{(7) Priority Encoder :} This module serves an essential purpose in reducing the cycles in LM and SM instructions by rendering the RF addresses corresponding to the set bits in instructions last 8 bits.
+\\ \\ \textbf{(8) Sign Extenders :} This module appends zeroes at the beginning of the immediate bits, \\ Usage: extending Imm6 and Imm9 in immediate addressing
+ \\ \\ \textbf{(9) Data Shifters :} This module is used  to convert a 9 bit value to 16 bit by padding zeroes at the end.\\ \\
+ 
+ \section{Design Specifications}
+Design Specifications to incorporate all corner cases (well to the best of our knowledge :)  ) are as follows :
+\begin{itemize}
+\item R7 is our PC and  we have PC\_enable to to update it when needed.
+\item R7 = Ra + Rb is a branch instruction and in our case in any instruction the PC updation part occurs in the last states of the operation so it wouldn't affect the corner case.
+\item There is a slave register CZ\_reg which takes care of this and is written to only in the ADD family of operations as mentioned in the project specifications.
+As we mentioned in the lab, we have a temp\_A register to store value of A before address increment which takes care of this case.
+\item We are using a priority encoder to optimize the states and cycles taken by the LM, SM instructions. Now the  cycles are equal to the number of bits set in the imm8 given in the instruction. 
+\item We have extended the sign of the bits of the immediate field to ensure compatibility. 
+\end{itemize}
+\newpage
+
+\section{Control Signals Interpretation} 
+The different control signals to MUX's are mentioned here: \\
+These multiplexers have different combination of no. of inputs and control signals, hence they are defined differently in the datapath.
+\vspace{1cm}
+\begin{multicols}{3}
+\begin{center}
+ \begin{tabular}{||c|c||} 
+ \hline
+ \multicolumn{2}{|c|}{Mux1\_ALU\_B (3bit)} \\
+ \hline
+ Mux Signal & Input \\ [0.5ex] 
+ \hline\hline
+ 000 & 16'd0  \\ 
+ \hline
+ 001 & 16'd01  \\
+ \hline
+ 010 & B  \\
+ \hline
+ 011 & imm6  \\
+ \hline
+ 100 & addIncrement \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+ \begin{tabular}{||c|c||} 
+ \hline
+ \multicolumn{2}{|c|}{Mux2\_ALU\_A (3bit)} \\
+ \hline
+ Mux Signal & Input \\ [0.5ex] 
+ \hline\hline
+ 000 & 16'd0  \\ 
+ \hline
+ 001 & 16'd01  \\
+ \hline
+ 010 & shift7  \\
+ \hline
+ 011 & imm6  \\
+ \hline
+ 100 & imm9 \\
+ \hline
+ 101 & A  \\
+ \hline
+ 110 & tempA  \\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+ \begin{tabular}{||c|c||} 
+ \hline
+ \multicolumn{2}{|c|}{Mux3\_RF\_wen (2bit)} \\
+ \hline
+ Mux Signal & Input \\ [0.5ex] 
+ \hline\hline
+ 00 & 1'b0  \\ 
+ \hline
+ 01 & 1'b1  \\
+ \hline
+ 10 & CZ  \\
+ \hline
+ 11 & addrIncrement\_out  \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+\end{multicols}
+\vspace{0.5cm}
+\begin{multicols}{3}
+
+\begin{center}
+ \begin{tabular}{||c|c||} 
+ \hline
+ \multicolumn{2}{|c|}{Mux\_4\_RF\_wadd (3bit)} \\
+ \hline
+ Mux Signal & Input \\ [0.5ex] 
+ \hline\hline
+ 000 & regA  \\ 
+ \hline
+ 001 & regC  \\
+ \hline
+ 010 & lm\_sm\_addr  \\
+ \hline
+ 011 & 3'b111  \\
+ \hline
+ 100 & regB \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+ \begin{tabular}{||c|c||} 
+ \hline
+ \multicolumn{2}{|c|}{Mux5\_RF\_read2 (2bit)} \\
+ \hline
+ Mux Signal & Input \\ [0.5ex] 
+ \hline\hline
+ 00 & regB  \\ 
+ \hline
+ 01 & lm\_sm\_addr  \\
+ \hline
+ 10 & 3'b111  \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+ \begin{tabular}{||c|c||} 
+ \hline
+ \multicolumn{2}{|c|}{Mux6\_RF\_dataIn (1bit)} \\
+ \hline
+ Mux Signal & Input \\ [0.5ex] 
+ \hline\hline
+ 0 & memout  \\ 
+ \hline
+ 1 & T1  \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+\end{multicols}
+\vspace{0.5cm}
+
+\begin{multicols}{3}
+
+\begin{center}
+ \begin{tabular}{||c|c||} 
+ \hline
+ \multicolumn{2}{|c|}{Mux8\_memwrite (2bit)} \\
+ \hline
+ Mux Signal & Input \\ [0.5ex] 
+ \hline\hline
+ 00 & 1'b0  \\ 
+ \hline
+ 01 & 1'b1  \\
+ \hline
+ 010 & mux7  \\
+ \hline
+ 11 & imm6  \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+ \begin{tabular}{||c|c||} 
+ \hline
+ \multicolumn{2}{|c|}{Mux9\_memDataIn (1bit)} \\
+ \hline
+ Mux Signal & Input \\ [0.5ex] 
+ \hline\hline
+ 0 & A  \\ 
+ \hline
+ 1 & B  \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+\end{multicols}
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[width=6.9cm, height=16cm]{mux_signals.jpg}
+%    \caption{Control signals to MUXes }
+%    \label{fig:awesome_image}
+%\end{figure}
+%----------------------------------------------------------------------------------------
+%	CHAPTER 4
+%----------------------------------------------------------------------------------------
+\vspace{2cm}
+\section{Datapath}
+\vspace*{-1cm}
+\begin{figure}[h]
+    \centering
+    High Resolution SVG version of the datapath diagram can be found at : \\ \url{https://www.ee.iitb.ac.in/student/\~meetshah1995/files/datapath.svg}
+    \includegraphics[scale=0.13,angle=90]{iitb_risc_15.jpg}
+    \caption{Proposed Datapath }
+    \label{fig:awesome_image}
+\end{figure}
+\newpage
+
+\chapterimage{ch_image.jpg}
+
+\chapter{Controller}
+
+
+\section{State Description}
+Writeup for different states involved for each instruction(These are shown sequentially going from left to right):\\ \\
+
+\textbf{1. ADD }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{5em} | m{7em} | } 
+ \hline
+ 0 & 1 & 2 & 3 & 4 \\ [0.5ex] 
+ \hline
+ Instruction gets stored in IR & Values of reg read into A and B for Add & Added answer written into Rc & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle) \\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{2. ADC }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{7em} | m{7em} | m{7em} | } 
+ \hline
+ 0 & 1 & 5 & 7 & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Values of reg read into A and B for Add & Logical combination of the carry and zero bits is stored in CZ\_reg for Add & Depending upon logical combination of the carry and zero bits added value is written in Rc & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)  \\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\newpage 
+
+\textbf{3. ADZ }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{5em} | m{7em} | m{7em} | } 
+ \hline
+ 0 & 1 & 5 & 7 & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Values of reg read into A and B for Add & Logical combination of the carry and zero bits is stored in CZ\_reg for Add & Depending upon logical combination of the carry and zero bits added value is written in Rc & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)  \\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+\textbf{4. NDU }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{7em} | m{7em} | } 
+ \hline
+ 0 & 8 & 9 & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Values of reg read into A and B for NAND & NANDed answer written into Rc & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)  \\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+\textbf{5. NDC }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{7em} | m{5em} | m{7em} | } 
+ \hline
+ 0 & 8 & 10 & 7 & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Values of reg read into A and B for NAND & Logical combination of the carry and zero bits is stored in CZ\_reg for NAND & Depending upon logical combination of the carry and zero bits added value is written in Rc & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)  \\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+
+
+\textbf{6. NDZ }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{7em} | m{5em} | m{7em} | } 
+ \hline
+ 0 & 8 & 10 & 7 & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Values of reg read into A and B for NAND & Logical combination of the carry and zero bits is stored in CZ\_reg for NAND & Depending upon logical combination of the carry and zero bits added value is written in Rc & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)  \\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{7. ADI }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{7em} | m{5em} | m{8em} | } 
+ \hline
+ 0 & 11 & 12 & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Pass Imm6 to input B of ALU to be added in the next state & Added answer written into Rb & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)\\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{8. LHI }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{7em} | m{5em} | m{8em} | } 
+ \hline
+ 0 & 20 & 21 & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Pass Shifted 7 Value and 0 to ALU for loading & Loaded Value Returned to Ra & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)\\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+\textbf{9. SW }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{7em} | m{5em} | m{5em} | m{7em} | } 
+ \hline
+ 0 & 15 & 16 & 17 & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Imm 6 and reg B is passed to ALU & Resultant memory address, is passed to memory block & Desired data is written in the memory & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)\\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\textbf{10. LW }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{7em} | m{5em} | m{5em} | m{7em} | } 
+ \hline
+ 0 & 15 & 18 & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Imm 6 and reg B is passed to ALU & Data output from memory is stored in the Register File & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)\\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{11. BEQ }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{5em} | m{5em} |  m{7em} |} 
+ \hline
+ 0 & 22 & 23 & 24 (if compare high) & 3 (else) & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & reg A and reg B values are loaded & Same as previous state to ensure proper data storage in T1 register & Imm 6 and reg B is passed to ALU & Read PC into B and +1 passed to ALU & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)\\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+
+\textbf{12. JAL }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{5em} | m{5em} |  m{7em} |} 
+ \hline
+ 0 & 3 & 25 & 26 & 27 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Read PC into B and +1 passed to ALU & Store PC+1 in reg A & add imm6 with PC, caring not to set the carry & Store the obtained result in PC & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)\\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+ 
+\vspace{0.5cm}
+
+\textbf{13. JLR }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{5em} | m{5em} |  m{7em} |} 
+ \hline
+ 0 & 3 & 25 & 28 & 29 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Read PC into B and +1 passed to ALU & Store PC+1 in reg A & Pass reg B and 0 to ALU & Store obtained result in PC & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)\\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\newpage 
+\textbf{14. LM }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{5em} | m{5em} | m{5em} |  m{7em} |} 
+ \hline
+ 0 & 30 & 31 & 32 & 33 (Decide Repeat) & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Set the Mux4 to take address from the priority encoder and enable the Priority encoder & Enable data writing for RF & Disable write for Atmp & Values written into RF, disable wRF, T1write and increment counter & Read PC into B and +1 passed to ALU  & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)\\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{15. SM }
+\begin{center}
+ \begin{tabular}{ | m{5em} | m{5em} | m{5em} | m{5em} | m{7em} | m{5em} |  m{7em} |} 
+ \hline
+ 0 & 34 & 35 & 36 & 37 (Decide Repeat) & 3 & 4 \\ [0.5ex]
+ \hline
+ Instruction gets stored in IR & Set the Mux5 to take input from the priority encoder address and enable the Priority encoder & Enable the memory\_write signal in the controller & Wait for the memOut to Load into the corresponding memory address & Disable the memory\_write, disable the priority encoder and increment the counter  & Read PC into B and +1 passed to ALU  & PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)\\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\section{Finite State Machine}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=14.5cm,height=15.6cm]{FSM.png}
+    \caption{The State Transition flow }
+    \label{fig:awesome_image}
+\end{figure}
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 5
+%----------------------------------------------------------------------------------------
+\chapterimage{ch_image.jpg}
+
+\chapter{Testing}
+
+\section{Test Cases}
+\vspace{1cm}
+Default register values : \\
+reg0        16'b0000000000000011    \\
+reg1     	16'b1111111111111111	\\
+reg3    	16'b0000000000000001	\\
+
+\textsc{Test 1:} \\
+\textit{
+mem[0] <= 16'b0000001011110000; \textcolor{blue}{// ADD  R1  R3  R6} \\
+mem[1] <= 16'b0010001011101000; \textcolor{blue}{// NDU  R1  R3  R5} \\
+mem[2] <= 16'b0000001011100010;	\textcolor{blue}{// ADC  R1  R3  R4} \\
+mem[3] <= 16'b0010001011010001;	\textcolor{blue}{// NDZ  R1  R3  R2} \\
+mem[4] <= 16'b0001001011110000;	\textcolor{blue}{// ADI  R3  R1  6'b110000} \\
+}
+
+\vspace{1cm}
+
+\textsc{Test 2:} \\
+\textit{
+mem[0] <= 16'b1100001011000010; \textcolor{blue}{// BEQ  R1  R3  6'b000010} \\
+mem[1] <= 16'b0011001101101001;  \textcolor{blue}{// LHI  R1  9'b101101001} \\
+mem[2] <= 16'b0101001011000011;	\textcolor{blue}{// SW  R1  R3  6'b000011} \\
+mem[3] <= 16'b0100010011000011;	\textcolor{blue}{// LW  R2  R3  6'b000011} \\
+}
+
+\vspace{1cm}
+
+\textsc{Test 3:} \\
+\textit{
+mem[0] <= 16'b1000000000000011; \textcolor{blue}{// JAL  R0  9'b000000011} \\
+mem[1] <= 16'b0000001011100010; \textcolor{blue}{// ADC  R1  R3  R4} \\
+mem[2] <= 16'b0010001011101000;	\textcolor{blue}{// NDU  R1  R3  R5} \\
+mem[3] <= 16'b0010001011010001;	\textcolor{blue}{// NDZ  R1  R3  R2} \\
+mem[4] <= 16'b0001001011110000;	\textcolor{blue}{// ADI  R3  R1  6'b110000} \\
+}
+
+\vspace{1cm}
+
+\textsc{Test 4:} \\
+\textit{
+mem[0] <= 16'b1001000010000000; \textcolor{blue}{// JLR  R0  R2 } \\
+mem[1] <= 16'b0000001011100010; \textcolor{blue}{// ADC  R1  R3  R4} \\
+mem[2] <= 16'b0010001011101000;	\textcolor{blue}{// NDU  R1  R3  R5} \\
+}
+
+\vspace{1cm}
+
+\textsc{Test 5:} \\
+\textit{
+mem[0] <= 16'b0110000001100100; \textcolor{blue}{// LM   R0  9'b001100100} \\
+mem[1] <= 16'b0000001011100000; \textcolor{blue}{// ADD  R1  R3  R4} \\
+mem[2] <= 16'd1; \\
+mem[3] <= 16'd2; \\
+mem[4] <= 16'd3; \\
+mem[5] <= 16'd4; \\
+mem[6] <= 16'd5; \\
+mem[7] <= 16'd6; \\
+mem[8] <= 16'd7; \\
+mem[9] <= 16'd8; \\
+}
+
+\vspace{1cm}
+
+\textsc{Test 6:} \\
+\textit{
+mem[0] <= 16'b0111000001100100; \textcolor{blue}{// SM  R0  9'b001100100} \\
+mem[1] <= 16'b0000001011100000; \textcolor{blue}{// ADD  R1  R3  R4} \\
+}
+
+
+\end{document}

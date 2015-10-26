@@ -1,0 +1,16 @@
+Mux1_ALU_B,,Mux3_RF_wen,,Mux5_RF_read2,,Mux7_RF_write,
+MUX 1,,MUX 3,,MUX 5,,MUX 7,count
+16'd0,b000,1'd0,b00,regB,b00,IR[0],b000
+16'd1,b001,1'd1,b01,lm_sm_add,b01,IR[1],b001
+B,b010,CZ,b10,b111,b10,IR[2],b010
+imm6,b011,count_mux_output,b11,Mux9_memDataIn,,IR[3],b011
+addrIncrementer,b100,Mux4_RF_wadd,,MUX 9,,IR[4],b100
+Mux2_alu_A,,MUX 4,,A,b0,IR[5],b101
+MUX 2,,regA,b000,B,b1,IR[6],b110
+16'd0,b000,regC,b001,Mux6_RF_dataIn,,IR[7],b111
+16'd1,b001,lm_sm_add,b010,MUX 6,,Mux8_memwrite,
+shift7,b010,b111,b011,memOut,b0,MUX8,
+imm6,b011,regB,b100,T1,b1,b0,b00
+imm9,b100,,,,,b1,b01
+A,b101,,,,,mux7,b10
+tmpA,b110,,,,,,

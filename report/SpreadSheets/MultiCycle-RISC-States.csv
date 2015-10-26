@@ -1,0 +1,36 @@
+State Description,States ,State Description
+1,0,Instruction gets stored in the IR
+2,1,Values of reg read into A and B for Add
+3,2,Added answer written into Rc
+4,3,Read PC into B and +1 passed to ALU 
+5,4,"PC+1 stored in T1; ready to write that in PC (will be updated automatically in next cycle)     //this state is the end of all instructions, so will always be followed by state0"
+6,5,Logical combination of the carry and zero bits is stored in CZ_reg for Add
+7,6,
+8,7,Depending upon logical combination of the carry and zero bits added value is written in Rc
+9,8,Values of reg read into A and B for NAND
+10,9,NANDed answer written into Rc
+11,10,Logical combination of the carry and zero bits is stored in CZ_reg for NAND 
+12,11,Pass Imm6 to input B of ALU to be added in the next state
+13,12,Added answer written into Rb
+14,20,Pass Shifted 7 Value and 0 to ALU for loading
+15,21,Loaded Value Returned to Ra
+16,15,Imm 6 and reg B is passed to ALU
+17,16,"Resultant memory address, is passed to memory block "
+18,17,Desired data is written in the memory.
+19,18,Data output from memory is stored in the Register File
+20,22,reg A and reg B values are loaded
+21,23,Same as previous state to ensure proper data storage in T1 register
+22,24,Imm 6 and reg B is passed to ALU
+23,25,Store PC+1 in reg A
+24,26,"add imm6 with PC, caring not to set the carry"
+25,27,Store the obtained result in PC
+26,28,Pass reg B and 0 to ALU
+27,29,Store obtained result in PC
+28,30,Set the Mux4 to take address from the priority encoder and enable the Priority encoder
+29,31,enable data writing for RF
+30,32,disable write for Atmp
+31,33,"values written into RF, disable wRF, T1write and increment counter"
+32,34,Set the Mux5 to take input from the priority encoder address and enable the Priority encoder
+33,35,Enable the memory_write signal in the controller
+34,36,Wait for the memOut to Load into the corresponding memory address
+35,37,"Disable the memory_write, disable the priority encoder and increment the counter "
