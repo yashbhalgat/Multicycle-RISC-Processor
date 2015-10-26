@@ -51,7 +51,7 @@ module memory(address,in,out,write,read,clk, proc_rst);
 				// mem[4] <= 16'b0001001011110000;	// ADI 
 				
 				//Test 5
-
+				/*
 				mem[0] <= 16'b0110000001100100; // LM
 				mem[1] <= 16'b0000001011100000;	// ADD
 				
@@ -63,6 +63,12 @@ module memory(address,in,out,write,read,clk, proc_rst);
 				mem[7] <= 16'd6;	// NDZ
 				mem[8] <= 16'd7;	// ADI
 				mem[9] <= 16'd8;	// ADI
+				*/
+
+				//Test 6
+				
+				mem[0] <= 16'b0111000001100100; // SM
+				mem[1] <= 16'b0000001011100000;	// ADD
 				
 
 
