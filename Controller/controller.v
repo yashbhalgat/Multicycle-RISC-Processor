@@ -413,7 +413,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 
 					37:begin
 						Mux8_memwrite <= 2'b01;
-						T1write <= 1'b1;
+						// T1write <= 1'b1;
 						priEn_enable <= 1'b1;
 						counter <= counter + 3'b001;
 					end
