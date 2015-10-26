@@ -1,10 +1,11 @@
-module priority_encoder(imm8, firstOnePosition);
+module priority_encoder(enable, imm8, firstOnePosition);
 	
+	input enable;
 	input [7:0] imm8;
 	output reg [2:0] firstOnePosition;
 	// firstOnePosition = 0;
    	
-	always@*
+	always@(negedge enable)
 		begin
 		   	if(imm8[0] == 1'b1) 
 		   		begin

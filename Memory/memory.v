@@ -52,7 +52,7 @@ module memory(address,in,out,write,read,clk, proc_rst);
 				
 				//Test 5
 
-				mem[0] <= 16'b0110000001100100; // JLR
+				mem[0] <= 16'b0110000001100100; // LM
 				mem[1] <= 16'b0000001011100000;	// ADD
 				
 				mem[2] <= 16'd1;	// NDU

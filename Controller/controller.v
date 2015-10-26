@@ -1,8 +1,8 @@
 module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd, Mux5_RF_read2,
 				Mux6_RF_dataIn, counter, Mux8_memwrite, Mux9_memDataIn, CZ_en, ALU_op, memread, wIR, wAtmp, 
-				StateID, T1write);
+				StateID, T1write, Mux7_RF_write_out,lm_sm_wadd);
 
-	input             clk, proc_rst, compare;
+	input             clk, proc_rst, compare, Mux7_RF_write_out;
 	input      [15:0] IR;
 	output reg [2:0]  Mux1_alu_B;
 	output reg [2:0]  Mux2_alu_A;
@@ -15,11 +15,20 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 	output reg        ALU_op,CZ_en, T1write;
 	output reg        memread,wIR,wAtmp; 
 	output reg [2:0]  counter;
-	output reg 	   [5:0]  StateID;
+	output reg [5:0]  StateID;
+
+	reg priEn_enable;
+	reg start_setPos;
 	
+	wire [7:0] zeroPost_out; 
+	output wire [2:0] lm_sm_wadd; 
+
 	parameter halt0 = 6'd63;
 	parameter halt = 6'd62;
 	
+	priority_encoder   __priEn(priEn_enable, zeroPost_out, lm_sm_wadd);
+	setPositionZero    __setPZ(IR[7:0], lm_sm_wadd, start_setPos, zeroPost_out);
+
 	always@(negedge clk)
 		begin
 			if(proc_rst==0) begin
@@ -42,6 +51,8 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux3_RF_wen <= 2'b01;
 						CZ_en <= 1'b1;
 						counter <= 3'b000;
+						priEn_enable <= 1;
+						start_setPos <= 0;
 					end	
 					//in most of the states after state 0, u have to make T1write<=0;
 					
@@ -351,18 +362,19 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					30:begin
+						start_setPos <= 1;
 						ALU_op <= 1'b0;
 						Mux1_alu_B <= 3'b100;
 						Mux2_alu_A <= 3'b110;
 						wAtmp <= 0;
 						T1write <= 1'b0;
 						Mux6_RF_dataIn <= 0;
-						Mux3_RF_wen <= 2'b11;
 						Mux4_RF_wadd <= 3'b010;
+						Mux3_RF_wen <= 2'b00;
 					end
 
 					31:begin
-						Mux3_RF_wen <= 2'b11;
+						priEn_enable <= 0;
 						Mux4_RF_wadd <= 3'b010;
 						Mux6_RF_dataIn <= 0;
 					end
@@ -372,8 +384,10 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					33:begin
-					T1write <= 1'b1;
+						Mux3_RF_wen <= 2'b01;
+					    T1write <= 1'b1;
 						counter <= counter +3'b001;
+						priEn_enable <= 1'b1;
 					end
 
 					34:begin
@@ -502,7 +516,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					30: StateID=31;
 					31: StateID=32;
 					32: StateID=33;
-					33: if(counter==3'b111) StateID=3;
+					33: if(zeroPost_out==8'd0) StateID=3;
 										  else StateID=30;
 					34: StateID=35;
 					35: StateID=36;
