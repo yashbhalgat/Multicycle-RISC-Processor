@@ -25,13 +25,13 @@ module reg16_file(clk, proc_rst, out1, out2, readAdd1, readAdd2, write, write_se
 	or a6(write_reg_enable[6], write, ~write_line_enable[6]);
 	or a7(write_reg_enable[7], write, ~write_line_enable[7]);
 	
-	reg16 r0(clk, reg_data0, in, write_reg_enable[0], reset);
-	reg16 r1(clk, reg_data1, in, write_reg_enable[1], reset);
-	reg16 r2(clk, reg_data2, in, write_reg_enable[2], reset);
-	reg16 r3(clk, reg_data3, in, write_reg_enable[3], reset);
-	reg16 r4(clk, reg_data4, in, write_reg_enable[4], reset);
-	reg16 r5(clk, reg_data5, in, write_reg_enable[5], reset);
-	reg16 r6(clk, reg_data6, in, write_reg_enable[6], reset);
-	reg16 r7(clk, reg_data7, in, write_reg_enable[7], reset);
+	reg16 r0(clk, reg_data0, in, write_reg_enable[0], reset, proc_rst);
+	reg16 r1(clk, reg_data1, in, write_reg_enable[1], reset, proc_rst);
+	reg16 r2(clk, reg_data2, in, write_reg_enable[2], reset, proc_rst);
+	reg16 r3(clk, reg_data3, in, write_reg_enable[3], reset, proc_rst);
+	reg16 r4(clk, reg_data4, in, write_reg_enable[4], reset, proc_rst);
+	reg16 r5(clk, reg_data5, in, write_reg_enable[5], reset, proc_rst);
+	reg16 r6(clk, reg_data6, in, write_reg_enable[6], reset, proc_rst);
+	reg16 r7(clk, reg_data7, in, write_reg_enable[7], reset, proc_rst);
 	
 endmodule

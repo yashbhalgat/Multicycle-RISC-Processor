@@ -33,9 +33,9 @@ module datapath(clk, proc_rst, Mux1_alu_B, Mux2_alu_A, Mux3_RF_wen, Mux4_RF_wadd
 	// memory 			__mem(T1out, Mux9_memDataIn_out, memDataOut, Mux8_memwrite_out, memRead, clk);
 	
 	CZ_reg			__CZ(IRout[1:0],carry, zero, CZ_en, CZout);
-	reg16 			__IR(clk, IRout, memDataOut, wIR, 1'b1);
+	IRreg16 			__IR(clk, IRout, memDataOut, wIR, 1'b1);
 	T1reg16			__T1(clk, T1out, ALU_out, T1write, 1'b1, proc_rst);
-	reg16			__tmpA(clk, tmpAout, RFout1, wAtmp, 1'b1);
+	reg16			__tmpA(clk, tmpAout, RFout1, wAtmp, 1'b1,proc_rst);
 	
 	imm_6			__imm6(IRout[5:0], imm6Out);
 	imm_9			__imm9(IRout[8:0], imm9Out);

@@ -178,7 +178,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					11:begin
-						wIR <= 1'b0; //needed
+						wIR <= 1'b1; //needed
 						Mux1_alu_B <= 3'b011;
 						Mux2_alu_A <= 3'b101;
 						Mux5_RF_read2 <= 2'b00;
@@ -326,7 +326,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 
 					26:begin
 						Mux1_alu_B <= 3'b010;
-						Mux2_alu_A <= 3'b011;
+						Mux2_alu_A <= 3'b100;
 						Mux5_RF_read2 <= 2'b10;	 
 						ALU_op <= 0;
 						CZ_en <= 1'b1;
