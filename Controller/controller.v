@@ -124,7 +124,7 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 						Mux4_RF_wadd <= 3'b001;
 						Mux6_RF_dataIn <= 1'b1;
 						ALU_op <= 0;
-						CZ_en <= 0;
+						CZ_en <= 1;
 					end
 
 					6:begin
