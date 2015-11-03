@@ -84,6 +84,10 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					3:begin
+						if(IR[15:12] == 4'b0100 &&  IR[11:9] == 3'b111)
+							begin
+								Mux3_RF_wen <= 2'b00;
+							end
 						Mux1_alu_B <= 3'b010;
 						Mux2_alu_A <= 3'b001;
 						Mux5_RF_read2 <= 2'b10;	 
@@ -92,9 +96,16 @@ module controller(clk, proc_rst, compare, IR, Mux1_alu_B, Mux2_alu_A, Mux3_RF_we
 					end
 
 					4:begin
+						if(IR[15:12] == 4'b0100 &&  IR[11:9] == 3'b111)
+							begin
+								Mux3_RF_wen <= 2'b01;
+							end
+						else 
+							begin
+								Mux3_RF_wen <= 2'b00;	
+							end
 						wIR <= 0;
 						memread <=0;
-						Mux3_RF_wen <= 2'b00;
 						Mux4_RF_wadd <= 3'b011;
 						// Mux5_RF_read2 <= 2'b10; 
 						Mux8_memwrite <= 2'b01;
