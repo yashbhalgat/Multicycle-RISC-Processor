@@ -1,0 +1,48 @@
+%We have assumed that on reset ALL contents of registers are zero. Sr No (left side) represents memory locations
+0 JAL R0,#0x1D		% JUMP to @PC+29=29 PC=0  Call mult program!!!!!!! 
+%-- Number of zeros in the given word program
+1 LW R4,R6,#5		% load R4=0 here R6=23 memory location 28 has zero value (see multiplication program) 
+2 LW R6,R6,#5		% load R6=0
+3 LW R0,R5,#20 		% R0=@(R5+20)        
+4 LW R1,R5,#21		% R1=@(R5+21)
+5 ADI R2,R0,#0      % mov R0 to R2(store 1 in R0)
+6 NDU R3,R1,R0		% (Instruction 6 and 7) check each bit one by one whether zero or not
+7 NDU R3,R3,R3		
+8 ADI R3,R3,#0		% Set zero flag if the bit was zero 
+9 ADZ R4,R4,R2		% Inc R4 if zero flag is set
+10 ADD R0,R0,R0		% shift R0 left by one bit (This instruction will set carry when shift is more than 15)
+11 NDC R6,R6,R6 	% R6=(NOT of (R6=0x0000)) if number of shifts in R0 are more than 15
+12 BEQ R6,R5,#-6 	% Jump if(R5=R6=0x0000) Number of shifts are less than 15 to 6th location     
+13 SW R4,R5,22      % Store the result
+
+%=================Input to the Number of zeros in the given word program =====================
+20 #0x0001  		%----intial constant
+21 #0x000F  		%----if this is given data then out put should be 12 i.e in hex 0x000C at memory location 22
+%=================Result of Number of zeros in the given word program ========================
+22 #0x000C 			%----no of zeros in data(output)
+
+%=================Input to the multiplication program===============================
+23 #0xFFFF 			% muld
+24 #0x0045 			% multr
+%=================Result of multiplication program==================================
+25 #0xFFBB 			% multiplication lower 16 bit(output)
+26 #0x0044			% multiplication high 16 bitit(output)
+
+%-- multiplication of two 16 bit numbers
+29 ADI R3,R3,#1     % set R3=1
+30 ADI R6,R6,#23  	% point to operand address ,R6=23(decimal)
+31 SW  R0,R6,#04   	% Store R0(Pc value) at  @(R6+04)
+32 LW R0,R6,#0		% load value from @(R6+0)(R6=23) in R0
+33 LW R1,R6,#1		% load value from @(R6+1)(R6=23) in R1
+34 BEQ R5,R1,#11	% if R1==0 then goto @46 location (PC=35 + 11=46)
+35 ADD R2,R2,R0		% R2=R2+R0
+36 ADC R4,R4,R3		% IF carry_flag
+37 ADI R1,R1,#-1	% dec R1
+38 ADI R7,R7,#-5    % goto BEQ @34 location here PC=39
+
+46 SW R2,R6,#2      % store result at @R6+2
+47 SW R4,R6,#3		% store result at @R6+3
+48 ADI R3,R3,#-1 	% Clear R3
+49 SW R3,R6,#5		% store result at @R6+5=0 here R3=0
+50 LW R7,R6,#4		% Return 
+

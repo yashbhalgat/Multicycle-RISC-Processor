@@ -2,9 +2,9 @@ module memory(address,in,out,write,read,clk, proc_rst);
 	
 	input [15:0] in;
 	input clk,write,read, proc_rst;
-	input [4:0] address;
+	input [5:0] address;
 	output reg [15:0] out;
-	reg [15:0] mem [0:31];
+	reg [15:0] mem [0:63];
 
 	/*initial
 		begin
@@ -17,13 +17,13 @@ module memory(address,in,out,write,read,clk, proc_rst);
 		if(proc_rst==0) begin
 
 				// Test 1
-				/*
+				
 				mem[0] <= 16'b0000001011110000; // ADD
 				mem[1] <= 16'b0010001011101000;	// NDU
 				mem[2] <= 16'b0000001011100010;	// ADC
 				mem[3] <= 16'b0010001011010001;	// NDZ
 				mem[4] <= 16'b0001001011110000;	// ADI
-				*/
+				
 				
 				//Test 2
 				/*
@@ -55,22 +55,39 @@ module memory(address,in,out,write,read,clk, proc_rst);
 				mem[0] <= 16'b0110000001100100; // LM
 				mem[1] <= 16'b0000001011100000;	// ADD
 				
-				mem[2] <= 16'd1;	// NDU
-				mem[3] <= 16'd2;	// NDZ
-				mem[4] <= 16'd3;	// ADI
-				mem[5] <= 16'd4;	// ADC
-				mem[6] <= 16'd5;	// NDU
-				mem[7] <= 16'd6;	// NDZ
-				mem[8] <= 16'd7;	// ADI
-				mem[9] <= 16'd8;	// ADI
+				mem[2] <= 16'b0000000000000010;	// NDU
+				mem[3] <= 16'b0000000000000011;	// NDZ
+				mem[4] <= 16'b0000000000000100;	// ADI
+				mem[5] <= 16'b0000000000000101;	// ADC
+				mem[6] <= 16'b0000000000000110;	// NDU
+				mem[7] <= 16'b0000000000000111;	// NDZ
+				mem[8] <= 16'b0000000000001000;	// ADI
+				mem[9] <= 16'b0000000000001001;	// ADI
 				*/
 
 				//Test 6
-				
+				/*
 				mem[0] <= 16'b0111000001100100; // SM
 				mem[1] <= 16'b0000001011100000;	// ADD
-				
+				*/
 
+				// Lab TestBench 
+				/*
+				mem[0]	<=		16'b1000000000011101;
+				mem[1]	<=		16'b0100100110000101;
+				mem[2]	<=		16'b0100110110000101;
+				mem[3]	<=		16'b0100000101010100;
+				mem[4]	<=		16'b0100001101010101;
+				mem[5]	<=		16'b0001000010000000;
+				mem[6]	<=		16'b0010000001011000;
+				mem[7]	<=		16'b0010011011011000;
+				mem[8]	<=		16'b0001011011000000;
+				mem[9]	<=		16'b0000100010100001;
+				mem[10]	<=		16'b0000000000000000;
+				mem[11]	<=		16'b0010110110110010;
+				mem[12]	<=		16'b1100110101111010;
+				mem[13]	<=		16'b0101100101010110;
+				*/
 
 			end
 		if(write ==1'b0)
